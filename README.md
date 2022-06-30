@@ -1,7 +1,7 @@
 # airBnB
 Week 11 First Portfolio Project
 
-# `Airbnb`
+# `Airbnb Clone`
 
 ## Database Schema Design
 
