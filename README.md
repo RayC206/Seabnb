@@ -5,7 +5,9 @@ Week 11 First Portfolio Project
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+
+![Screen Shot 2022-06-30 at 3 19 17 PM](https://user-images.githubusercontent.com/79509501/176788358-fb722291-bc6f-4c2b-9bf9-86ae04b72f01.png)
+
 
 ## API Documentation
 
