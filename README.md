@@ -1,7 +1,7 @@
 # airBnB
 Week 11 First Portfolio Project
 
-# `<name of application here>`
+# `Airbnb`
 
 ## Database Schema Design
 
