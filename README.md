@@ -1186,14 +1186,15 @@ Create and return a new image for a spot specified by id.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: POST
-  * URL: /api/spots/:spotId/images
+  * URL: /api/images
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
-      "url": "image url"
+      "url": "image url",
+      "spot_id": spot_id
     }
     ```
 
@@ -1233,14 +1234,15 @@ Create and return a new image for a review specified by id.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: POST
-  * URL: /api/spots/:spotId/reviews/:reviewId/images
+  * URL: /api/images/
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
-      "url": "image url"
+      "url": "image url",
+      "review_id": review_id
     }
     ```
 
