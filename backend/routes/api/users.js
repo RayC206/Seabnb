@@ -47,5 +47,21 @@ router.post(
   }
 );
 
+// Get the Current User
+router.get('/current-user', async (req, res) => {
+  return res.json({ message: 'success' });
+});
+
+
+// Get all Spots owned by the Current User
+router.get('/current-user/spots', async (req, res) => {
+  return res.json({ message: 'success' });
+});
+
+
+//Get all Reviews of the Current User
+router.get('/current-user/reviews', async (req, res) => {
+  return res.json({ message: 'success' });
+});
 
 module.exports = router;
