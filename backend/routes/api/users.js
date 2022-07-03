@@ -64,4 +64,9 @@ router.get('/current-user/reviews', async (req, res) => {
   return res.json({ message: 'success' });
 });
 
+//Get all of the Current User's Bookings
+router.get('/current-user/bookings', async (req, res) => {
+  return res.json({ message: 'success' });
+});
+
 module.exports = router;

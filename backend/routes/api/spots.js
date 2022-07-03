@@ -32,5 +32,37 @@ router.delete('/:spotId', async (req, res) => {
 });
 
 //Get all Reviews by a Spot's id
+router.get('/:spotId/reviews', async (req, res) => {
+  let spotId = req.params.spotId;
+  return res.json({ message: 'success' });
+});
+
+// Create a Review for a Spot based on the Spot's id
+router.post('/:spotId/reviews', async (req, res) => {
+  let spotId = req.params.spotId;
+  return res.json({ message: 'success' });
+});
+
+//Get all Bookings for a Spot based on the Spot's Id
+router.get('/:spotId/bookings', async (req, res) => {
+  return res.json({ message: 'success' });
+});
+
+//Create a booking from a Spot based on the Spot's id
+router.post('/:spotId/bookings', async (req, res) => {
+  return res.json({ message: 'success' });
+});
+
+//Add an Image to a Spot based on the Spot's id
+router.post('/:spotId/images', async (req, res) => {
+  return res.json({ message: 'success' });
+});
+
+//Add Query Filters to Get All Spots
+router.get('/?filter', async (req, res) => {
+  let spotId = req.params.spotId;
+  return res.json({ message: 'success' });
+});
+
 
 module.exports = router;
