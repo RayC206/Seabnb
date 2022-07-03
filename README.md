@@ -6,7 +6,8 @@ Week 11 First Portfolio Project
 ## Database Schema Design
 
 
-![Screen Shot 2022-06-30 at 3 19 17 PM](https://user-images.githubusercontent.com/79509501/176788358-fb722291-bc6f-4c2b-9bf9-86ae04b72f01.png)
+![Screen Shot 2022-07-01 at 11 02 28 AM](https://user-images.githubusercontent.com/79509501/176947293-6c3dcaba-7993-46a4-8c68-7d1e2cb4c4ec.png)
+
 
 
 ## API Documentation
@@ -55,7 +56,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/users/:userId
+  * URL: /api/users/current-user
   * Body: none
 
 * Successful Response
@@ -257,7 +258,7 @@ Returns all the spots owned (created) by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/users/:userId/spots
+  * URL: /api/users/current-user/spots
   * Body: none
 
 * Successful Response
@@ -428,7 +429,7 @@ Updates and returns an existing spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: PUT
-  * URL: /api/spot/:spotId
+  * URL: /api/spots/:spotId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -552,7 +553,7 @@ Returns all the reviews written by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/users/:userId/reviews
+  * URL: /api/users/current-user/reviews
   * Body: none
 
 * Successful Response
@@ -842,7 +843,7 @@ Return all the bookings that the current user has made.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/users/:userId/bookings
+  * URL: /api/users/current-user/bookings
   * Body: none
 
 * Successful Response
@@ -956,7 +957,7 @@ Create and return a new booking from a spot specified by id.
 * Require proper authorization: Spot must NOT belong to the current user
 * Request
   * Method: POST
-  * URL: /api/users/:userId/bookings
+  * URL: /api/spots/:spotId/bookings
   * Body: 
 
     ```json
