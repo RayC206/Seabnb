@@ -1296,7 +1296,7 @@ Delete an existing image.
   the image's imageableId and imageableType
 * Request
   * Method: DELETE
-  * URL: /api/images/:imagesId
+  * URL: /api/images/:imageId
   * Body: none
 
 * Successful Response
