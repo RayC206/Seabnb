@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Spot, Review } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -49,19 +49,35 @@ router.post(
 
 // Get the Current User
 router.get('/current-user', async (req, res) => {
-  return res.json({ message: 'success' });
+  return res.json(req.user);
 });
 
 
 // Get all Spots owned by the Current User
 router.get('/current-user/spots', async (req, res) => {
-  return res.json({ message: 'success' });
+  const currentUserId = req.user.id;
+
+  let spots  = await Spot.findAll({
+    where: {
+      ownerId: currentUserId
+    }
+  });
+
+  return res.json(spots);
 });
 
 
 //Get all Reviews of the Current User
 router.get('/current-user/reviews', async (req, res) => {
-  return res.json({ message: 'success' });
+  const currentUserId = req.user.id;
+
+  let reviews  = await Review.findAll({
+    where: {
+      userId: currentUserId
+    }
+  });
+
+  return res.json(reviews);
 });
 
 //Get all of the Current User's Bookings
