@@ -48,7 +48,7 @@ router.post(
 );
 
 // Get the Current User
-router.get('/current-user', async (req, res) => {
+router.get('/current-user', requireAuth, async (req, res) => {
   return res.json(req.user);
 });
 
