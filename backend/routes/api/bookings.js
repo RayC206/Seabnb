@@ -1,14 +1,24 @@
 const express = require('express');
-const { Booking } = require('../../db/models');
+const { Booking, Spot } = require('../../db/models');
 
 const router = express.Router();
 
 //Edit a Booking
 router.put('/:bookingId', async (req, res) => {
-  // TODO: add authorization and validation (in model)
   let bookingId = req.params.bookingId;
-  bookingParams = req.body;
-  let booking = await Booking.update(bookingParams, {
+  let bookingParams = req.body;
+  let currentUserId = req.user.id;
+
+  // Booking must belong to the current user
+  let booking = await Booking.findByPk(bookingId);
+  if (booking.userId !== currentUserId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
+
+  booking = await Booking.update(bookingParams, {
     where: {
       id: bookingId
     }
@@ -19,8 +29,18 @@ router.put('/:bookingId', async (req, res) => {
 
 //Delete a Booking
 router.delete('/:bookingId', async (req, res) => {
-  // TODO: add authorization and validation (in model)
   let bookingId = req.params.bookingId;
+  let currentUserId = req.user.id;
+
+  // Booking must belong to the current user or the Spot must belong to the current user
+  let booking = await Booking.findByPk(bookingId);
+  let spot = await Spot.findByPk(booking.spotId)
+  if (booking.userId !== currentUserId && spot.ownerId !== currentUserId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
 
   await Booking.destroy({
     where: {

@@ -4,15 +4,52 @@ const { Image, Review } = require('../../db/models');
 const router = express.Router();
 
 //edit a review
-router.put('/reviews/:reviewId', async (req, res) => {
-  let spotId = req.params.spotId;
-  return res.json({ message: 'success' });
+router.put('/:reviewId', async (req, res) => {
+  let reviewId = req.params.reviewId;
+  let reviewParams = req.body;
+  let currentUserId = req.user.id;
+
+  // Review must belong to the current user
+  let review = await Review.findByPk(reviewId);
+  if (review.userId !== currentUserId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
+
+  review = await Review.update(reviewParams, {
+    where: {
+      id: reviewId
+    }
+  });
+  review = await Review.findByPk(reviewId);
+  return res.json(review);
 });
 
 //delete a review
-router.delete('/reviews/:reviewId', async (req, res) => {
-  let spotId = req.params.spotId;
-  return res.json({ message: 'success' });
+router.delete('/:reviewId', async (req, res) => {
+  let reviewId = req.params.reviewId;
+  let currentUserId = req.user.id;
+
+  // Review must belong to the current user
+  let review = await Review.findByPk(reviewId);
+  if (review.userId !== currentUserId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
+
+  await Review.destroy({
+    where: {
+      id: reviewId
+    }
+  });
+  return res.json({
+    message: 'Successfully deleted',
+    statusCode: 200
+  });
 });
 
 //Add an Image to a Review based on the Review's id

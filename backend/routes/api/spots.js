@@ -1,5 +1,7 @@
 const express = require('express');
-const { Image, Review, Spot } = require('../../db/models');
+const { Booking, Image, Review, Spot } = require('../../db/models');
+const { Op } = require('sequelize');
+const spot = require('../../db/models/spot');
 
 const router = express.Router();
 
@@ -31,8 +33,19 @@ router.post('/', async (req, res) => {
 //Edit a Spot
 router.put('/:spotId', async (req, res) => {
   let spotId = req.params.spotId;
-  spotParams = req.body;
-  let spot = await Spot.update(spotParams, {
+  let spotParams = req.body;
+  let currentUserId = req.user.id;
+
+  // Spot must belong to the current user
+  let spot = await Spot.findByPk(spotId);
+  if (spot.ownerId !== currentUserId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
+
+  spot = await Spot.update(spotParams, {
     where: {
       id: spotId
     }
@@ -44,6 +57,16 @@ router.put('/:spotId', async (req, res) => {
 // Delete a Spot
 router.delete('/:spotId', async (req, res) => {
   let spotId = req.params.spotId;
+  let currentUserId = req.user.id;
+
+  // Spot must belong to the current user
+  let spot = await Spot.findByPk(spotId);
+  if (spot.ownerId !== currentUserId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
 
   await Spot.destroy({
     where: {
@@ -89,7 +112,100 @@ router.get('/:spotId/bookings', async (req, res) => {
 
 //Create a booking from a Spot based on the Spot's id
 router.post('/:spotId/bookings', async (req, res) => {
-  return res.json({ message: 'success' });
+  const spotId = req.params.spotId;
+  bookingParams = req.body;
+  bookingParams.spotId = spotId;
+  bookingParams.userId = req.user.id;
+
+  let spot = await Spot.findByPk(spotId);
+
+  if (!spot) {
+    return res.json({
+      "message": "Spot couldn't be found",
+      "statusCode": 404
+    });
+  }
+
+  // Spot must NOT belong to the current user
+  if (bookingParams.userId === spot.ownerId) {
+    return res.json({
+      "message": "Forbidden",
+      "statusCode": 403
+    });
+  }
+
+  if (bookingParams.endDate <= bookingParams.startDate) {
+    return res.json({
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "endDate": "endDate cannot come before startDate"
+      }
+    });
+  }
+
+  // TODO: fix query
+  let existingBookings = await Booking.findAll({
+    where: {
+      spotId: spotId,
+      [Op.not]: [{
+        [Op.or]: [{
+          startDate: { // existing booking with startDate between the new booking's dates
+            [Op.between]: [bookingParams.startDate, bookingParams.endDate]
+          }
+        }, {
+          endDate: { // existing booking with endDate between the new booking's dates
+            [Op.between]: [bookingParams.startDate, bookingParams.endDate]
+          }
+        }]
+      }]
+    //   [Op.and]: [{
+    //       startDate: {
+    //         [Op.or]: {
+    //           [Op.lte]: bookingParams.startDate,
+    //           [Op.lte]: bookingParams.endDate
+    //         },
+    //       }
+    //     }, {
+    //       endDate: {
+    //         [Op.or]: {
+    //           [Op.lte]: bookingParams.startDate,
+    //           [Op.lte]: bookingParams.endDate
+    //         }
+    //       }
+    //   }],
+    //   [Op.and]: [{
+    //     startDate: {
+    //       [Op.or]: {
+    //         [Op.gte]: bookingParams.startDate,
+    //         [Op.gte]: bookingParams.endDate
+    //       },
+    //     }
+    //   }, {
+    //     endDate: {
+    //       [Op.or]: {
+    //         [Op.gte]: bookingParams.startDate,
+    //         [Op.gte]: bookingParams.endDate
+    //       }
+    //     }
+    // }]
+    }
+  });
+
+  if (existingBookings.length) {
+    return res.json({
+      "message": "Sorry, this spot is already booked for the specified dates",
+      "statusCode": 403,
+      "errors": {
+        "startDate": "Start date conflicts with an existing booking",
+        "endDate": "End date conflicts with an existing booking"
+      }
+    })
+  }
+
+  let booking = await Booking.create(bookingParams);
+  booking = await Booking.findByPk(booking.id);
+  return res.json(booking);
 });
 
 //Add an Image to a Spot based on the Spot's id
