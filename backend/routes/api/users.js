@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Spot, Review } = require('../../db/models');
+const { Booking, Review, Spot, User } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -82,7 +82,15 @@ router.get('/current-user/reviews', async (req, res) => {
 
 //Get all of the Current User's Bookings
 router.get('/current-user/bookings', async (req, res) => {
-  return res.json({ message: 'success' });
+  const currentUserId = req.user.id;
+
+  let bookings  = await Booking.findAll({
+    where: {
+      userId: currentUserId
+    }
+  });
+
+  return res.json(bookings);
 });
 
 module.exports = router;

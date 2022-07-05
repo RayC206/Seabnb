@@ -6,7 +6,11 @@ const spot = require('../../db/models/spot');
 const router = express.Router();
 
 // Get all Spots
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
+  if (Object.keys(req.query).length) { // if there are query params
+    return next(); // go to query filters endpoint
+  }
+
   let spots  = await Spot.findAll();
 
   return res.json(spots);
@@ -107,7 +111,15 @@ router.post('/:spotId/reviews', async (req, res) => {
 
 //Get all Bookings for a Spot based on the Spot's Id
 router.get('/:spotId/bookings', async (req, res) => {
-  return res.json({ message: 'success' });
+  const spotId = req.params.spotId;
+
+  let bookings  = await Booking.findAll({
+    where: {
+      spotId: spotId
+    }
+  });
+
+  return res.json(bookings);
 });
 
 //Create a booking from a Spot based on the Spot's id
@@ -232,9 +244,110 @@ router.post('/:spotId/images', async (req, res) => {
 });
 
 //Add Query Filters to Get All Spots
-router.get('/?filter', async (req, res) => {
-  let spotId = req.params.spotId;
-  return res.json({ message: 'success' });
+router.get('/', async (req, res) => {
+  const filters = req.query;
+
+  let page = 0; // default value
+  let size = 20; // default value
+  let filterQuery = {};
+  let errors = {};
+
+  if (filters.page) {
+    filters.page = parseInt(filters.page);
+    if (!Number.isInteger(filters.page)) {
+      errors.page = "Page is invalid";
+    } else if (filters.page < 0) {
+      errors.page = "Page must be greater than or equal to 0";
+    } else if (filters.page > 10) {
+      errors.page = "Page must be less than or equal to 10";
+    }
+    page = filters.page; // if params set, override default value
+  }
+  if (filters.size) {
+    filters.size = parseInt(filters.size);
+    if (!Number.isInteger(filters.size)) {
+      errors.size = "Size is invalid";
+    } else if (filters.size < 0) {
+      errors.size = "Size must be greater than or equal to 0";
+    } else if (filters.size > 20) {
+      errors.size = "Size must be less than or equal to 20";
+    }
+    size = filters.size; // if params set, override default value
+  }
+  if (filters.minLat) {
+    filters.minLat = parseFloat(filters.minLat);
+    if (Number.isNaN(filters.minLat)) {
+      errors.minLat = "Minimum latitude is invalid";
+    }
+    filterQuery.lat = {
+      [Op.gte]: filters.minLat // spot's lat should be greater than or equal to the minLat param
+    }
+  }
+  if (filters.maxLat) {
+    filters.maxLat = parseFloat(filters.maxLat);
+    if (Number.isNaN(filters.maxLat)) {
+      errors.maxLat = "Maximum latitude is invalid";
+    }
+    filterQuery.lat = {
+      [Op.lte]: filters.maxLat // spot's lat should be less than or equal to the maxLat param
+    }
+  }
+  if (filters.minLng) {
+    filters.minLng = parseFloat(filters.minLng);
+    if (Number.isNaN(filters.minLng)) {
+      errors.minLng = "Minimum longitude is invalid";
+    }
+    filterQuery.lng = {
+      [Op.gte]: filters.minLng // spot's lng should be greater than or equal to the minLng param
+    }
+  }
+  if (filters.maxLng) {
+    filters.maxLng = parseFloat(filters.maxLng);
+    if (Number.isNaN(filters.maxLng)) {
+      errors.maxLng = "Maximum longitude is invalid";
+    }
+    filterQuery.lng = {
+      [Op.lte]: filters.maxLng // spot's lng should be less than or equal to the maxLng param
+    }
+  }
+  if (filters.minPrice) {
+    filters.minPrice = parseFloat(filters.minPrice);
+    if (Number.isNaN(filters.minPrice)) {
+      errors.minPrice = "Minimum price is invalid";
+    } else if (filters.minPrice <= 0) {
+      errors.minPrice = "Minimum price must be greater than 0";
+    }
+    filterQuery.price = {
+      [Op.gte]: filters.minPrice // spot's price should be greater than or equal to the minPrice param
+    }
+  }
+  if (filters.maxPrice) {
+    filters.maxPrice = parseFloat(filters.maxPrice);
+    if (Number.isNaN(filters.maxPrice)) {
+      errors.maxPrice = "Minimum price is invalid";
+    } else if (filters.maxPrice <= 0) {
+      errors.maxPrice = "Minimum price must be greater than 0";
+    }
+    filterQuery.price = {
+      [Op.lte]: filters.maxPrice // spot's price should be less than or equal to the maxPrice param
+    }
+  }
+
+  if (Object.keys(errors).length) { // if errors object is not empty
+    return res.json({
+      "message": "Validation Error",
+      "statusCode": 400,
+      "errors": errors
+    });
+  }
+
+
+  let spots = await Spot.findAndCountAll({
+    limit: size,
+    offset: size * (page - 1),
+    where: filterQuery
+  })
+  return res.json(spots);
 });
 
 
