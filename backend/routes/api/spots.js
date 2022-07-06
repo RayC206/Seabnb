@@ -3,8 +3,6 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 
 const { Booking, Image, Review, Spot } = require('../../db/models');
 const { Op } = require('sequelize');
-const spot = require('../../db/models/spot');
-const review = require('../../db/models/review');
 
 const router = express.Router();
 
