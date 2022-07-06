@@ -37,8 +37,13 @@ router.post(
   validateSignup,
   async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
-    const user = await User.signup({ email, username, password, firstName, lastName });
-
+    try {
+      const user = await User.signup({ email, username, password, firstName, lastName });
+    } catch(error) {
+      return res.status(403).json({
+        "message": error.message
+      });
+    }
     await setTokenCookie(res, user);
 
     return res.json({
@@ -54,7 +59,7 @@ router.get('/current-user', requireAuth, async (req, res) => {
 
 
 // Get all Spots owned by the Current User
-router.get('/current-user/spots', async (req, res) => {
+router.get('/current-user/spots', requireAuth, async (req, res) => {
   const currentUserId = req.user.id;
 
   let spots  = await Spot.findAll({

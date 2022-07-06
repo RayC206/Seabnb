@@ -42,6 +42,7 @@ router.post(
 
     const user = await User.login({ credential, password });
 
+
     if (!user) {
       const err = new Error('Login failed');
       err.status = 401;
@@ -51,9 +52,11 @@ router.post(
     }
 
     await setTokenCookie(res, user);
+    let token = setTokenCookie(res, user);
 
     return res.json({
-      user
+      user,
+      token
     });
   }
 );
