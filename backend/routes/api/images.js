@@ -1,5 +1,6 @@
 const express = require('express');
 const { Image, Review, Spot } = require('../../db/models');
+const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -9,11 +10,19 @@ const forbiddenError = {
 };
 
 //Delete an Image
-router.delete('/:imageId', async (req, res) => {
+router.delete('/:imageId', requireAuth,  async (req, res) => {
     let imageId = req.params.imageId;
     const currentUserId = req.user.id;
 
     let image = await Image.findByPk(imageId);
+
+    if (!image) {
+      return res.status(404).json({
+        "message": "Image does not exist"
+      })
+    }
+
+
 
     if (image.spotId) {
       let spot = await Spot.findByPk(image.spotId);
