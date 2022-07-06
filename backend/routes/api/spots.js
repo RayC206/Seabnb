@@ -169,51 +169,18 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     });
   }
 
-  // TODO: fix query
   let existingBookings = await Booking.findAll({
     where: {
       spotId: spotId,
-      [Op.not]: [{
-        [Op.or]: [{
-          startDate: { // existing booking with startDate between the new booking's dates
-            [Op.between]: [bookingParams.startDate, bookingParams.endDate]
-          }
+      [Op.and]: [{ // (StartDate1 <= EndDate2) and (EndDate1 >= StartDate2)
+        startDate: {
+          [Op.lte]: bookingParams.endDate
+          },
         }, {
-          endDate: { // existing booking with endDate between the new booking's dates
-            [Op.between]: [bookingParams.startDate, bookingParams.endDate]
+        endDate: {
+          [Op.gte]: bookingParams.startDate
           }
-        }]
-      }]
-    //   [Op.and]: [{
-    //       startDate: {
-    //         [Op.or]: {
-    //           [Op.lte]: bookingParams.startDate,
-    //           [Op.lte]: bookingParams.endDate
-    //         },
-    //       }
-    //     }, {
-    //       endDate: {
-    //         [Op.or]: {
-    //           [Op.lte]: bookingParams.startDate,
-    //           [Op.lte]: bookingParams.endDate
-    //         }
-    //       }
-    //   }],
-    //   [Op.and]: [{
-    //     startDate: {
-    //       [Op.or]: {
-    //         [Op.gte]: bookingParams.startDate,
-    //         [Op.gte]: bookingParams.endDate
-    //       },
-    //     }
-    //   }, {
-    //     endDate: {
-    //       [Op.or]: {
-    //         [Op.gte]: bookingParams.startDate,
-    //         [Op.gte]: bookingParams.endDate
-    //       }
-    //     }
-    // }]
+        }],
     }
   });
 
