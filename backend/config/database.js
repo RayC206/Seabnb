@@ -3,11 +3,6 @@ const config = require('./index');
 
 module.exports = {
   development: {
-    username,
-    password,
-    database,
-    host,
-    dialect: 'postgres',
     storage: config.dbFile,
     dialect: "sqlite",
     seederStorage: "sequelize",
