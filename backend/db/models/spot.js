@@ -21,17 +21,94 @@ module.exports = (sequelize, DataTypes) => {
   Spot.init({
     address: {
       type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'address is required.'
+        }
+      }
     },
     city: {
       type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'City is required.'
+        }
+      }
     },
-    state: DataTypes.STRING,
-    country: DataTypes.STRING,
-    lat: DataTypes.DECIMAL,
-    lng: DataTypes.DECIMAL,
-    name: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    price: DataTypes.DECIMAL,
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'State is required.'
+        }
+      }
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Country is required.'
+        }
+      }
+    },
+    lat: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Lat is required.'
+        }
+      }
+    },
+    lng: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Lng is required.'
+        }
+      }
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Name is required.'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Description is required.'
+        }
+      }
+    },
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Price is required.'
+        }
+      }
+    },
     previewImage: DataTypes.STRING,
     ownerId: DataTypes.INTEGER
   }, {
