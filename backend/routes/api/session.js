@@ -50,13 +50,17 @@ router.post(
       return next(err);
     }
 
-    await setTokenCookie(res, user);
-    let token = setTokenCookie(res, user);
+    const token = await setTokenCookie(res, user);
 
-    return res.json({
-      user,
-      token
-    });
+    const currentlyLoggedIn= {
+      id: req.user.id,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      email: req.user.email,
+      token: token,
+    };
+
+    return res.json(currentlyLoggedIn);
   }
 );
 
