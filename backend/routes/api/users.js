@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Booking, Review, Spot, User } = require('../../db/models');
+const { Booking, Image, Review, Spot, User } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -74,15 +74,39 @@ router.get('/current-user/spots', requireAuth, async (req, res) => {
 
 //Get all Reviews of the Current User
 router.get('/current-user/reviews', async (req, res) => {
-  const currentUserId = req.user.id;
+  const currentUser = req.user;
+  let reviewsArray = [];
 
   let reviews  = await Review.findAll({
     where: {
-      userId: currentUserId
+      userId: currentUser.id
     }
   });
+  for (let review of reviews) {
+    let spot = await Spot.findByPk(review.spotId);
+    let images = await Image.findAll({
+      where: {
+        reviewId: review.id
+      }
+    });
+    let imagesArray = [];
+    for (let image of images) {
+      imagesArray.push(image.url);
+    }
 
-  return res.json(reviews);
+    reviewsArray.push({
+      review,
+      user: {
+        id: currentUser.id,
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName
+      },
+      spot,
+      images: imagesArray
+    })
+  }
+
+  return res.json(reviewsArray);
 });
 
 //Get all of the Current User's Bookings
