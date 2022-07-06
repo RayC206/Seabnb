@@ -5,6 +5,13 @@ const { Image, Review } = require('../../db/models');
 
 const router = express.Router();
 
+//Error variable to be called on Forbidden errors
+const forbiddenError = {
+  "message": "Forbidden",
+  "statusCode": 403
+};
+
+
 //edit a review
 router.put('/:reviewId', requireAuth,  async (req, res) => {
   let reviewId = req.params.reviewId;
@@ -14,10 +21,7 @@ router.put('/:reviewId', requireAuth,  async (req, res) => {
   // Review must belong to the current user
   let review = await Review.findByPk(reviewId);
   if (review.userId !== currentUserId) {
-    return res.json({
-      "message": "Forbidden",
-      "statusCode": 403
-    });
+    return res.json(forbiddenError);
   }
 
   review = await Review.update(reviewParams, {
@@ -37,10 +41,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
   // Review must belong to the current user
   let review = await Review.findByPk(reviewId);
   if (review.userId !== currentUserId) {
-    return res.json({
-      "message": "Forbidden",
-      "statusCode": 403
-    });
+    return res.json(forbiddenError);
   }
 
   await Review.destroy({
@@ -62,10 +63,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
   let review  = await Review.findByPk(reviewId);
   if (review.userId !== currentUserId) {
-    return res.json({
-      "message": "Forbidden",
-      "statusCode": 403
-    });
+    return res.json(forbiddenError);
   }
 
   imageParams = req.body;
