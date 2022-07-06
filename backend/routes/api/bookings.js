@@ -13,7 +13,7 @@ const forbiddenError = {
 
 
 //Edit a Booking
-router.put('/:bookingId', async (req, res) => {
+router.put('/:bookingId', requireAuth,async (req, res) => {
   let bookingId = req.params.bookingId;
   let bookingParams = req.body;
   let currentUserId = req.user.id;
