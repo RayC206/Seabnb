@@ -28,6 +28,8 @@ router.get('/:spotId', async (req, res) => {
     });
   }
 
+
+
   return res.json(spot);
 });
 
@@ -47,19 +49,26 @@ router.put('/:spotId', requireAuth, async (req, res) => {
   let spotParams = req.body;
   let currentUserId = req.user.id;
 
-  // Spot must belong to the current user
+  // Spot must exist or belong to the current user
   let spot = await Spot.findByPk(spotId);
-  if (spot.ownerId !== currentUserId) {
+  if (!spot || spot.ownerId !== currentUserId) {
     return res.status(404).json({
       "message": "Forbidden"
     });
   }
 
-  spot = await Spot.update(spotParams, {
-    where: {
-      id: spotId
-    }
-  });
+  //checks if validations are violated and throws error
+  try {
+    spot = await Spot.update(spotParams, {
+      where: {
+        id: spotId
+      }
+    });
+  } catch(error) {
+    return res.status(400).json({
+      "message": error.message
+    });
+  }
   spot = await Spot.findByPk(spotId);
   return res.json(spot);
 });
