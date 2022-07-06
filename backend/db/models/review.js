@@ -24,9 +24,25 @@ module.exports = (sequelize, DataTypes) => {
   Review.init({
     userId: DataTypes.INTEGER,
     spotId: DataTypes.INTEGER,
-    review: DataTypes.TEXT,
+    review: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+          notEmpty: {
+            msg: 'Review is required.'
+        }
+      }
+    },
     stars: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: '',
+      validate: {
+        notEmpty: {
+            msg: 'Star rating is required.'
+          }
+        },
       validate: {
         min: 1,
         max: 5

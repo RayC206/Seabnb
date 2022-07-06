@@ -110,10 +110,17 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   reviewParams.spotId = spotId;
   reviewParams.userId = req.user.id;
 
-  let review = await Review.create(reviewParams);
-  review = await Review.findByPk(review.id);
-  
-  return res.json(review);
+
+  try {
+    let review = await Review.create(reviewParams);
+    review = await Review.findByPk(review.id);
+    return res.json(review);
+  } catch(error) {
+    return res.status(400).json({
+      "message": error.message
+    });
+  }
+
 });
 
 //Get all Bookings for a Spot based on the Spot's Id
