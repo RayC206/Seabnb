@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/RayC206/airBnB/issues"
   },
-  "homepage": "https://github.com/RayC206/airBnB#readme"
+  "homepage": "https://github.com/RayC206/airBnB#readme",
+  "dependencies": {
+    "pg": "^8.7.3"
+  }
 }
