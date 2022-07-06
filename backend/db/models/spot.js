@@ -12,21 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Spot.belongsTo(
-        models.Users,
+        models.User,
           { foreignKey: 'ownerId', onDelete: 'CASCADE'}
       );
-      Spot.hasMany(
-        models.Bookings,
-        { foreignKey: 'spotId', onDelete: 'CASCADE' }
-      )
-      Spot.hasMany(
-        models.Reviews,
-        { foreignKey: 'spotId', onDelete: 'CASCADE' }
-      )
-      Spot.hasMany(
-        models.Images,
-        { foreignKey: 'spotId', onDelete: 'CASCADE' }
-      )
     }
   }
   // TODO: add uniqueness check
