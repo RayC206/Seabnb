@@ -1,4 +1,6 @@
 const express = require('express');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
+
 const { Booking, Spot } = require('../../db/models');
 
 const router = express.Router();
@@ -28,7 +30,7 @@ router.put('/:bookingId', async (req, res) => {
 });
 
 //Delete a Booking
-router.delete('/:bookingId', async (req, res) => {
+router.delete('/:bookingId', requireAuth, async (req, res) => {
   let bookingId = req.params.bookingId;
   let currentUserId = req.user.id;
 

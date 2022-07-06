@@ -1,4 +1,6 @@
 const express = require('express');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
+
 const { Booking, Image, Review, Spot } = require('../../db/models');
 const { Op } = require('sequelize');
 const spot = require('../../db/models/spot');
@@ -21,11 +23,17 @@ router.get('/:spotId', async (req, res) => {
   let spotId = req.params.spotId;
   let spot  = await Spot.findByPk(spotId);
 
+  if (!spot) {
+    return res.status(404).json({
+      "message": "Spot does not exist!"
+    });
+  }
+
   return res.json(spot);
 });
 
 //Create a Spot
-router.post('/', async (req, res) => {
+router.post('/', requireAuth, async (req, res) => {
   spotParams = req.body;
   spotParams.ownerId = req.user.id;
 
@@ -35,7 +43,7 @@ router.post('/', async (req, res) => {
 });
 
 //Edit a Spot
-router.put('/:spotId', async (req, res) => {
+router.put('/:spotId', requireAuth, async (req, res) => {
   let spotId = req.params.spotId;
   let spotParams = req.body;
   let currentUserId = req.user.id;
@@ -43,9 +51,8 @@ router.put('/:spotId', async (req, res) => {
   // Spot must belong to the current user
   let spot = await Spot.findByPk(spotId);
   if (spot.ownerId !== currentUserId) {
-    return res.json({
-      "message": "Forbidden",
-      "statusCode": 403
+    return res.status(404).json({
+      "message": "Forbidden"
     });
   }
 
@@ -59,16 +66,15 @@ router.put('/:spotId', async (req, res) => {
 });
 
 // Delete a Spot
-router.delete('/:spotId', async (req, res) => {
+router.delete('/:spotId', requireAuth, async (req, res) => {
   let spotId = req.params.spotId;
   let currentUserId = req.user.id;
 
   // Spot must belong to the current user
   let spot = await Spot.findByPk(spotId);
   if (spot.ownerId !== currentUserId) {
-    return res.json({
-      "message": "Forbidden",
-      "statusCode": 403
+    return res.status(404).json({
+      "message": "Forbidden"
     });
   }
 
@@ -98,7 +104,7 @@ router.get('/:spotId/reviews', async (req, res) => {
 });
 
 // Create a Review for a Spot based on the Spot's id
-router.post('/:spotId/reviews', async (req, res) => {
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   const spotId = req.params.spotId;
   reviewParams = req.body;
   reviewParams.spotId = spotId;
@@ -106,6 +112,7 @@ router.post('/:spotId/reviews', async (req, res) => {
 
   let review = await Review.create(reviewParams);
   review = await Review.findByPk(review.id);
+  
   return res.json(review);
 });
 
@@ -119,11 +126,12 @@ router.get('/:spotId/bookings', async (req, res) => {
     }
   });
 
+
   return res.json(bookings);
 });
 
 //Create a booking from a Spot based on the Spot's id
-router.post('/:spotId/bookings', async (req, res) => {
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   const spotId = req.params.spotId;
   bookingParams = req.body;
   bookingParams.spotId = spotId;
@@ -132,17 +140,15 @@ router.post('/:spotId/bookings', async (req, res) => {
   let spot = await Spot.findByPk(spotId);
 
   if (!spot) {
-    return res.json({
-      "message": "Spot couldn't be found",
-      "statusCode": 404
+   return res.status(404).json({
+      "message": "Spot couldn't be found!"
     });
   }
 
   // Spot must NOT belong to the current user
   if (bookingParams.userId === spot.ownerId) {
-    return res.json({
-      "message": "Forbidden",
-      "statusCode": 403
+    return res.status(403).json({
+      "message": "Forbidden"
     });
   }
 

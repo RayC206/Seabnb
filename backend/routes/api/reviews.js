@@ -1,10 +1,12 @@
 const express = require('express');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
+
 const { Image, Review } = require('../../db/models');
 
 const router = express.Router();
 
 //edit a review
-router.put('/:reviewId', async (req, res) => {
+router.put('/:reviewId', requireAuth,  async (req, res) => {
   let reviewId = req.params.reviewId;
   let reviewParams = req.body;
   let currentUserId = req.user.id;
@@ -28,7 +30,7 @@ router.put('/:reviewId', async (req, res) => {
 });
 
 //delete a review
-router.delete('/:reviewId', async (req, res) => {
+router.delete('/:reviewId', requireAuth, async (req, res) => {
   let reviewId = req.params.reviewId;
   let currentUserId = req.user.id;
 
@@ -53,7 +55,7 @@ router.delete('/:reviewId', async (req, res) => {
 });
 
 //Add an Image to a Review based on the Review's id
-router.post('/:reviewId/images', async (req, res) => {
+router.post('/:reviewId/images', requireAuth, async (req, res) => {
   // authorization: spot must belong to the current user
   const currentUserId = req.user.id;
   const reviewId = req.params.reviewId;
