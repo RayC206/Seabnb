@@ -78,9 +78,9 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
   let spotId = req.params.spotId;
   let currentUserId = req.user.id;
 
-  // Spot must belong to the current user
+  // Spot must exist or belong to the current user
   let spot = await Spot.findByPk(spotId);
-  if (spot.ownerId !== currentUserId) {
+  if (!spot || spot.ownerId !== currentUserId) {
     return res.status(404).json({
       "message": "Forbidden"
     });
