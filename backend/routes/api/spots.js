@@ -3,7 +3,6 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 
 const { Booking, Image, Review, Spot } = require('../../db/models');
 const { Op } = require('sequelize');
-const spot = require('../../db/models/spot');
 
 const router = express.Router();
 
@@ -110,9 +109,30 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
   reviewParams.spotId = spotId;
   reviewParams.userId = req.user.id;
 
+  // Checks if spot given the spotId exists. If not, throws error
+  const spot = await Spot.findByPk(spotId);
+  if (!spot){
+    return res.status(404).json({
+      "message": "Spot does not exist."
+    });
+  }
 
+  // Check if review exists for the spot from the current user
+  let review = await Review.findAll({
+    where: {
+      spotId: spotId,
+      userId: reviewParams.userId
+    }
+  })
+  if (review.length) { // if such review exists, throw an error
+    return res.status(403).json({
+      "message": "Review for spot already exists."
+    });
+  }
+
+  //throws error if missing review params (stars/review message)
   try {
-    let review = await Review.create(reviewParams);
+    review = await Review.create(reviewParams);
     review = await Review.findByPk(review.id);
     return res.json(review);
   } catch(error) {
