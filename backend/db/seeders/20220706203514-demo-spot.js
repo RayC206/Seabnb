@@ -74,7 +74,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Spots', {
-      address: { [Op.in]: ['123 Barnacle Lane', '456 Barnacle Lane', '888 Barnacle Lane'] }
+      address: { [Op.in]: ['123 Barnacle Lane', '456 Barnacle Lane', '888 Barnacle Lane','888 Dolphin Drive', '777 Pearl Drive'] }
     }, {});
   }
 };
