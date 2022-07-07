@@ -57,7 +57,6 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
 
 //Add an Image to a Review based on the Review's id
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
-  // authorization: spot must belong to the current user
   const currentUserId = req.user.id;
   const reviewId = req.params.reviewId;
 
@@ -68,6 +67,17 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
   imageParams = req.body;
   imageParams.reviewId = reviewId;
+
+  let { count } = await Image.findAndCountAll({
+    where: {
+      reviewId: reviewId
+    }
+  });
+  if (count >= 10) {
+    return res.status(400).json({
+      "message": "Maximum number of images reached"
+    });
+  }
 
   let image = await Image.create(imageParams);
   image = await Image.findByPk(image.id);
