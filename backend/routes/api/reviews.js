@@ -60,7 +60,16 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
   const currentUserId = req.user.id;
   const reviewId = req.params.reviewId;
 
+
   let review  = await Review.findByPk(reviewId);
+  //if review doesnt exist
+  if (!review){
+    return res.status(404).json({
+      "message": "Review does not exist"
+    });
+  }
+
+  //if currentUser not associated with review id
   if (review.userId !== currentUserId) {
     return res.json(forbiddenError);
   }
