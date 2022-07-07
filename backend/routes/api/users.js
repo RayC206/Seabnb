@@ -80,7 +80,7 @@ router.get('/current-user/spots', requireAuth, async (req, res) => {
 
 
 //Get all Reviews of the Current User
-router.get('/current-user/reviews', async (req, res) => {
+router.get('/current-user/reviews', requireAuth, async (req, res) => {
   const currentUser = req.user;
   let reviewsArray = [];
 
@@ -117,7 +117,7 @@ router.get('/current-user/reviews', async (req, res) => {
 });
 
 //Get all of the Current User's Bookings
-router.get('/current-user/bookings', async (req, res) => {
+router.get('/current-user/bookings', requireAuth, async (req, res) => {
   const currentUserId = req.user.id;
 
   let bookings  = await Booking.findAll({

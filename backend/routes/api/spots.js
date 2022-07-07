@@ -203,7 +203,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 });
 
 //Get all Bookings for a Spot based on the Spot's Id
-router.get('/:spotId/bookings', async (req, res) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   const spotId = req.params.spotId;
 
   let bookings  = await Booking.findAll({
@@ -280,7 +280,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 });
 
 //Add an Image to a Spot based on the Spot's id
-router.post('/:spotId/images', async (req, res) => {
+router.post('/:spotId/images', requireAuth,async (req, res) => {
   // authorization: spot must belong to the current user
   const currentUserId = req.user.id;
   const spotId = req.params.spotId;
