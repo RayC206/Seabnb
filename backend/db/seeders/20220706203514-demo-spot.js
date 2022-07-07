@@ -53,7 +53,7 @@ module.exports = {
         name: 'Sandys House',
         description: 'Bubble dome.',
         price: 350,
-        previewImage: 'https://static.wikia.nocookie.net/parody/images/f/f2/Squidward_house.png',
+        previewImage: 'https://cdnb.artstation.com/p/assets/images/images/029/104/549/large/nati-dias-sandy-house-3-nati.jpg',
       },
       {
         ownerId: 5,
@@ -66,7 +66,7 @@ module.exports = {
         name: 'Mr.Krabs House',
         description: '5 night minimum',
         price: 999,
-        previewImage: 'https://static.wikia.nocookie.net/parody/images/f/f2/Squidward_house.png',
+        previewImage: 'https://static.wikia.nocookie.net/spongebob/images/d/d9/The_Check-Up_144.png',
       }
     ], {});
   },
