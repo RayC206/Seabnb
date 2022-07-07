@@ -73,6 +73,9 @@ module.exports = (sequelize, DataTypes) => {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: {
+          msg: 'Username address already in use!'
+        },
         validate: {
           len: [4, 30],
           isNotEmail(value) {
