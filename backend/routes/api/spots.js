@@ -44,8 +44,12 @@ router.get('/:spotId', async (req, res) => {
     raw: true // get only the dataValues from sequelize object
   });
 
-  let numReviews = reviews.count;
-  let avgStarRating = reviews.rows[0].avgStarRating;
+  let numReviews = 0;
+  let avgStarRating = null;
+  if (reviews.length) {
+    numReviews = reviews.count;
+    avgStarRating = reviews.rows[0].avgStarRating;
+  }
 
   // get owner data from User
   let owner = await User.findByPk(spot.ownerId);
