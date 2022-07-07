@@ -21,7 +21,7 @@ router.put('/:reviewId', requireAuth,  async (req, res) => {
   // Review must belong to the current user
   let review = await Review.findByPk(reviewId);
   if (review.userId !== currentUserId) {
-    return res.json(authorizationError);
+    return res.status(403).json(authorizationError);
   }
 
   review = await Review.update(reviewParams, {

@@ -5,9 +5,10 @@ const { Booking, Spot } = require('../../db/models');
 
 const router = express.Router();
 
-//Error variable to be called on Forbidden errors
+//Error variable to be called on authorization errors
 const authorizationError = {
-  "message": "Authorization required"
+  "message": "Forbidden",
+  "statusCode": 403
 };
 
 
