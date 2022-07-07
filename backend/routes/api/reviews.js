@@ -55,6 +55,13 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
 
   // Review must belong to the current user
   let review = await Review.findByPk(reviewId);
+
+  if (!review){
+    return res.status(404).json({
+      "message": "Review does not exist",
+      "statusCode": 404
+    });
+  }
   if (review.userId !== currentUserId) {
     return res.status(403).json(authorizationError);
   }
