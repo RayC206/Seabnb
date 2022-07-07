@@ -19,12 +19,12 @@ module.exports = {
         userId: 3,
         spotId: 3,
         review: 'Neighbors were noisy, and the art pieces displayed were very strange.',
-        stars: '3'
+        stars: 3
       },
       {
         userId: 4,
         spotId: 4,
-        review: 'Water helmetis  needed if you have gills, very nice land experience ',
+        review: 'Water helmet is needed if you have gills, very nice land experience.',
         stars: 5
       },
       {
@@ -39,6 +39,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Reviews', {
+      userId: { [Op.in]: [1, 2, 3, 4, 5] },
       spotId: { [Op.in]: [1, 2, 3, 4, 5] }
     }, {});
   }
