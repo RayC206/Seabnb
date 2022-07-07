@@ -44,6 +44,7 @@ router.get('/:spotId', async (req, res) => {
     raw: true // get only the dataValues from sequelize object
   });
 
+  //defaults number of reviews and avg star rating to 0 if there are no reviews on spotId
   let numReviews = 0;
   let avgStarRating = null;
   if (reviews.length) {

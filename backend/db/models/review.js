@@ -45,10 +45,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: '',
       validate: {
         notEmpty: {
-            msg: 'Star rating is required.'
-          }
+          msg: 'Star rating is required.'
         },
-      validate: {
         min: 1,
         max: 5
       }

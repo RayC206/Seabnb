@@ -11,26 +11,41 @@ const authorizationError = {
   "statusCode": 403
 };
 
-
 //edit a review
 router.put('/:reviewId', requireAuth,  async (req, res) => {
   let reviewId = req.params.reviewId;
   let reviewParams = req.body;
   let currentUserId = req.user.id;
 
-  // Review must belong to the current user
   let review = await Review.findByPk(reviewId);
+
+  //checks if reviewId exists
+  if (!review) {
+    return res.status(404).json({
+      "message": "Review does not exist"
+    });
+  }
+
+  // Review must belong to the current user
   if (review.userId !== currentUserId) {
     return res.status(403).json(authorizationError);
   }
 
-  review = await Review.update(reviewParams, {
-    where: {
-      id: reviewId
-    }
-  });
-  review = await Review.findByPk(reviewId);
-  return res.json(review);
+  //check body validation for violation errors, then throws appropriate error message
+  try {
+    review = await Review.update(reviewParams, {
+      where: {
+        id: reviewId
+      }
+    });
+    review = await Review.findByPk(reviewId);
+    return res.json(review);
+  } catch(error) {
+    return res.status(400).json({
+      "message": error.message
+    });
+  }
+
 });
 
 //delete a review
