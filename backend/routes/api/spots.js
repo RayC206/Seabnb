@@ -171,7 +171,15 @@ router.get('/:spotId/reviews', async (req, res) => {
     }
   });
 
-  return res.json(reviews);
+  let user = await User.findByPk(spot.ownerId);
+  let images = await Image.findByPk(spot.id)
+
+
+  return res.json({
+    reviews,
+    user,
+    images
+  });
 });
 
 // Create a Review for a Spot based on the Spot's id
