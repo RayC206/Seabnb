@@ -103,7 +103,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
   let spot = await Spot.findByPk(spotId);
   if (!spot || spot.ownerId !== currentUserId) {
     return res.status(404).json({
-      "message": "Forbidden"
+      "message": "Authorization required."
     });
   }
 
@@ -132,7 +132,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
   let spot = await Spot.findByPk(spotId);
   if (!spot || spot.ownerId !== currentUserId) {
     return res.status(404).json({
-      "message": "Forbidden"
+      "message": "Authorization required."
     });
   }
 
@@ -234,7 +234,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   // Spot must NOT belong to the current user
   if (bookingParams.userId === spot.ownerId) {
     return res.status(403).json({
-      "message": "Forbidden"
+      "message": "Authorization required."
     });
   }
 
@@ -288,7 +288,7 @@ router.post('/:spotId/images', async (req, res) => {
   let spot  = await Spot.findByPk(spotId);
   if (spot.ownerId !== currentUserId) {
     return res.json({
-      "message": "Forbidden",
+      "message": "Authorization required.",
       "statusCode": 403
     });
   }
