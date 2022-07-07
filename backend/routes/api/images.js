@@ -5,8 +5,7 @@ const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
 const authorizationError = {
-  "message": "Authorization Required",
-  "statusCode": 403
+  "message": "Authorization Required"
 };
 
 //Delete an Image
@@ -32,10 +31,10 @@ router.delete('/:imageId', requireAuth,  async (req, res) => {
     } else if (image.reviewId) {
       let review = await Review.findByPk(image.reviewId);
       if (review.userId !== currentUserId) {
-        return res.json(authorizationError);
+        return res.status(403).json(authorizationError);
       }
     } else {
-      return res.json(authorizationError);
+      return res.status(403).json(authorizationError);
     }
 
     await Image.destroy({

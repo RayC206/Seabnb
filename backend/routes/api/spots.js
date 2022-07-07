@@ -6,6 +6,11 @@ const { Op, Sequelize } = require('sequelize');
 
 const router = express.Router();
 
+//Error variable to be called on Forbidden errors
+const authorizationError = {
+  "message": "Authorization Required"
+};
+
 // Get all Spots
 router.get('/', async (req, res, next) => {
   if (Object.keys(req.query).length) { // if there are query params
@@ -234,12 +239,12 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   // Spot must NOT belong to the current user
   if (bookingParams.userId === spot.ownerId) {
     return res.status(403).json({
-      "message": "Authorization required."
+      "message": "Error: You are the owner."
     });
   }
 
   if (bookingParams.endDate <= bookingParams.startDate) {
-    return res.json({
+    return res.status(400).json({
       "message": "Validation error",
       "statusCode": 400,
       "errors": {
@@ -287,10 +292,7 @@ router.post('/:spotId/images', requireAuth,async (req, res) => {
 
   let spot  = await Spot.findByPk(spotId);
   if (spot.ownerId !== currentUserId) {
-    return res.json({
-      "message": "Authorization required.",
-      "statusCode": 403
-    });
+    return res.status(403).json(authorizationError)
   }
 
   imageParams = req.body;

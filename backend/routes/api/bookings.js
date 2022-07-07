@@ -7,8 +7,7 @@ const router = express.Router();
 
 //Error variable to be called on Forbidden errors
 const authorizationError = {
-  "message": "Authorization required",
-  "statusCode": 403
+  "message": "Authorization required"
 };
 
 
@@ -21,7 +20,7 @@ router.put('/:bookingId', requireAuth,async (req, res) => {
   // Booking must belong to the current user
   let booking = await Booking.findByPk(bookingId);
   if (booking.userId !== currentUserId) {
-    return res.json(authorizationError);
+    return res.status(403).json(authorizationError);
   }
 
   booking = await Booking.update(bookingParams, {
@@ -42,7 +41,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
   let booking = await Booking.findByPk(bookingId);
   let spot = await Spot.findByPk(booking.spotId)
   if (booking.userId !== currentUserId && spot.ownerId !== currentUserId) {
-    return res.json(authorizationError);
+    return res.status(403).json(authorizationError);
   }
 
   await Booking.destroy({
