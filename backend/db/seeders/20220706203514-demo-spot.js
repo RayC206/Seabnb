@@ -6,7 +6,7 @@ module.exports = {
       {
         ownerId: 1,
         address: '123 Barnacle Lane',
-        city: 'Unknown',
+        city: 'Bikini Bottom',
         state: 'Hawaii',
         country: 'United States of America',
         lat: 37.7645358,
@@ -19,7 +19,7 @@ module.exports = {
       {
         ownerId: 2,
         address: '456 Barnacle Lane',
-        city: 'Unknown',
+        city: 'Bikini Bottom',
         state: 'Hawaii',
         country: 'United States of America',
         lat: 37.8645358,
@@ -32,7 +32,7 @@ module.exports = {
       {
         ownerId: 3,
         address: '888 Barnacle Lane',
-        city: 'Unknown',
+        city: 'Bikini Bottom',
         state: 'Hawaii',
         country: 'United States of America',
         lat: 37.6130284,
@@ -45,7 +45,7 @@ module.exports = {
       {
         ownerId: 4,
         address: '888 Dolphin Drive',
-        city: 'Unknown',
+        city: 'Bikini Bottom',
         state: 'Hawaii',
         country: 'United States of America',
         lat: 47.6130284,
@@ -58,7 +58,7 @@ module.exports = {
       {
         ownerId: 5,
         address: '777 Pearl Drive',
-        city: 'Unknown',
+        city: 'Bikini Bottom',
         state: 'Hawaii',
         country: 'United States of America',
         lat: 50.6130284,
