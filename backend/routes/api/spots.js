@@ -269,7 +269,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   });
 
   if (existingBookings.length) {
-    return res.json({
+    return res.status(403).json({
       "message": "Sorry, this spot is already booked for the specified dates",
       "statusCode": 403,
       "errors": {
@@ -395,7 +395,7 @@ router.get('/', async (req, res) => {
   }
 
   if (Object.keys(errors).length) { // if errors object is not empty
-    return res.json({
+    return res.status(400).json({
       "message": "Validation Error",
       "statusCode": 400,
       "errors": errors
