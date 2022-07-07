@@ -52,7 +52,7 @@ router.post(
 
     const token = await setTokenCookie(res, user);
 
-    const currentlyLoggedIn= {
+    const currentlyLoggedIn = {
       id: req.user.id,
       firstName: req.user.firstName,
       lastName: req.user.lastName,

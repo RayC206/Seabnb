@@ -1,8 +1,8 @@
 const express = require('express');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 
-const { Booking, Image, Review, Spot } = require('../../db/models');
-const { Op } = require('sequelize');
+const { Booking, Image, Review, Spot, User } = require('../../db/models');
+const { Op, Sequelize } = require('sequelize');
 
 const router = express.Router();
 
@@ -28,9 +28,59 @@ router.get('/:spotId', async (req, res) => {
     });
   }
 
+  // get numReviews and avgStarRating from Review
+  let reviews = await Review.findAndCountAll({
+    where: {
+      spotId: spotId
+    },
+    attributes: [
+      [Sequelize.fn('AVG', Sequelize.col('stars')), 'avgStarRating'],
+    ],
+    raw: true // get only the dataValues from sequelize object
+  });
+
+  let numReviews = reviews.count;
+  let avgStarRating = reviews.rows[0].avgStarRating;
+
+  // get owner data from User
+  let owner = await User.findByPk(spot.ownerId);
 
 
-  return res.json(spot);
+  // get images
+  let images = await Image.findAll({
+    where: {
+      spotId: spot.id
+    }
+  });
+  let imagesArray = [];
+  for (let image of images) {
+    imagesArray.push(image.url);
+  }
+
+  let spotDetails = {
+    id: spot.id,
+    ownerId: spot.ownerId,
+    city: spot.city,
+    state: spot.state,
+    country: spot.country,
+    lat: spot.lat,
+    lng: spot.lng,
+    name: spot.name,
+    description: spot.description,
+    price: spot.price,
+    createdAt: spot.createdAt,
+    updatedAt: spot.updatedAt,
+    numReviews: numReviews,
+    avgStarRating: avgStarRating,
+    images: imagesArray,
+    owner: {
+      id: owner.id,
+      firstName: owner.firstName,
+      lastName: owner.lastName
+    }
+  };
+
+  return res.json(spotDetails);
 });
 
 //Create a Spot
