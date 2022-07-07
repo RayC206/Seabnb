@@ -239,7 +239,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   // Spot must NOT belong to the current user
   if (bookingParams.userId === spot.ownerId) {
     return res.status(403).json({
-      "message": "Error: You are the owner."
+      "message": "Forbidden",
+      "statusCode": 403
     });
   }
 

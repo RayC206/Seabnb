@@ -7,7 +7,8 @@ const router = express.Router();
 
 //Error variable to be called on Forbidden errors
 const authorizationError = {
-  "message": "Authorization Required",
+  "message": "Forbidden",
+  "statusCode": 403
 };
 
 
@@ -48,7 +49,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
       id: reviewId
     }
   });
-  return res.json({
+  return res.status(200).json({
     message: 'Successfully deleted',
     statusCode: 200
   });
@@ -70,7 +71,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
   //if currentUser not associated with review id
   if (review.userId !== currentUserId) {
-    return res.json(authorizationError);
+    return res.status(403).json(authorizationError);
   }
 
   imageParams = req.body;
