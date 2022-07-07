@@ -1,4 +1,4 @@
-# airBnB
+# airbnb
 Week 11 First Portfolio Project
 
 # `Airbnb Clone`
