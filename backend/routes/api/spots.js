@@ -239,7 +239,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
   //Current user bookings
   const currentUserBookings = await Booking.findAll({
-    where: { spotId: req.params.spotId },
+    where: {
+      spotId: req.params.spotId
+    },
     include: {
       model: User,
       attributes: ['id', 'firstName', 'lastName']
