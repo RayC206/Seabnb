@@ -15,21 +15,19 @@ router.delete('/:imageId', requireAuth,  async (req, res) => {
     const currentUserId = req.user.id;
 
     let image = await Image.findByPk(imageId);
-
+    //check if image exists else throw error
     if (!image) {
       return res.status(404).json({
         "message": "Image does not exist"
       })
     }
-
-
-
+    //if the image belongs to spot
     if (image.spotId) {
       let spot = await Spot.findByPk(image.spotId);
       if (spot.ownerId !== currentUserId) {
         return res.status(403).json(authorizationError);
       }
-    } else if (image.reviewId) {
+    } else if (image.reviewId) {  //if image belongs to a review
       let review = await Review.findByPk(image.reviewId);
       if (review.userId !== currentUserId) {
         return res.status(403).json(authorizationError);

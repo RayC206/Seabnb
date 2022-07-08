@@ -20,15 +20,15 @@ router.put('/:bookingId', requireAuth,async (req, res) => {
   let bookingParams = req.body;
   let currentUserId = req.user.id;
 
-  // Booking must belong to the current user
   let booking = await Booking.findByPk(bookingId);
-
+  //if booking does not exist
   if (!booking) {
     return res.status(404).json({
-      "message": "Spot does not exist"
+      "message": "Booking does not exist"
     })
   }
 
+  // Booking must belong to the current user
   if (booking.userId !== currentUserId) {
     return res.status(403).json(authorizationError);
   }

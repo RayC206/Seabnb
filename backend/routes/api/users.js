@@ -89,6 +89,7 @@ router.get('/current-user/reviews', requireAuth, async (req, res) => {
       userId: currentUser.id
     }
   });
+  //checks all reviews with images to push into an array
   for (let review of reviews) {
     let spot = await Spot.findByPk(review.spotId);
     let images = await Image.findAll({
