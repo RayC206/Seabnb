@@ -88,10 +88,10 @@ information.
   * Body:
 
     ```json
-    {
-      "email": "john.smith@gmail.com",  // or "username"
-      "password": "secret password"
-    }
+   {
+      "username": "Demo-lition",     //or email
+      "password": "password"
+   }
     ```
 
 * Successful Response
@@ -102,12 +102,11 @@ information.
 
     ```json
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Smith",
-      "username": JohnSmith,
-      "email": "john.smith@gmail.com",
-      "token": ""
+     "id": 1,
+     "firstName": "Demo",
+     "lastName": "lition",
+     "email": "demo@user.io",
+     "token": '#'
     }
     ```
 
@@ -156,10 +155,11 @@ user's information.
 
     ```json
     {
-      "firstName": "John",
-      "lastName": "Smith",
-      "email": "john.smith@gmail.com",
-      "password": "secret password"
+      "firstName": "Demo",
+      "lastName": "lition",
+      "username": "Demo-lition2",
+      "email": "demo2@user.io",
+      "password": "password"
     }
     ```
 
@@ -171,10 +171,10 @@ user's information.
 
     ```json
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Smith",
-      "email": "john.smith@gmail.com",
+      "id": 6,
+      "firstName": "Demo",
+      "lastName": "lition",
+      "email": "demo2@user.io",
       "token": ""
     }
     ```
