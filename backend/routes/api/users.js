@@ -122,8 +122,12 @@ router.get('/current-user/bookings', requireAuth, async (req, res) => {
 
   let bookings  = await Booking.findAll({
     where: {
-      userId: currentUserId
-    }
+      userId: currentUserId,
+    },
+    include: {
+        model: Spot,
+        attributes: ['id', 'ownerId', 'address','city','state','country','lat','lng','name','price','previewImage']
+      }
   });
 
   return res.json(bookings);
