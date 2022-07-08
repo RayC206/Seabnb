@@ -89,7 +89,7 @@ information.
 
     ```json
     {
-      "email": "john.smith@gmail.com",
+      "email": "john.smith@gmail.com",  // or "username"
       "password": "secret password"
     }
     ```
@@ -105,6 +105,7 @@ information.
       "id": 1,
       "firstName": "John",
       "lastName": "Smith",
+      "username": JohnSmith,
       "email": "john.smith@gmail.com",
       "token": ""
     }
