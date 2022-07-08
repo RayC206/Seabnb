@@ -230,26 +230,88 @@ Returns all the spots.
   * Body:
 
     ```json
+    [
     {
-      "Spots":[
-        {
-          "id": 1,
-          "ownerId": 1,
-          "address": "123 Disney Lane",
-          "city": "San Francisco",
-          "state": "California",
-          "country": "United States of America",
-          "lat": 37.7645358,
-          "lng": -122.4730327,
-          "name": "App Academy",
-          "description": "Place where web developers are created",
-          "price": 123,
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
+        "id": 1,
+        "address": "123 Barnacle Lane",
+        "city": "Bikini Bottom",
+        "state": "Hawaii",
+        "country": "United States of America",
+        "lat": 37.7645358,
+        "lng": -122.4730327,
+        "name": "Spongebobs House",
+        "description": "Pineapple under the sea",
+        "price": 120,
+        "previewImage": "https://static.wikia.nocookie.net/spongefan/images/e/e1/SpongeBob_house.jpg",
+        "ownerId": 1,
+        "createdAt": "2022-07-08T17:17:58.000Z",
+        "updatedAt": "2022-07-08T17:17:58.000Z"
+    },
+    {
+        "id": 2,
+        "address": "456 Barnacle Lane",
+        "city": "Bikini Bottom",
+        "state": "Hawaii",
+        "country": "United States of America",
+        "lat": 37.8645358,
+        "lng": -122.6730327,
+        "name": "Patricks House",
+        "description": "A rock",
+        "price": 5,
+        "previewImage": "https://static.wikia.nocookie.net/spongefan/images/d/d5/Patrick_Star%27s_Rock_in_Season_8.png",
+        "ownerId": 2,
+        "createdAt": "2022-07-08T17:17:58.000Z",
+        "updatedAt": "2022-07-08T17:17:58.000Z"
+    },
+    {
+        "id": 3,
+        "address": "888 Barnacle Lane",
+        "city": "Bikini Bottom",
+        "state": "Hawaii",
+        "country": "United States of America",
+        "lat": 37.6130284,
+        "lng": -122.3420645,
+        "name": "Squidwards House",
+        "description": "Squidwards House",
+        "price": 150,
+        "previewImage": "https://static.wikia.nocookie.net/parody/images/f/f2/Squidward_house.png",
+        "ownerId": 3,
+        "createdAt": "2022-07-08T17:17:58.000Z",
+        "updatedAt": "2022-07-08T17:17:58.000Z"
+    },
+    {
+        "id": 4,
+        "address": "888 Dolphin Drive",
+        "city": "Bikini Bottom",
+        "state": "Hawaii",
+        "country": "United States of America",
+        "lat": 47.6130284,
+        "lng": -122.3420645,
+        "name": "Sandys House",
+        "description": "Bubble dome.",
+        "price": 350,
+        "previewImage": "https://cdnb.artstation.com/p/assets/images/images/029/104/549/large/nati-dias-sandy-house-3-nati.jpg",
+        "ownerId": 4,
+        "createdAt": "2022-07-08T17:17:58.000Z",
+        "updatedAt": "2022-07-08T17:17:58.000Z"
+    },
+    {
+        "id": 5,
+        "address": "777 Pearl Drive",
+        "city": "Bikini Bottom",
+        "state": "Hawaii",
+        "country": "United States of America",
+        "lat": 50.6130284,
+        "lng": -122.3420645,
+        "name": "Mr.Krabs House",
+        "description": "5 night minimum",
+        "price": 999,
+        "previewImage": "https://static.wikia.nocookie.net/spongebob/images/d/d9/The_Check-Up_144.png",
+        "ownerId": 5,
+        "createdAt": "2022-07-08T17:17:58.000Z",
+        "updatedAt": "2022-07-08T17:17:58.000Z"
     }
+]
     ```
 
 ## Get all Spots owned by the Current User
