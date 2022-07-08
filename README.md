@@ -88,10 +88,10 @@ information.
   * Body:
 
     ```json
-   {
-      "username": "Demo-lition",     //or email
+    {
+      "email": "demo@user.io",
       "password": "password"
-   }
+    }
     ```
 
 * Successful Response
