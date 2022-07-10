@@ -1269,10 +1269,12 @@ Create and return a new image for a spot specified by id.
 
     ```json
     {
-      "id": 1,
-      "imageableId": 1,
-      "imageableType": "Spot",
-      "url": "image url",
+     "id": 11,
+     "url": "image url",
+     "reviewId": null,
+     "spotId": 1,
+     "createdAt": "2022-07-09T21:57:02.260Z",
+     "updatedAt": "2022-07-09T21:57:02.260Z"
     }
     ```
 
