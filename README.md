@@ -2,18 +2,20 @@
 Week 11 First Portfolio Project
 
 
-Personal notes: 
+#Personal notes: 
+
 What was the most challenging part of this project for you?
- - Researching syntax 
- - Creating validators
- - Making sure migrations / models / seeders working correctly
- - Table Associations
+ * Researching syntax 
+ * Creating validators
+ * Making sure migrations / models / seeders working correctly
+ * Table Associations
+ 
 What part of your work on the project are you most proud of?
- - I am proud of creating error handlers with try catch, since it made my code alot cleaner looking. 
- - Seeing the proper response on the server.
+ * I am proud of creating error handlers with try catch, since it made my code alot cleaner looking. 
+ * Seeing the proper response on the server.
  
 What are some parts you would like to go back and improve and/or minor bugs you would like to clean up?
- - There were parts where the code could be cleaner, I should of made a middleware to handle all of my errors to make my code cleaner to look at.
+ * There were parts where the code could be cleaner, I should of made a middleware to handle all of my errors to make my code cleaner to look at.
 
 # `Airbnb Clone`
 
