@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_SPOT = "spots/get-spot";
 const GET_ALL_SPOTS = "spots/get-all-spots";
+const CREATE_SPOT = "spots/create-spot";
 
 const getAll = (spots) => {
   return {
@@ -16,6 +17,11 @@ const getSpot = (spot) => {
     spot,
   };
 };
+
+const createSpot = (spot) => ({
+  type: CREATE_SPOT,
+  spot,
+});
 
 //Get all spots
 export const getAllSpots = () => async (dispatch) => {
@@ -39,6 +45,23 @@ export const findASpot = (spotId) => async (dispatch) => {
   return response;
 };
 
+//Create a spot
+export const createNewSpot = (data) => async (dispatch) => {
+  console.log(data);
+  const response = await csrfFetch("/api/spots", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  console.log(response);
+  if (response.ok) {
+    const spot = await response.json();
+    dispatch(createSpot(spot));
+    return spot;
+  }
+};
+
 const initialState = {};
 const spotsReducer = (state = initialState, action) => {
   const newState = { ...state };
@@ -51,6 +74,14 @@ const spotsReducer = (state = initialState, action) => {
     case GET_SPOT: {
       const spot = action.spot;
       return { ...spot, ...state };
+    }
+    case CREATE_SPOT: {
+      const allSpots = {};
+      const spot = action.spot;
+      Object.values(action, spot).forEach((spot) => {
+        state[spot.id] = spot;
+      });
+      return { ...allSpots, ...state };
     }
     default:
       return state;
