@@ -51,6 +51,7 @@ router.post("/", validateLogin, async (req, res, next) => {
 
   const currentlyLoggedIn = {
     id: user.id,
+    username: user.username,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
