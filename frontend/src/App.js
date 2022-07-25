@@ -26,10 +26,10 @@ function App() {
           <Route path="/login">
             <LoginFormModal />
           </Route>
-          <Route path="/spots/">
+          <Route exact path="/spots/">
             <SpotsPage />
           </Route>
-          <Route path="/spots/:spotId">
+          <Route exact path="/spots/:spotId">
             <SpotDetail />
           </Route>
         </Switch>
