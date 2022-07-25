@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllSpots, findASpot } from "../../store/spots"
+import { getAllSpots } from "../../store/spots"
 
 
 
@@ -22,7 +22,7 @@ return (
     <div key={spot.id}>
         <h3>{spot.name}</h3>
         <h4>{spot.city}, {spot.state}</h4>
-        <img src={spot.previewImage}></img>
+        <img src={spot.previewImage} alt= {spot.name}></img>
         <p>{spot.description}</p>
         <p> Price: ${spot.price}</p>
     </div>
