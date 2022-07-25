@@ -77,4 +77,4 @@ export const createLocation = (data) => async dispatch => {
   }
 };
 
-//Edit a Spot
+//Edit a Spot ()
