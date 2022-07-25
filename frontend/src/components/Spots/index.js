@@ -6,10 +6,14 @@ import { getAllSpots, findASpot } from "../../store/spots"
 
 
 const SpotsPage = () => {
-  let { spotId } = useParams()
-  spotId = Number(spotId)
-  const spot = useSelector((state) => state.spots[spotId]);
+  const dispatch = useDispatch();
+  const spots = useSelector((state) => Object.values(state.spots));
+  console.log(spots)
 
+  useEffect(() => {
+    dispatch(getAllSpots());
+    window.scrollTo(0, 0);
+}, [dispatch])
 
 
 

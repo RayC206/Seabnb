@@ -1,3 +1,4 @@
+
 import { csrfFetch } from "./csrf";
 
 const GET_SPOT = "spots/get-spot";
@@ -22,19 +23,20 @@ const getSpot = (spot) => {
 
 //Get all spots
 export const getAllSpots = () => async (dispatch) => {
-  const response = await fetch(`/api/spots`);
+  const response = await fetch("/api/spots")
   if (response.ok) {
-    const spotsObj = await response.json();
-    console.log(spotsObj)
-    dispatch(getAll(spotsObj.Spots))
+      const spots = await response.json();
+      dispatch(getAll(spots))
+      const all = {};
+      spots.forEach(spot => all[spot.id] = spot);
+      return { ...all };
   }
-  return response;
 };
 
 
 //Get a spot
 export const findASpot = (spotId) => async (dispatch) => {
-  const response = await fetch(`/api/spots/${spotId}`)
+  const response = await csrfFetch(`/api/spots/${spotId}`)
   if (response.ok) {
     const spot = await response.json()
     dispatch(getSpot(spot))
@@ -49,8 +51,9 @@ const spotsReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case GET_ALL_SPOTS: {
-      for (let spot of action.spots) newState[spot.id] = spot
-      return { ...state, ...newState };
+      const allSpots = {};
+      action.spots.forEach(spot => allSpots[spot.id] = spot);
+      return { ...allSpots, ...state };
     }
     case GET_SPOT: {
       newState[action.spot.id] = action.spot;
