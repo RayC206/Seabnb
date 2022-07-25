@@ -25,6 +25,7 @@ export const getAllSpots = () => async (dispatch) => {
   const response = await fetch(`/api/spots`);
   if (response.ok) {
     const spotsObj = await response.json();
+    console.log(spotsObj)
     dispatch(getAll(spotsObj.Spots))
   }
   return response;

@@ -5,7 +5,7 @@ import { getAllSpots, findASpot } from "../../store/spots"
 // import "./SpotDetail.css"
 
 
-const SpotsDetail = () => {
+const SpotsPage = () => {
   let { spotId } = useParams()
   spotId = Number(spotId)
   const spot = useSelector((state) => state.spots[spotId]);
@@ -15,7 +15,7 @@ const SpotsDetail = () => {
 
   return (
     <>
-      <h1>{spot.name}</h1>
+      <h1>Test</h1>
       <div>
       </div>
 
@@ -23,4 +23,4 @@ const SpotsDetail = () => {
   )
 }
 
-export default SpotsDetail;
+export default SpotsPage;
