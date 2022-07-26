@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
-import EditSpot from "../EditSpot";
+// import EditSpot from "../EditSpot";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -61,6 +61,7 @@ const handleEdit = (e) => {
             // <img src={image} alt={spot.name}></img> */}
           {/* ))} */}
         </div>
+        <p>{spot.address}</p>
         <p>{spot.description}</p>
         <p> Price: ${spot.price}</p>
       </div>
