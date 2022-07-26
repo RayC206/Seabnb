@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
-import SpotsPage from "../Spots";
+// import SpotsPage from "../Spots";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
