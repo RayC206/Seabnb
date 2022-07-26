@@ -86,7 +86,7 @@ export const spotDelete = (spotId, userId) => async dispatch => {
 // Reducer
 const initialState = {};
 const spotsReducer = (state = initialState, action) => {
-  const newState = { ...state };
+  // const newState = { ...state };
   switch (action.type) {
     case GET_ALL_SPOTS: {
       const allSpots = {};

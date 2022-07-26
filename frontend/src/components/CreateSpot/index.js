@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import * as spotActions from "../../store/spots";
 import "./CreateSpot.css";
 
 const CreateSpot = () => {
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
