@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import * as spotActions from "../../store/spots";
@@ -43,7 +43,6 @@ const CreateSpot = () => {
     };
     return dispatch(spotActions.createNewSpot(data))
       .then(async (res) => {
-        console.log("success");
         setSubmitSuccess(true);
       })
       .catch(async (res) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector, } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
 
 const EditSpot = () => {
@@ -18,7 +18,7 @@ const EditSpot = () => {
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
   const [errors, setErrors] = useState([]);
-  // const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const updateAddress = (e) => setAddress(e.target.value);
   const updateCity = (e) => setCity(e.target.value);
@@ -30,8 +30,9 @@ const EditSpot = () => {
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
 
-  console.log("SPOT 1");
-  console.log(spot);
+  if (submitSuccess) {
+    return <Redirect to={`/spots/${spotId}`} />;
+  }
   // const spotId = spot.id;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +53,7 @@ const EditSpot = () => {
     return dispatch(spotActions.editASpot(data, spot.id))
       .then(async (res) => {
         console.log("success");
-        // setSubmitSuccess(true);
+        setSubmitSuccess(true);
       })
       .catch(async (res) => {
         const data = await res.json();

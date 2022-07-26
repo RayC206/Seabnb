@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, useHistory} from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
 // import EditSpot from "../EditSpot";
@@ -25,25 +25,18 @@ const SpotsDetail = () => {
     dispatch(findASpot(spotId));
   }, [dispatch]);
 
-
   const removeSpot = (e) => {
     e.preventDefault();
     dispatch(spotDelete(spotId));
-    history.push('/spots')
-};
+    history.push("/spots");
+  };
 
-const handleEdit = (e) => {
-  e.preventDefault();
-  dispatch(editASpot(spotId))
-  let path = `/spots/${spotId}/edit`;
-  history.push(path);
-
-  }
-
-
-
-
-
+  const handleEdit = (e) => {
+    e.preventDefault();
+    dispatch(editASpot(spotId));
+    let path = `/spots/${spotId}/edit`;
+    history.push(path);
+  };
 
   return (
     <div>
@@ -69,9 +62,7 @@ const handleEdit = (e) => {
 
       <button onClick={removeSpot}>Delete</button>
       {/* ))} */}
-
     </div>
-
   );
 };
 

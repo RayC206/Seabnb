@@ -30,9 +30,9 @@ const editSpot = (spot) => ({
   spot,
 });
 
-const deleteSpot = (spot) => ({
+const deleteSpot = (deleteResponse) => ({
   type: DELETE_SPOT,
-  spot,
+  deleteResponse,
 });
 
 //Get all spots
@@ -41,9 +41,10 @@ export const getAllSpots = () => async (dispatch) => {
   if (response.ok) {
     const spots = await response.json();
     dispatch(getAll(spots));
-    const all = {};
-    spots.forEach((spot) => (all[spot.id] = spot));
-    return { ...all };
+    // const all = {};
+    // spots.forEach((spot) => (all[spot.id] = spot));
+    // return { ...all };
+    return spots;
   }
 };
 
@@ -134,9 +135,9 @@ export const spotDelete = (spotId, userId) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
-    const { id: deletedSpot } = await response.json();
-    dispatch(deleteSpot(deletedSpot, userId));
-    return deletedSpot;
+    const deleteResponse = await response.json();
+    dispatch(deleteSpot(deleteResponse));
+    return deleteResponse;
   }
 };
 
@@ -155,27 +156,19 @@ const spotsReducer = (state = initialState, action) => {
       return { ...spot, ...state };
     }
     case CREATE_SPOT: {
-      const allSpots = {};
-      const spot = action.spot;
-      Object.values(action, spot).forEach((spot) => {
-        state[spot.id] = spot;
-      });
-      return { ...allSpots, ...state };
+      return { ...state };
     }
     case EDIT_SPOT: {
-      const updatedSpot = {};
-      action.spot.forEach((spot) => {
-        updatedSpot[spot.id] = spot;
-      });
-      return updatedSpot;
+      return { ...state };
       // newState = { ...state }
       //       newState[action.updatedSpot.id] = action.updatedSpot
       //       return newState;
     }
     case DELETE_SPOT:
-      const newState = { ...state };
-      delete newState[action.spotId];
-      return newState;
+      const deleteResponse = action.deleteResponse;
+      if (deleteResponse.statusCode === 200) {
+        return [];
+      }
 
     default:
       return state;
