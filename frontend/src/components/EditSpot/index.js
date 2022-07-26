@@ -1,32 +1,39 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
-import "./CreateSpot.css";
 
-const CreateSpot = () => {
-  // const sessionUser = useSelector((state) => state.session.user);
+const EditSpot = () => {
   const dispatch = useDispatch();
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  let { spotId } = useParams();
+  spotId = Number(spotId);
+  const spot = useSelector((state) => state.spots);
+  const [address, setAddress] = useState(spot.address);
+  const [city, setCity] = useState(spot.city);
+  const [state, setState] = useState(spot.state);
+  const [country, setCountry] = useState(spot.country);
+  const [lat, setLat] = useState(spot.lat);
+  const [lng, setLng] = useState(spot.lng);
+  const [name, setName] = useState(spot.name);
+  const [description, setDescription] = useState(spot.description);
+  const [price, setPrice] = useState(spot.price);
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(submitSuccess);
-  if (submitSuccess) {
-    return <Redirect to="/spots" />;
-  }
-  // }, [submitSuccess]);
+  const updateAddress = (e) => setAddress(e.target.value);
+  const updateCity = (e) => setCity(e.target.value);
+  const updateState = (e) => setState(e.target.value);
+  const updateCountry = (e) => setCountry(e.target.value);
+  const updateLat = (e) => setLat(e.target.value);
+  const updateLng = (e) => setLng(e.target.value);
+  const updateName = (e) => setName(e.target.value);
+  const updateDescription = (e) => setDescription(e.target.value);
+  const updatePrice = (e) => setPrice(e.target.value);
 
+  if (submitSuccess) {
+    return <Redirect to={`/spots/${spotId}`} />;
+  }
+  // const spotId = spot.id;
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -41,8 +48,11 @@ const CreateSpot = () => {
       description: description,
       price: price,
     };
-    return dispatch(spotActions.createNewSpot(data))
+    console.log("SPOT after submit");
+    console.log(spotId);
+    return dispatch(spotActions.editASpot(data, spot.id))
       .then(async (res) => {
+        console.log("success");
         setSubmitSuccess(true);
       })
       .catch(async (res) => {
@@ -64,8 +74,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="Address"
           value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
+          onChange={updateAddress}
         />
       </label>
       <label>
@@ -74,8 +83,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="City"
           value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
+          onChange={updateCity}
         />
       </label>
       <label>
@@ -84,8 +92,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="State"
           value={state}
-          onChange={(e) => setState(e.target.value)}
-          required
+          onChange={updateState}
         />
       </label>
       <label>
@@ -94,8 +101,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="Country"
           value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
+          onChange={updateCountry}
         />
       </label>
       <label>
@@ -104,8 +110,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="Latitude"
           value={lat}
-          onChange={(e) => setLat(e.target.value)}
-          required
+          onChange={updateLat}
         />
       </label>
       <label>
@@ -114,8 +119,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="Longitude"
           value={lng}
-          onChange={(e) => setLng(e.target.value)}
-          required
+          onChange={updateLng}
         />
       </label>
       <label>
@@ -124,8 +128,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
+          onChange={updateName}
         />
       </label>
       <label>
@@ -134,8 +137,7 @@ const CreateSpot = () => {
           type="text"
           placeholder="Description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
+          onChange={updateDescription}
         />
       </label>
       <label>
@@ -143,13 +145,13 @@ const CreateSpot = () => {
         <input
           type="text"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
+          placeholder="Price"
+          onChange={updatePrice}
         />
       </label>
-      <button type="submit">Create a new Spot</button>
+      <button type="submit">Edit Spot</button>
     </form>
   );
 };
 
-export default CreateSpot;
+export default EditSpot;
