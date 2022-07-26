@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { findASpot } from "../../store/spots";
+import { findASpot, spotDelete } from "../../store/spots";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
   spotId = Number(spotId);
+  const history = useHistory();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
   console.log(spot);
   // const images = spot.images;
   // console.log(images);
-  
+
   // spot.images.forEach((image) => {
   //   console.log(image);
   // });
@@ -22,6 +23,14 @@ const SpotsDetail = () => {
   useEffect(() => {
     dispatch(findASpot(spotId));
   }, [dispatch]);
+
+
+  const removeSpot = (e) => {
+    e.preventDefault();
+    dispatch(spotDelete(spotId));
+    history.push('/spots')
+};
+
 
   return (
     <div>
@@ -42,6 +51,7 @@ const SpotsDetail = () => {
         <p>{spot.description}</p>
         <p> Price: ${spot.price}</p>
       </div>
+      <button onClick={removeSpot}>Delete</button>
       {/* ))} */}
     </div>
 
