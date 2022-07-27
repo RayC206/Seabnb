@@ -72,6 +72,15 @@ const EditSpot = () => {
         ))}
       </ul>
       <label>
+        {/* Name */}
+        <input
+          type="text"
+          placeholder="Spot name"
+          value={name}
+          onChange={updateName}
+        />
+      </label>
+      <label>
         {/* Address*/}
         <input
           type="text"
@@ -107,15 +116,6 @@ const EditSpot = () => {
           onChange={updateCountry}
         />
       </label>
-      <label >
-        {/* Image */}
-        <input
-          type="text"
-          placeholder="img-url"
-          value={previewImage}
-          onChange={setPreviewImage}
-        />
-      </label>
       <label>
         {/* Lat */}
         <input
@@ -135,15 +135,6 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Name */}
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={updateName}
-        />
-      </label>
-      <label>
         {/* Description */}
         <input
           type="text"
@@ -160,6 +151,15 @@ const EditSpot = () => {
           placeholder="Price"
           onChange={updatePrice}
         />
+      <label >
+        {/* Image */}
+        <input
+          type="text"
+          placeholder="img-url"
+          value={previewImage}
+          onChange={setPreviewImage}
+        />
+      </label>
       </label>
       <button type="submit">Edit Spot</button>
     </form>
