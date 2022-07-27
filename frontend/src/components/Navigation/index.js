@@ -15,9 +15,9 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
     <div id='rightNav'>
-    <NavLink to="/spots">Spots</NavLink>
+    {/* <NavLink to="/spots">Spots</NavLink> */}
     <ProfileButton user={sessionUser}/>
-    <NavLink to="/spots/create">Create Spot</NavLink>
+    {/* <NavLink to="/spots/create">Create Spot</NavLink> */}
 
     </div>
       </>

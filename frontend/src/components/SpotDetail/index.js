@@ -64,11 +64,14 @@ const SpotsDetail = () => {
         {reviews &&
           reviews.map((review) => {
             return (
-              <div>
-                {/* <div>{review.userId}</div>  */}
-                <div>{review.review}</div>
-                <div>{review.stars}</div>
-              </div>
+              <label>
+                Review:
+                <div>
+                  {/* <div>{review.userId}</div>  */}
+                  <div> {review.review}</div>
+                  <div> Rating : {review.stars} / 5</div>
+                </div>
+              </label>
             );
           })}
       </div>
