@@ -29,8 +29,8 @@ a:link {
 }
 
 .eachSpot {
-  border-style:double;
-  border-color: black;
+  background-color: white;
+  border: 2px double rgb(216, 203, 203);
   font-family: sans-serif;
   color: black;
   border-radius: 20px;
