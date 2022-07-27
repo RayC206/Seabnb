@@ -69,6 +69,7 @@ router.get('/:spotId', async (req, res) => {
 
   let spotDetails = {
     id: spot.id,
+    address: spot.address,
     ownerId: spot.ownerId,
     city: spot.city,
     state: spot.state,

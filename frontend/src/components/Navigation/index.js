@@ -14,7 +14,8 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
     <ProfileButton user={sessionUser} />
-    <NavLink to="/spots">Spots</NavLink>
+    <div> <NavLink to="/spots">Spots</NavLink> </div>
+    <div> <NavLink to="/spots/create">Create Spot</NavLink> </div>
       </>
     )
   } else {
