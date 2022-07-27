@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-
 import * as spotActions from "../../store/spots";
 import "./CreateSpot.css";
 
@@ -12,6 +11,7 @@ const CreateSpot = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
+  const [previewImage, setPreviewImage] = useState("https://static.wikia.nocookie.net/hypotheticalspongebob/images/2/2d/Plankton%27s_House.png");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
   const [name, setName] = useState("");
@@ -35,6 +35,7 @@ const CreateSpot = () => {
       city: city,
       state: state,
       country: country,
+      previewImage: previewImage,
       lat: lat,
       lng: lng,
       name: name,
@@ -96,6 +97,15 @@ const CreateSpot = () => {
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
+        />
+      </label>
+      <label >
+        {/* Image */}
+        <input
+          type="text"
+          placeholder="img-url"
+          value={previewImage}
+          onChange={(e) => setPreviewImage(e.target.value)}
         />
       </label>
       <label>

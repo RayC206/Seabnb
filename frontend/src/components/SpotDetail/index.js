@@ -46,17 +46,12 @@ const SpotsDetail = () => {
         <h4>
           {spot.city}, {spot.state}
         </h4>
-        <div>{spot.images}</div>
-
         <div>
-          {/* {spot.images.map((image) => (
-            <div>{image}</div>
-            // <img src={image} alt={spot.name}></img> */}
-          {/* ))} */}
+        <img src={spot.previewImage} alt={spot.name}></img>
         </div>
         <p>{spot.address}</p>
         <p>{spot.description}</p>
-        <p> Price: ${spot.price}</p>
+        <p> ${spot.price} night</p>
       </div>
       <button onClick={handleEdit}>Edit</button>
 

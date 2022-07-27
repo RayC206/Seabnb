@@ -17,6 +17,7 @@ const EditSpot = () => {
   const [name, setName] = useState(spot.name);
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
+  const [previewImage, setPreviewImage] = useState("https://static.wikia.nocookie.net/hypotheticalspongebob/images/2/2d/Plankton%27s_House.png");
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -29,6 +30,7 @@ const EditSpot = () => {
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
+  const updatePreviewImage = (e) => setPreviewImage(e.target.value);
 
   if (submitSuccess) {
     return <Redirect to={`/spots/${spotId}`} />;
@@ -42,6 +44,7 @@ const EditSpot = () => {
       city: city,
       state: state,
       country: country,
+      previewImage: previewImage,
       lat: lat,
       lng: lng,
       name: name,
@@ -102,6 +105,15 @@ const EditSpot = () => {
           placeholder="Country"
           value={country}
           onChange={updateCountry}
+        />
+      </label>
+      <label >
+        {/* Image */}
+        <input
+          type="text"
+          placeholder="img-url"
+          value={previewImage}
+          onChange={setPreviewImage}
         />
       </label>
       <label>
