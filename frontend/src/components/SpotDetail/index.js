@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
-// import EditSpot from "../EditSpot";
+import "./SpotsDetail.css"
+
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -11,15 +12,7 @@ const SpotsDetail = () => {
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
   console.log(spot);
-  // const images = spot.images;
-  // console.log(images);
 
-  // spot.images.forEach((image) => {
-  //   console.log(image);
-  // });
-
-  // const spot= useSelector((state) => Object.values(state.spots.spotId));
-  // console.log(spot)
 
   useEffect(() => {
     dispatch(findASpot(spotId));
@@ -42,13 +35,13 @@ const SpotsDetail = () => {
     <div>
       {/* {spot.map((spot) => ( */}
       <div key={spot.id}>
-        <h3>{spot.name}</h3>
+        <h3 className="nameDetail">{spot.name}</h3>
         <h4>
-          {spot.city}, {spot.state}
         </h4>
         <div>
-        <img src={spot.previewImage} alt={spot.name}></img>
+        <img className="imageDetail" src={spot.previewImage} alt={spot.name}></img>
         </div>
+          <p>{spot.city}, {spot.state}</p>
         <p>{spot.address}</p>
         <p>{spot.description}</p>
         <p> ${spot.price} night</p>

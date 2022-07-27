@@ -20,12 +20,10 @@ const CreateSpot = () => {
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(submitSuccess);
+
   if (submitSuccess) {
     return <Redirect to="/spots" />;
   }
-  // }, [submitSuccess]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
