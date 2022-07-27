@@ -91,44 +91,6 @@ export const editASpot = (data, spotId) => async (dispatch) => {
   }
 };
 
-// export const editASpot = (formValue) => async (dispatch) => {
-
-//   const {
-//       spotId,
-//       userId,
-//       name,
-//       description,
-//       address,
-//       city,
-//       state,
-//       country,
-//       lat,
-//       lng,
-//       price
-//   } = formValue;
-
-//   const response = await csrfFetch(`/api/spots/${spotId}`, {
-//       method: 'PUT',
-//       body: JSON.stringify({
-//           userId,
-//           name,
-//           description,
-//           address,
-//           city,
-//           state,
-//           country,
-//           lat,
-//           lng,
-//           price
-//       })
-//   });
-
-//   const updatedSpot = await response.json();
-
-//   dispatch(editASpot(updatedSpot));
-//   return updatedSpot;
-// };
-
 //Delete spot
 export const spotDelete = (spotId, userId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
