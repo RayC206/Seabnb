@@ -149,11 +149,11 @@ const spotsReducer = (state = initialState, action) => {
     case GET_ALL_SPOTS: {
       const allSpots = {};
       action.spots.forEach((spot) => (allSpots[spot.id] = spot));
-      return { ...allSpots, ...state };
+      return { ...allSpots};
     }
     case GET_SPOT: {
       const spot = action.spot;
-      return { ...spot, ...state };
+      return { ...spot };
     }
     case CREATE_SPOT: {
       return { ...state };
