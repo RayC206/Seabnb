@@ -51,83 +51,14 @@ const CreateSpot = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='createStyling' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
       <label>
-        {/* Address*/}
-        <input
-          type="text"
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        {/* City */}
-        <input
-          type="text"
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        {/* State */}
-        <input
-          type="text"
-          placeholder="State"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        {/* Country */}
-        <input
-          type="text"
-          placeholder="Country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
-        />
-      </label>
-      <label >
-        {/* Image */}
-        <input
-          type="text"
-          placeholder="img-url"
-          value={previewImage}
-          onChange={(e) => setPreviewImage(e.target.value)}
-        />
-      </label>
-      <label>
-        {/* Lat */}
-        <input
-          type="text"
-          placeholder="Latitude"
-          value={lat}
-          onChange={(e) => setLat(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        {/* Lng */}
-        <input
-          type="text"
-          placeholder="Longitude"
-          value={lng}
-          onChange={(e) => setLng(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        {/* Name */}
+        Name
         <input
           type="text"
           placeholder="Name"
@@ -137,7 +68,67 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        {/* Description */}
+        Address
+        <input
+          type="text"
+          placeholder="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        City
+        <input
+          type="text"
+          placeholder="City"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        State
+        <input
+          type="text"
+          placeholder="State"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Country
+        <input
+          type="text"
+          placeholder="Country"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Latitude
+        <input
+          type="text"
+          placeholder="Latitude"
+          value={lat}
+          onChange={(e) => setLat(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Longitude
+        <input
+          type="text"
+          placeholder="Longitude"
+          value={lng}
+          onChange={(e) => setLng(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Description
         <input
           type="text"
           placeholder="Description"
@@ -154,6 +145,15 @@ const CreateSpot = () => {
           onChange={(e) => setPrice(e.target.value)}
           required
         />
+      <label >
+        Image
+        <input
+          type="text"
+          placeholder="img-url"
+          value={previewImage}
+          onChange={(e) => setPreviewImage(e.target.value)}
+        />
+      </label>
       </label>
       <button type="submit">Create a new Spot</button>
     </form>

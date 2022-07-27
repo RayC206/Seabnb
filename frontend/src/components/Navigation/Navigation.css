@@ -1,0 +1,25 @@
+#navBar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500px;
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px solid rgb(216, 203, 203);
+
+}
+
+#logo_div {
+  height: 100%;
+  width: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo_div > a > img {
+  height: 70px;
+  width: 80px;
+}
