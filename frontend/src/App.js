@@ -10,6 +10,7 @@ import SpotsPage from "./components/Spots";
 import CreateSpot from "./components/CreateSpot";
 import EditSpot from "./components/EditSpot";
 import UserSpots from "./components/UserSpots";
+import Homepage from "./components/Homepage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+           <Route exact path="/">
+            <Homepage/>
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
