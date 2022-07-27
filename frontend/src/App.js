@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/spots/:spotId">
             <SpotDetail />
           </Route>
-          <Route exact path="/user/spots">
+          <Route exact path="/my-spots">
             <UserSpots />
           </Route>
         </Switch>
