@@ -22,18 +22,18 @@ const SpotsPage = () => {
           return (
             <NavLink to={`/spots/${spot.id}`}>
               <div className="eachSpot" key={spot.id}>
-                <h3 className="spotName">{spot.name}</h3>
-                <h4 className="spotLocation">
-                  {spot.city}, {spot.state}
-                </h4>
                 <img
                   className="spotImg"
                   src={spot.previewImage}
                   alt={spot.name}
                 ></img>
+                <h3 className="spotName">{spot.name}</h3>
+                <h4 className="spotLocation">
+                  {spot.city}, {spot.state}
+                </h4>
                 <p className="spotAddress">{spot.address}</p>
                 <p className="spotDetails">{spot.description}</p>
-                <p className="spotPrice"> Price: ${spot.price}</p>
+                <p className="spotPrice"> ${spot.price} night</p>
               </div>
             </NavLink>
           );
