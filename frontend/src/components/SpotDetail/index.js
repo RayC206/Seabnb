@@ -2,20 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
-import { getReviews, createReview } from "../../store/reviews";
+import { getReviews, createReview, removeReview } from "../../store/reviews";
 import "./SpotsDetail.css";
 
-const SpotsDetail = () => {
+const SpotsDetail = ({reviewId}) => {
+  const sessionUser = useSelector(state => state.session.user);
   let { spotId } = useParams();
   spotId = Number(spotId);
   const history = useHistory();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
-  const reviews = useSelector((state) => state.reviews.reviews); // check the routes
+  const reviews = useSelector((state) => state.reviews.reviews);
+  const review = useSelector(state => Object.values(state.reviews));
+  // const spotReview = review.filter(review => review.reviewId === Number);
+
+
+  console.log("HERRRE")
+  console.log(reviews)
   const [findASpotStatus, setFindASpotStatus] = useState(200);
-  console.log("reviews");
-  console.log(reviews);
-  console.log(spot);
+
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -41,6 +46,15 @@ const SpotsDetail = () => {
     e.preventDefault();
     dispatch(createReview(spotId))
     let path = `/spots/${spotId}/create-review`;
+    history.push(path);
+  }
+
+  const handleDeleteReview = (e) => {
+    e.preventDefault();
+    const reviewId = parseInt(e.target.id);
+    const userReviewId = parseInt(sessionUser.id)
+    dispatch(removeReview(userReviewId))
+    let path = `/spots/${spotId}/`;
     history.push(path);
   }
 
@@ -90,6 +104,7 @@ const SpotsDetail = () => {
             })}
         </div>
         <button onClick={handleCreateReview}>Create Review</button>
+        <button onClick={handleDeleteReview}>Delete</button>
       </div>
     );
   } else if (findASpotStatus === 404) {
