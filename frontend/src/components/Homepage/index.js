@@ -12,17 +12,17 @@ const Homepage = () => {
   };
 
 return (
-  <main>
+  // <main>
     <div className="homeImageCard">
        <div className="ImageCard">
           <img className="image" src='https://i.imgur.com/vSe9cmD.jpeg'></img>
              <div className="imageOverlay">
-              <p>Swim on in</p>
+              <p></p>
                <button onClick={redirect}><p>Discover</p></button>
              </div>
            </div>
        </div>
-    </main>
+    // </main>
   )
 }
 

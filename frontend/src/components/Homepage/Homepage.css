@@ -36,12 +36,13 @@ div .ImageCard {
 
 /* Font overlay */
 .imageOverlay > p {
-  color: white;
-  font-style: italic;
+  color: rgb(252, 252, 252, .8);
+  /* font-style: italic; */
   font-family: sans-serif;
   font-weight: 600px;
-  font-size: 50px;
+  font-size: 35px;
   white-space: nowrap;
+
 }
 
 /* Button overlay  */
@@ -52,7 +53,7 @@ div .ImageCard {
   border-radius: 35px;
   background-color: white;
   width: 185px;
-  height: 50px;
+  height: 55px;
 
 }
 
@@ -60,7 +61,7 @@ div .ImageCard {
   font-weight: 700;
   font-size: 20px;
   background:
-      linear-gradient(100deg, #5272c6, #bdb6d1);
+      linear-gradient(100deg, #5272c6, #907bc9);
   background-clip: text;
   color: transparent;
 }

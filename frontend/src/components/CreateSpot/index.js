@@ -16,7 +16,7 @@ const CreateSpot = () => {
   const [lng, setLng] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -51,14 +51,14 @@ const CreateSpot = () => {
   };
 
   return (
-    <form className='createStyling' onSubmit={handleSubmit}>
+    <form className='spotsCreate' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
       <label>
-        Name
+        Name:
         <input
           type="text"
           placeholder="Name"
@@ -68,7 +68,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        Address
+        Address:
         <input
           type="text"
           placeholder="Address"
@@ -78,7 +78,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        City
+        City:
         <input
           type="text"
           placeholder="City"
@@ -88,7 +88,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        State
+        State:
         <input
           type="text"
           placeholder="State"
@@ -98,7 +98,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        Country
+        Country:
         <input
           type="text"
           placeholder="Country"
@@ -108,7 +108,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        Latitude
+        Latitude:
         <input
           type="text"
           placeholder="Latitude"
@@ -118,7 +118,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        Longitude
+        Longitude:
         <input
           type="text"
           placeholder="Longitude"
@@ -128,7 +128,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        Description
+          Description:
         <input
           type="text"
           placeholder="Description"
@@ -138,22 +138,23 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        {/* Price */}
+        Price per night:
         <input
           type="text"
+          placeholder="$"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
         />
+        </label>
       <label >
-        Image
+        Image Url:
         <input
           type="text"
           placeholder="img-url"
           value={previewImage}
           onChange={(e) => setPreviewImage(e.target.value)}
         />
-      </label>
       </label>
       <button type="submit">Create a new Spot</button>
     </form>
