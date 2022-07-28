@@ -5,6 +5,7 @@ const GET_ALL_SPOTS = "spots/get-all-spots";
 const CREATE_SPOT = "spots/create-spot";
 const EDIT_SPOT = "spots/update-spot";
 const DELETE_SPOT = "spots/delete";
+const GET_USER_SPOTS = "spots/get-user-spots";
 
 const getAll = (spots) => {
   return {
@@ -17,6 +18,13 @@ const getSpot = (spot) => {
   return {
     type: GET_SPOT,
     spot,
+  };
+};
+
+const usersSpots = (spots) => {
+  return {
+    type: GET_USER_SPOTS,
+    spots,
   };
 };
 
@@ -57,6 +65,16 @@ export const findASpot = (spotId) => async (dispatch) => {
     dispatch(getSpot(spot));
   }
 
+  return response;
+};
+
+export const getUsersSpots = () => async (dispatch) => {
+  const response = await csrfFetch("/api/users/current-user/spots");
+  if (response.ok) {
+    const allSpots = await response.json();
+    dispatch(usersSpots(allSpots));
+    return allSpots;
+  }
   return response;
 };
 
@@ -120,6 +138,12 @@ const spotsReducer = (state = initialState, action) => {
       const spot = action.spot;
       return { ...spot, ...state };
     }
+    case GET_USER_SPOTS: {
+      const newState = {};
+      action.spots.forEach(spot => newState[spot.id] = spot);
+      let allSpots = {...newState};
+      return allSpots;
+    }
     case CREATE_SPOT: {
       return { ...state };
     }
@@ -131,6 +155,7 @@ const spotsReducer = (state = initialState, action) => {
       if (deleteResponse.statusCode === 200) {
         return [];
       }
+
 
     default:
       return state;

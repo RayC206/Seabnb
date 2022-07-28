@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAllSpots } from "../../store/spots";
+import { getAllSpots, getUsersSpots } from "../../store/spots";
 
 const UserSpots = () => {
   const dispatch = useDispatch();
@@ -18,19 +18,19 @@ const UserSpots = () => {
   });
 
   useEffect(() => {
-    dispatch(getAllSpots());
+    dispatch(getUsersSpots());
   }, [dispatch]);
 
-  let userSpots;
-  console.log(spots);
-  if (sessionUser && spots) {
-    userSpots = spots.filter((spot) => spot.ownerId === sessionUser.id);
-  }
+  // let userSpots;
+  // console.log(spots);
+  // if (sessionUser && spots) {
+  //   userSpots = spots.filter((spot) => spot.ownerId === sessionUser.id);
+  // }
 
   return (
     <div className="spotsPage">
       <div className="left"></div>
-      {userSpots.map((spot) => {
+      {spots.map((spot) => {
         if (spot) {
           return (
             <NavLink to={`/spots/${spot.id}`}>
