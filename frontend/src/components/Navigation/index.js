@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
       <div id='rightNav'>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
-        <NavLink to="/spots">Spots</NavLink>
+      
       </div>
 
     );

@@ -4,6 +4,8 @@
   height: 95%;
   object-fit: cover;
   border-radius: 20px;
+  object-fit: cover;
+  position: relative;
 }
 
 .imageOverlay {

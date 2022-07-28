@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink } from "react-router-dom";
+import { Link, useHistory  } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory()
 
   const openMenu = () => {
     if (showMenu) return;
@@ -27,24 +28,30 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push("/")
   };
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+     <div className="button">
+      <button className="navBar" onClick={openMenu}>
+        <i className="fas fa-bars nav_bars_icon"></i>
+        <i className="fas fa-user-circle user_icon"></i>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li><NavLink to="/spots/create">Create Spot</NavLink></li>
-          <li><NavLink to="/my-spots">My Spots</NavLink></li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+        <div id="menu">
+          <Link to="/spots/create" id="dropdown1">
+            Create a Spot
+          </Link>
+          <Link to="/my-spots" id="dropdown1">
+            My Spots
+          </Link>
+          <div onClick={logout} id="dropdown2">
+            Log out
+          </div>
+        </div>
       )}
+    </div>
     </>
   );
 }
