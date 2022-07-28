@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
       <div id='rightNav'>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
-      
+
       </div>
 
     );
@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
     <div id="navBar">
         <div id='logo_div'>
             <NavLink exact to="/">
-                <img src="https://cdn141.picsart.com/303177257018211.png"></img>
+                <img src="https://i.imgur.com/pd6aZpK.png"></img>
             </NavLink>
         </div>
         {isLoaded && sessionLinks}

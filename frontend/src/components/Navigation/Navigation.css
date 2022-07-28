@@ -5,16 +5,27 @@
   align-items: center;
   font-size: 16px;
   font-weight: 500px;
-  height: 70px;
+  height: 85px;
   background-color: white;
   border-bottom: 1px solid rgb(216, 203, 203);
 
 }
 
+button{
+ border-radius: 100px;
+ height: 40px;
+ width: 80px;
+ border-color: rgb(216, 203, 203);
+ border-style: solid ;
+ border-width: 1px
+}
+
+
+
 
 #logo_div {
   height: 100%;
-  width: 12%;
+  width: 16%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +33,7 @@
 
 #logo_div > a > img {
   height: 70px;
-  width: 80px;
+  width: 170px;
 }
 
 .user_icon{
@@ -49,6 +60,7 @@
 #menu{
   cursor: pointer;
   position: absolute;
+  font-family: sans-serif;
   z-index: 2;
   top: 60px;
   right: 95px;
@@ -74,12 +86,15 @@
 #dropdown1,
 #dropdown2 {
   font-size: 15px;
-  color: black;
-  font-weight: 500;
-  font-family: s;
+  color: rgb(85, 74, 74);
+  font-weight: 450;
+  font-family: sans-serif;
 
 }
 
+button.navbar {
+  border-radius: 20px;
+}
 
 
 #nav_right {
@@ -91,7 +106,7 @@
   position: relative;
 }
 
-#home {
+/* #home {
   background-color: white;
   display: flex;
   border-bottom: .5px solid #D3D3D3;
@@ -101,16 +116,4 @@
   font-size: 18px;
   height: 70px;
   gap: 10px;
-}
-
-/* #logo {
-  height: 100%;
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#logo > a >img {
-  height: 50px;
 } */
