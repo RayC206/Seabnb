@@ -37,10 +37,12 @@ const SpotsDetail = () => {
     history.push(path);
   };
 
-  // const handleCreateReview = (e) {
-  //   e.preventDefault();
-  //   dispatch(createReview())
-  // }
+  const handleCreateReview = (e) => {
+    e.preventDefault();
+    dispatch(createReview(spotId))
+    let path = `/spots/${spotId}/create-review`;
+    history.push(path);
+  }
 
   console.log("spot");
   console.log(spot);
@@ -87,6 +89,7 @@ const SpotsDetail = () => {
               );
             })}
         </div>
+        <button onClick={handleCreateReview}>Create Review</button>
       </div>
     );
   } else if (findASpotStatus === 404) {

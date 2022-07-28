@@ -43,7 +43,7 @@ const CreateReview = () => {
         ))}
       </ul>
       <label>
-        Name:
+        Message:
         <input
           type="text"
           placeholder="Review Message"
