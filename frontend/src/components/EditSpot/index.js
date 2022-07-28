@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
+import "./EditSpot.css"
 
 const EditSpot = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const EditSpot = () => {
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
   const updatePreviewImage = (e) => setPreviewImage(e.target.value);
+
 
   if (submitSuccess) {
     return <Redirect to={`/spots/${spotId}`} />;
@@ -65,14 +67,14 @@ const EditSpot = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='spotsEdit' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
       <label>
-        {/* Name */}
+        Name
         <input
           type="text"
           placeholder="Spot name"
@@ -81,7 +83,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Address*/}
+        Address
         <input
           type="text"
           placeholder="Address"
@@ -90,7 +92,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* City */}
+        City
         <input
           type="text"
           placeholder="City"
@@ -99,7 +101,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* State */}
+        State:
         <input
           type="text"
           placeholder="State"
@@ -108,7 +110,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Country */}
+        Country:
         <input
           type="text"
           placeholder="Country"
@@ -117,7 +119,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Lat */}
+        Latitude:
         <input
           type="text"
           placeholder="Latitude"
@@ -126,7 +128,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Lng */}
+        Longitude:
         <input
           type="text"
           placeholder="Longitude"
@@ -135,7 +137,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Description */}
+        Description:
         <input
           type="text"
           placeholder="Description"
@@ -144,22 +146,22 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        {/* Price */}
+        Price:
         <input
           type="text"
           value={price}
           placeholder="Price"
           onChange={updatePrice}
         />
+        </label>
       <label >
-        {/* Image */}
+        Image URL:
         <input
           type="text"
           placeholder="img-url"
           value={previewImage}
           onChange={setPreviewImage}
         />
-      </label>
       </label>
       <button type="submit">Edit Spot</button>
     </form>
