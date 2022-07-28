@@ -67,9 +67,9 @@ const SpotsDetail = () => {
           <p>{spot.description}</p>
           <p> ${spot.price} night</p>
         </div>
-        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleEdit}>Edit Spot</button>
 
-        <button onClick={removeSpot}>Delete</button>
+        <button onClick={removeSpot}>Delete Spot</button>
         {/* ))} */}
 
         {/* TODO: Put in separate component, pass reviews as prop */}
