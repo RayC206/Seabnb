@@ -31,7 +31,6 @@ const UserReviews = () => {
 
   const handleDeleteReview = (e, reviewId) => {
     e.preventDefault();
-
     dispatch(removeReview(reviewId));
     let path = `/my-reviews`;
     history.push(path);
@@ -39,7 +38,7 @@ const UserReviews = () => {
 
   return (
     <div>
-      <div></div>
+      {/* <div className= "spot for CSS styling </div> */}
       {reviews.map((review) => {
         return (
           <div>
