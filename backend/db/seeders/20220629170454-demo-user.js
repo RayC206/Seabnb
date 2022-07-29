@@ -7,37 +7,37 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
-        username: 'Demo-lition',
-        firstName: 'Demo',
-        lastName: 'lition',
+        username: 'pattyflipper92',
+        firstName: 'Spongebob',
+        lastName: 'Squarepants',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
-        firstName: 'John',
-        lastName: 'Doe',
+        email: 'patrickstar@user.io',
+        username: 'thisIsPatrick',
+        firstName: 'Patrick',
+        lastName: 'Star',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
-        email: 'user2@user.io',
-        username: 'FakeUser2',
-        firstName: 'Jane',
-        lastName: 'Doe',
+        email: 'squidward@user.io',
+        username: 'boldnbrash',
+        firstName: 'Squidward',
+        lastName: 'Tenticles',
         hashedPassword: bcrypt.hashSync('password3')
       },
       {
-        email: 'strawberry@user.io',
-        username: 'straw.berry',
-        firstName: 'straw',
-        lastName: 'berry',
+        email: 'sandycheeks@user.io',
+        username: 'tailedTexan1',
+        firstName: 'Sandy',
+        lastName: 'Cheeks',
         hashedPassword: bcrypt.hashSync('password4')
       },
       {
-        email: 'goku@user.io',
-        username: 'songoku',
-        firstName: 'Goku',
-        lastName: 'unknown',
+        email: 'eugeneKrabs@user.io',
+        username: 'getMoneyBusiness',
+        firstName: 'Eugene',
+        lastName: 'Krabs',
         hashedPassword: bcrypt.hashSync('password5')
       }
     ], {});
@@ -46,7 +46,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
-      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
+      username: { [Op.in]: ['pattyflipper92', 'thisIsPatrick', 'boldnbrash'] }
     }, {});
   }
 };
