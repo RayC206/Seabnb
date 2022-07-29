@@ -129,7 +129,6 @@ const spotsReducer = (state = initialState, action) => {
     }
     case GET_SPOT: {
       const spot = action.spot;
-
       return { ...spot };
     }
     case GET_USER_SPOTS: {

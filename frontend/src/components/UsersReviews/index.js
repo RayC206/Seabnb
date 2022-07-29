@@ -39,7 +39,6 @@ const UserReviews = () => {
 
   return (
     <div>
-      {/* <div className= "spot for CSS styling </div> */}
       {reviews.map((review) => {
         if (review) {
           return (
@@ -47,7 +46,6 @@ const UserReviews = () => {
               <label>
                 Review:
                 <div>
-                  {/* <div>{review.userId}</div>  */}
                   <div> {review.review.review}</div>
                   <div> Rating : {review.review.stars} / 5</div>
                 </div>

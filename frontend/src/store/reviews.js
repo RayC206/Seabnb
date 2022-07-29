@@ -75,12 +75,10 @@ const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET: {
       const allReviews = action.reviews;
-
       return { ...allReviews };
     }
     case GET_USERS_REVIEWS: {
       const userReviews = action.userReviews;
-
       return userReviews;
     }
     case CREATE: {

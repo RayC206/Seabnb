@@ -47,7 +47,6 @@ const SpotsDetail = () => {
   if (findASpotStatus === 200) {
     return (
       <div>
-        {/* {spot.map((spot) => ( */}
         <div key={spot.id}>
           <h3 className="nameDetail">{spot.name}</h3>
           <h4></h4>
@@ -69,10 +68,6 @@ const SpotsDetail = () => {
         <button onClick={handleEdit}>Edit Spot</button>
 
         <button onClick={removeSpot}>Delete Spot</button>
-        {/* ))} */}
-
-        {/* TODO: Put in separate component, pass reviews as prop */}
-        {/* <SpotReviews reviews={reviews} /> */}
         <div>
           {reviews &&
             reviews.map((review) => {
@@ -80,7 +75,6 @@ const SpotsDetail = () => {
                 <label>
                   Review:
                   <div>
-                    {/* <div>{review.userId}</div>  */}
                     <div> {review.review}</div>
                     <div> Rating : {review.stars} / 5</div>
                   </div>

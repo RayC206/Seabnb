@@ -16,25 +16,19 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
     <div id='rightNav'>
-    {/* <NavLink to="/spots">Spots</NavLink> */}
     <ProfileButton user={sessionUser}/>
-    {/* <NavLink to="/spots/create">Create Spot</NavLink> */}
-
     </div>
       </>
     )
   } else {
     sessionLinks = (
-
       <div id='rightNav'>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
         <DemoUser />
       </div>
-
     );
   }
-
   return (
     <nav>
     <div id="navBar">
@@ -45,8 +39,6 @@ function Navigation({ isLoaded }) {
         </div>
         {isLoaded && sessionLinks}
     </div >
-
-
 </nav >
   );
 }
