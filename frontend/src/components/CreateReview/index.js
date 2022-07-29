@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import * as reviewActions from "../../store/reviews";
 
@@ -7,8 +7,6 @@ const CreateReview = () => {
   const dispatch = useDispatch();
   let { spotId } = useParams();
   spotId = Number(spotId);
-  // const reviews = useSelector((state) => state.reviews.reviews);
-  // const history = useHistory();
   const [reviewMessage, setReviewMessage] = useState("");
   const [stars, setStars] = useState("");
   const [errors, setErrors] = useState([]);

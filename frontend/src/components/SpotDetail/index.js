@@ -2,19 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
-import { getReviews, createReview, removeReview } from "../../store/reviews";
+import { getReviews, createReview } from "../../store/reviews";
 import "./SpotsDetail.css";
 
 const SpotsDetail = () => {
-  const sessionUser = useSelector((state) => state.session.user);
   let { spotId } = useParams();
   spotId = Number(spotId);
   const history = useHistory();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
-  // const review = useSelector(state => Object.values(state.reviews));
-  // const spotReview = review.filter(review => review.reviews === parseInt(sessionUser.id));
+
 
 
   const [findASpotStatus, setFindASpotStatus] = useState(200);

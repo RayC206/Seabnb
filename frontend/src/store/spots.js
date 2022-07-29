@@ -79,7 +79,6 @@ export const getUsersSpots = () => async (dispatch) => {
 
 //Create a spot
 export const createNewSpot = (data) => async (dispatch) => {
-
   const response = await csrfFetch("/api/spots", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -94,7 +93,6 @@ export const createNewSpot = (data) => async (dispatch) => {
 
 // Edit spot
 export const editASpot = (data, spotId) => async (dispatch) => {
-
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -131,7 +129,8 @@ const spotsReducer = (state = initialState, action) => {
     }
     case GET_SPOT: {
       const spot = action.spot;
-      return { ...spot};
+
+      return { ...spot };
     }
     case GET_USER_SPOTS: {
       const newState = {};

@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAllSpots, getUsersSpots } from "../../store/spots";
+import { getUsersSpots } from "../../store/spots";
 
 const UserSpots = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const spots = useSelector((state) => Object.values(state.spots));
   const history = useHistory();
-  
+
 
   useEffect(() => {
     if (!sessionUser) {

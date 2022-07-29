@@ -31,13 +31,13 @@ const EditSpot = () => {
   const updateName = (e) => setName(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
-  const updatePreviewImage = (e) => setPreviewImage(e.target.value);
+  // const updatePreviewImage = (e) => setPreviewImage(e.target.value);
 
 
   if (submitSuccess) {
     return <Redirect to={`/spots/${spotId}`} />;
   }
-  // const spotId = spot.id;
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -53,7 +53,7 @@ const EditSpot = () => {
       description: description,
       price: price,
     };
-   
+
     return dispatch(spotActions.editASpot(data, spot.id))
       .then(async (res) => {
         console.log("success");

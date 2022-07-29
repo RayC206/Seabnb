@@ -80,9 +80,7 @@ const reviewsReducer = (state = initialState, action) => {
     }
     case GET_USERS_REVIEWS: {
       const userReviews = action.userReviews;
-      // const newState = {};
-      // action.userReviews.forEach((review) => (newState[review.id] = review));
-      // let allReviews = { ...newState };
+
       return userReviews;
     }
     case CREATE: {
@@ -91,11 +89,11 @@ const reviewsReducer = (state = initialState, action) => {
     case DELETE:
       const deleteResponse = action.deleteResponse;
       if (deleteResponse.statusCode === 200) {
-        return {
+        return [
           ...state.filter((review) => {
             return review.review.id !== action.deletedReviewId;
           }),
-        };
+        ];
       }
 
     default:
