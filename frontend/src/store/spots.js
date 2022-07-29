@@ -5,6 +5,7 @@ const GET_ALL_SPOTS = "spots/get-all-spots";
 const CREATE_SPOT = "spots/create-spot";
 const EDIT_SPOT = "spots/update-spot";
 const DELETE_SPOT = "spots/delete";
+const GET_USER_SPOTS = "spots/get-user-spots";
 
 const getAll = (spots) => {
   return {
@@ -17,6 +18,13 @@ const getSpot = (spot) => {
   return {
     type: GET_SPOT,
     spot,
+  };
+};
+
+const usersSpots = (spots) => {
+  return {
+    type: GET_USER_SPOTS,
+    spots,
   };
 };
 
@@ -37,6 +45,7 @@ const deleteSpot = (deleteResponse) => ({
 
 //Get all spots
 export const getAllSpots = () => async (dispatch) => {
+  console.log("get all spots");
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
     const spots = await response.json();
@@ -54,6 +63,17 @@ export const findASpot = (spotId) => async (dispatch) => {
   if (response.ok) {
     const spot = await response.json();
     dispatch(getSpot(spot));
+  }
+
+  return response;
+};
+
+export const getUsersSpots = () => async (dispatch) => {
+  const response = await csrfFetch("/api/users/current-user/spots");
+  if (response.ok) {
+    const allSpots = await response.json();
+    dispatch(usersSpots(allSpots));
+    return allSpots;
   }
   return response;
 };
@@ -106,22 +126,29 @@ export const spotDelete = (spotId, userId) => async (dispatch) => {
 // Reducer
 const initialState = {};
 const spotsReducer = (state = initialState, action) => {
+  console.log("ACTION");
+  console.log(action);
   switch (action.type) {
     case GET_ALL_SPOTS: {
-      const allSpots = {};
-      action.spots.forEach((spot) => (allSpots[spot.id] = spot));
-      return { ...allSpots};
+      const allSpots = action.spots;
+      // action.spots.forEach((spot) => (allSpots[spot.id] = spot));
+      return { ...allSpots };
     }
     case GET_SPOT: {
       const spot = action.spot;
-      return { ...spot };
+      return { ...spot, ...state };
+    }
+    case GET_USER_SPOTS: {
+      const newState = {};
+      action.spots.forEach((spot) => (newState[spot.id] = spot));
+      let allSpots = { ...newState };
+      return allSpots;
     }
     case CREATE_SPOT: {
       return { ...state };
     }
     case EDIT_SPOT: {
       return { ...state };
-
     }
     case DELETE_SPOT:
       const deleteResponse = action.deleteResponse;
