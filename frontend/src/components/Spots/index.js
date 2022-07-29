@@ -20,6 +20,7 @@ const SpotsPage = () => {
       {spotsList.map((spot) => {
         if (spot) {
           return (
+            <div key={spot.id}>
             <NavLink to={`/spots/${spot.id}`}>
               <div className="eachSpot" key={spot.id}>
                 <img
@@ -39,6 +40,7 @@ const SpotsPage = () => {
                 )}
               </div>
             </NavLink>
+            </div>
           );
         }
       })}

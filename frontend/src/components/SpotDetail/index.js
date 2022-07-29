@@ -72,6 +72,7 @@ const SpotsDetail = () => {
           {reviews &&
             reviews.map((review) => {
               return (
+                <div key={review.id}>
                 <label>
                   Review:
                   <div>
@@ -79,6 +80,7 @@ const SpotsDetail = () => {
                     <div> Rating : {review.stars} / 5</div>
                   </div>
                 </label>
+                </div>
               );
             })}
         </div>
