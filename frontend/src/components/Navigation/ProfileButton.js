@@ -46,6 +46,9 @@ function ProfileButton({ user }) {
           <Link to="/my-spots" id="dropdown1">
             My Spots
           </Link>
+          <Link to="/my-reviews" id="dropdown1">
+            My Reviews
+          </Link>
           <div onClick={logout} id="dropdown2">
             Log out
           </div>

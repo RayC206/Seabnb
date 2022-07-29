@@ -140,8 +140,8 @@ const spotsReducer = (state = initialState, action) => {
     }
     case GET_USER_SPOTS: {
       const newState = {};
-      action.spots.forEach(spot => newState[spot.id] = spot);
-      let allSpots = {...newState};
+      action.spots.forEach((spot) => (newState[spot.id] = spot));
+      let allSpots = { ...newState };
       return allSpots;
     }
     case CREATE_SPOT: {
@@ -155,7 +155,6 @@ const spotsReducer = (state = initialState, action) => {
       if (deleteResponse.statusCode === 200) {
         return [];
       }
-
 
     default:
       return state;

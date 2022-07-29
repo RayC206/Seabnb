@@ -18,7 +18,28 @@ router.get("/", async (req, res, next) => {
     return next(); // go to query filters endpoint
   }
 
-  let spots = await Spot.findAll();
+  let spots = await Spot.findAll({ raw: true });
+
+  // get numReviews and avgStarRating from Review
+  // await spots.forEach(async (spot) => {
+  for (const spot of spots) {
+    let reviews = await Review.findAndCountAll({
+      where: {
+        spotId: spot.id,
+      },
+      attributes: [
+        [Sequelize.fn("AVG", Sequelize.col("stars")), "avgStarRating"],
+      ],
+      raw: true, // get only the dataValues from sequelize object
+    });
+    //defaults number of reviews and avg star rating to 0 if there are no reviews on spotId
+    let avgStarRating = null;
+    if (reviews.count) {
+      avgStarRating = reviews.rows[0].avgStarRating;
+    }
+
+    spot.avgStarRating = avgStarRating;
+  }
 
   return res.json(spots);
 });

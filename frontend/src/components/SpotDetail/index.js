@@ -5,22 +5,20 @@ import { editASpot, findASpot, spotDelete } from "../../store/spots";
 import { getReviews, createReview, removeReview } from "../../store/reviews";
 import "./SpotsDetail.css";
 
-const SpotsDetail = ({reviewId}) => {
-  const sessionUser = useSelector(state => state.session.user);
+const SpotsDetail = () => {
+  const sessionUser = useSelector((state) => state.session.user);
   let { spotId } = useParams();
   spotId = Number(spotId);
   const history = useHistory();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
-  const review = useSelector(state => Object.values(state.reviews));
-  // const spotReview = review.filter(review => review.reviewId === Number);
+  // const review = useSelector(state => Object.values(state.reviews));
+  // const spotReview = review.filter(review => review.reviews === parseInt(sessionUser.id));
 
-
-  console.log("HERRRE")
-  console.log(reviews)
+  console.log("HERRRE");
+  console.log(spot);
   const [findASpotStatus, setFindASpotStatus] = useState(200);
-
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -44,22 +42,11 @@ const SpotsDetail = ({reviewId}) => {
 
   const handleCreateReview = (e) => {
     e.preventDefault();
-    dispatch(createReview(spotId))
+    dispatch(createReview(spotId));
     let path = `/spots/${spotId}/create-review`;
     history.push(path);
-  }
+  };
 
-  const handleDeleteReview = (e) => {
-    e.preventDefault();
-    const reviewId = parseInt(e.target.id);
-    const userReviewId = parseInt(sessionUser.id)
-    dispatch(removeReview(userReviewId))
-    let path = `/spots/${spotId}/`;
-    history.push(path);
-  }
-
-  console.log("spot");
-  console.log(spot);
   if (findASpotStatus === 200) {
     return (
       <div>
@@ -80,6 +67,7 @@ const SpotsDetail = ({reviewId}) => {
           <p>{spot.address}</p>
           <p>{spot.description}</p>
           <p> ${spot.price} night</p>
+          <p> Average rating: {spot.avgStarRating} / 5</p>
         </div>
         <button onClick={handleEdit}>Edit Spot</button>
 
@@ -104,15 +92,17 @@ const SpotsDetail = ({reviewId}) => {
             })}
         </div>
         <button onClick={handleCreateReview}>Create Review</button>
-        <button onClick={handleDeleteReview}>Delete</button>
       </div>
     );
   } else if (findASpotStatus === 404) {
-    return <div className="fourOhFour">
-       <a className="fourOh">404: Spot not found</a>
-      <div><img src="https://images6.fanpop.com/image/photos/36500000/spongebob-spongebob-squarepants-36544130-500-338.png"></img></div>
-
-      </div> ;
+    return (
+      <div className="fourOhFour">
+        <a className="fourOh">404: Spot not found</a>
+        <div>
+          <img src="https://images6.fanpop.com/image/photos/36500000/spongebob-spongebob-squarepants-36544130-500-338.png"></img>
+        </div>
+      </div>
+    );
   }
 };
 
