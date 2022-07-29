@@ -1,16 +1,30 @@
+.detailContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .imageDetail {
   display: flex;
   justify-content: center;
   align-items: center;
   float: left;
-  width: 400px;
+  width: 450px;
   height: 350px;
   background-size: cover;
   border-radius: 33px;
-  margin: 1rem;
+  margin: 2rem;
   display: flex;
   position:static;
 
+}
+
+#spotDescription {
+  font-family: sans-serif;
+  margin: 2rem;
 }
 
 .nameDetail {
@@ -23,4 +37,29 @@
 
 .fourOhFour {
  font-size: 40px;
+}
+/* 
+.spotButtons {
+
+} */
+
+
+.eachReview {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+  border: 2px double rgb(216, 203, 203);
+  font-family: sans-serif;
+  color: black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 50%;
+}
+
+.reviewDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

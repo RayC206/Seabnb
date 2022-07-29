@@ -46,7 +46,7 @@ const SpotsDetail = () => {
 
   if (findASpotStatus === 200) {
     return (
-      <div>
+      <div className= 'detailContainer'>
         <div key={spot.id}>
           <h3 className="nameDetail">{spot.name}</h3>
           <h4></h4>
@@ -57,22 +57,25 @@ const SpotsDetail = () => {
               alt={spot.name}
             ></img>
           </div>
-          <p>
-            {spot.city}, {spot.state}
-          </p>
-          <p>{spot.address}</p>
-          <p>{spot.description}</p>
-          <p> ${spot.price} night</p>
-          <p> Average rating: {spot.avgStarRating} / 5</p>
+          <div id="spotDescription">
+            <p>
+              {spot.city}, {spot.state}
+            </p>
+            <p>{spot.address}</p>
+            <p>{spot.description}</p>
+            <p> ${spot.price} night</p>
+            <p> Average rating: {spot.avgStarRating} / 5</p>
+          </div>
         </div>
+        <div className="spotButtons">
         <button onClick={handleEdit}>Edit Spot</button>
-
         <button onClick={removeSpot}>Delete Spot</button>
-        <div>
+        </div>
+        <div className="reviewDiv">
           {reviews &&
             reviews.map((review, index) => {
               return (
-                <div key={index}>
+                <div class='eachReview' key={index}>
                 <label>
                   Review:
                   <div>
