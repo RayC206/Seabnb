@@ -45,7 +45,6 @@ const deleteSpot = (deleteResponse) => ({
 
 //Get all spots
 export const getAllSpots = () => async (dispatch) => {
-  console.log("get all spots");
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
     const spots = await response.json();
@@ -80,14 +79,12 @@ export const getUsersSpots = () => async (dispatch) => {
 
 //Create a spot
 export const createNewSpot = (data) => async (dispatch) => {
-  console.log(data);
+
   const response = await csrfFetch("/api/spots", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-
-  console.log(response);
   if (response.ok) {
     const spot = await response.json();
     dispatch(createSpot(spot));
@@ -97,7 +94,7 @@ export const createNewSpot = (data) => async (dispatch) => {
 
 // Edit spot
 export const editASpot = (data, spotId) => async (dispatch) => {
-  console.log(spotId);
+
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -126,8 +123,6 @@ export const spotDelete = (spotId, userId) => async (dispatch) => {
 // Reducer
 const initialState = {};
 const spotsReducer = (state = initialState, action) => {
-  console.log("ACTION");
-  console.log(action);
   switch (action.type) {
     case GET_ALL_SPOTS: {
       const allSpots = action.spots;

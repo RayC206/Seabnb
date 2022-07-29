@@ -9,7 +9,7 @@ const UserSpots = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const spots = useSelector((state) => Object.values(state.spots));
   const history = useHistory();
-  console.log("USERSPOTS");
+  
 
   useEffect(() => {
     if (!sessionUser) {
@@ -21,11 +21,7 @@ const UserSpots = () => {
     dispatch(getUsersSpots());
   }, [dispatch]);
 
-  // let userSpots;
-  // console.log(spots);
-  // if (sessionUser && spots) {
-  //   userSpots = spots.filter((spot) => spot.ownerId === sessionUser.id);
-  // }
+
 
   return (
     <div className="spotsPage">
