@@ -39,8 +39,6 @@ export const getUserReviews = () => async (dispatch) => {
   const response = await csrfFetch(`/api/users/current-user/reviews`);
   if (response.ok) {
     const userReviews = await response.json();
-    console.log("userReviews");
-    console.log(userReviews);
     dispatch(getMyReviews(userReviews));
     return userReviews;
   }
@@ -80,8 +78,7 @@ const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET: {
       const allReviews = action.reviews;
-      // console.log();
-      // action.spots.forEach((spot) => (allReviews[spot.id] = spot));
+
       return { ...allReviews };
     }
     case GET_USERS_REVIEWS: {

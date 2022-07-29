@@ -136,7 +136,7 @@ const spotsReducer = (state = initialState, action) => {
     }
     case GET_SPOT: {
       const spot = action.spot;
-      return { ...spot, ...state };
+      return { ...spot};
     }
     case GET_USER_SPOTS: {
       const newState = {};
