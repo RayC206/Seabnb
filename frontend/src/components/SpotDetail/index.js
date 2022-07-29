@@ -70,9 +70,9 @@ const SpotsDetail = () => {
         <button onClick={removeSpot}>Delete Spot</button>
         <div>
           {reviews &&
-            reviews.map((review) => {
+            reviews.map((review, index) => {
               return (
-                <div key={review.id}>
+                <div key={index}>
                 <label>
                   Review:
                   <div>

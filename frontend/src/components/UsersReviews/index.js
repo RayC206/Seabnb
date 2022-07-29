@@ -39,10 +39,10 @@ const UserReviews = () => {
 
   return (
     <div>
-      {reviews.map((review) => {
+      {reviews.map((review, index) => {
         if (review) {
           return (
-            <div>
+            <div key={index}>
               <label>
                 Review:
                 <div>

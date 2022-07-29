@@ -26,11 +26,12 @@ const UserSpots = () => {
   return (
     <div className="spotsPage">
       <div className="left"></div>
-      {spots.map((spot) => {
+      {spots.map((spot, index) => {
         if (spot) {
           return (
+            <div key = {index}>
             <NavLink to={`/spots/${spot.id}`}>
-              <div className="eachSpot" key={spot.id}>
+              <div className="eachSpot">
                 <img
                   className="spotImg"
                   src={spot.previewImage}
@@ -45,6 +46,7 @@ const UserSpots = () => {
                 <p className="spotPrice"> ${spot.price} night</p>
               </div>
             </NavLink>
+            </div>
           );
         }
       })}

@@ -17,10 +17,10 @@ const SpotsPage = () => {
   return (
     <div className="spotsPage">
       <div className="left"></div>
-      {spotsList.map((spot) => {
+      {spotsList.map((spot, index) => {
         if (spot) {
           return (
-            <div key={spot.id}>
+            <div key={index}>
             <NavLink to={`/spots/${spot.id}`}>
               <div className="eachSpot" key={spot.id}>
                 <img
