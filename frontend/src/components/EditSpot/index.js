@@ -53,8 +53,7 @@ const EditSpot = () => {
       description: description,
       price: price,
     };
-    console.log("SPOT after submit");
-    console.log(spotId);
+   
     return dispatch(spotActions.editASpot(data, spot.id))
       .then(async (res) => {
         console.log("success");

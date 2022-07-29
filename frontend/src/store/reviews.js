@@ -52,7 +52,6 @@ export const createReview = (spotId, data) => async (dispatch) => {
     header: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  console.log(response);
   if (response.ok) {
     const review = await response.json();
     dispatch(createSpotReviews(review));
@@ -73,8 +72,6 @@ export const removeReview = (reviewId) => async (dispatch) => {
 
 const initialState = {};
 const reviewsReducer = (state = initialState, action) => {
-  console.log("action");
-  console.log(action);
   switch (action.type) {
     case GET: {
       const allReviews = action.reviews;

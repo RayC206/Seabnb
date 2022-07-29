@@ -11,12 +11,7 @@ const UserReviews = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const reviews = useSelector((state) => Object.values(state.reviews));
-  // const userReview = Object.values(reviews).filter(
-  //   (review) => review.spotId === spot.id
-  // );
-
-  console.log("hereee");
-  console.log(reviews);
+ 
 
   useEffect(() => {
     if (!sessionUser) {

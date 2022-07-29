@@ -16,8 +16,7 @@ const SpotsDetail = () => {
   // const review = useSelector(state => Object.values(state.reviews));
   // const spotReview = review.filter(review => review.reviews === parseInt(sessionUser.id));
 
-  console.log("HERRRE");
-  console.log(spot);
+
   const [findASpotStatus, setFindASpotStatus] = useState(200);
 
   useEffect(() => {
