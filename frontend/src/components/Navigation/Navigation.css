@@ -21,7 +21,13 @@ button{
 }
 
 
+#rightNav{
+  display: flex;
+}
 
+#rightNav > button {
+  font-family: 'Montserrat', sans-serif;
+}
 
 #logo_div {
   height: 100%;
@@ -60,7 +66,7 @@ button{
 #menu{
   cursor: pointer;
   position: absolute;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   z-index: 2;
   top: 60px;
   right: 95px;
@@ -104,4 +110,5 @@ button.navbar {
   width: 20%;
   height: 100%;
   position: relative;
+
 }

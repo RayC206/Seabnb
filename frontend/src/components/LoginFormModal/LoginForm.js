@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./LoginForm.css";
+import DemoUser from "../DemoUser";
 
 function LoginForm() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,17 +30,19 @@ function LoginForm() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="loginContainer">
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
+      <h1 className='welcomeContainer'>Welcome to Seabnb</h1>
+      <label className="loginLable">
         {/* Email */}
         <input
+        className="loginInput email"
           type="text"
-          placeholder="Email"
+          placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -48,13 +51,14 @@ function LoginForm() {
       <label>
         {/* Password */}
         <input
+          className="loginInput password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button className='login-button submitButton' type="submit">Log In</button>
     </form>
   );
 }

@@ -19,21 +19,37 @@
     border-radius: 33px;
     margin: 1rem;
 }
+.spotName {
 
+    font-weight: 600;
+}
+.spotLocation {
+    font-weight: normal;
+}
+
+.spotAddress{
+    text-decoration: underline;
+}
+.spotDetails{
+    font-style: italic;
+    font-size: 15px;
+}
 .spotPrice {
     font-weight: bold;
 }
 
 a:link {
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .eachSpot {
   background-color: white;
   border: 2px double rgb(216, 203, 203);
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: black;
   border-radius: 20px;
   margin: 10px;
   text-align: center;
+
 }

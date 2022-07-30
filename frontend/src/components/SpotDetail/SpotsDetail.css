@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
 .detailContainer {
   display: flex;
   flex-wrap: wrap;
@@ -36,25 +39,41 @@
 }
 
 #Description {
-  font-family: sans-serif;
-  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 7rem;
+  margin-left: 2rem;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .nameDetail {
-  font-size: 50px;
+  font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: 460;
 }
 
 .fourOhFour {
  font-size: 40px;
 }
-/*
-.spotButtons {
 
-} */
+.spotButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.spotButtons > button {
+  margin: 15px;
+}
+div#Description{
+ border: 2px double rgb(216, 203, 203);
+}
 
 
 .eachReview {
@@ -63,12 +82,21 @@
   flex-wrap: wrap;
   background-color: white;
   border: 2px double rgb(216, 203, 203);
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: black;
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
   width: 50%;
+}
+
+.reviewMessage{
+  font-size: 14px;
+}
+
+.reviewStars {
+
+  font-style: oblique;
 }
 
 .reviewDiv {

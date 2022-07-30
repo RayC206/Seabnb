@@ -12,8 +12,7 @@ const SpotsDetail = () => {
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
-
-
+  console.log(reviews);
 
   const [findASpotStatus, setFindASpotStatus] = useState(200);
 
@@ -46,46 +45,48 @@ const SpotsDetail = () => {
 
   if (findASpotStatus === 200) {
     return (
-      <div className= 'detailContainer'>
+      <div className="detailContainer">
         <div className="containerBorder">
-
-        <div key={spot.id}>
-          <h3 className="nameDetail">{spot.name}</h3>
-          <h4></h4>
-          <div>
-            <img
-              className="imageDetail"
-              src={spot.previewImage}
-              alt={spot.name}
+          <div key={spot.id}>
+            <h3 className="nameDetail">{spot.name}</h3>
+            <h4></h4>
+            <div>
+              <img
+                className="imageDetail"
+                src={spot.previewImage}
+                alt={spot.name}
               ></img>
+            </div>
+            <div id="Description">
+              <p>
+                {spot.city}, {spot.state}
+              </p>
+              <p>{spot.address}</p>
+              <p>{spot.description}</p>
+              <p> ${spot.price} night</p>
+              <p> Average rating: {spot.avgStarRating} / 5</p>
+            </div>
           </div>
-          <div id="Description">
-            <p>
-              {spot.city}, {spot.state}
-            </p>
-            <p>{spot.address}</p>
-            <p>{spot.description}</p>
-            <p> ${spot.price} night</p>
-            <p> Average rating: {spot.avgStarRating} / 5</p>
+          <div className="spotButtons">
+            <button onClick={handleEdit}>Edit Spot</button>
+            <button onClick={removeSpot}>Delete Spot</button>
           </div>
-        </div>
-        <div className="spotButtons">
-        <button onClick={handleEdit}>Edit Spot</button>
-        <button onClick={removeSpot}>Delete Spot</button>
-        </div>
         </div>
         <div className="reviewDiv">
           {reviews &&
             reviews.map((review, index) => {
               return (
-                <div class='eachReview' key={index}>
-                <label>
-                  Review:
-                  <div>
-                    <div> {review.review}</div>
-                    <div> Rating : {review.stars} / 5</div>
-                  </div>
-                </label>
+                <div class="eachReview" key={index}>
+                  <label>
+                    Review:
+                    <div>---</div>
+                    <div>
+                      <div className="reviewMessage"> {review.review}</div>
+                      <div>---</div>
+
+                      <div className="reviewStars"> Rating : {review.stars} out of 5 stars</div>
+                    </div>
+                  </label>
                 </div>
               );
             })}
