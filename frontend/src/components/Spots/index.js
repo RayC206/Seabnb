@@ -36,7 +36,7 @@ const SpotsPage = () => {
                 <p className="spotDetails">{spot.description}</p>
                 <p className="spotPrice"> ${spot.price} night</p>
                 {spot.avgStarRating && (
-                  <p className="spotAvgStarRating">Average Rating: {spot.avgStarRating.toFixed(1)} / 5</p>
+                  <p className="spotAvgStarRating">Average Rating: {spot.avgStarRating.toFixed(1).toString()} / 5</p>
                 )}
               </div>
             </NavLink>
