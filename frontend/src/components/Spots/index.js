@@ -37,7 +37,7 @@ const SpotsPage = () => {
                   <p className="spotPrice"> ${spot.price} night</p>
                   {spot.avgStarRating && (
                     <p className="spotAvgStarRating">
-                      Average Rating: {spot.avgStarRating} / 5
+                      Average Rating: {spot.avgStarRating.toFixed(1)} / 5
                     </p>
                   )}
                 </div>

@@ -64,7 +64,7 @@ const SpotsDetail = () => {
               <p>{spot.address}</p>
               <p>{spot.description}</p>
               <p> ${spot.price} night</p>
-              <p> Average rating: {spot.avgStarRating} / 5</p>
+              <p> Average rating: {spot.avgStarRating.toFixed(1)} / 5</p>
             </div>
           </div>
           <div className="spotButtons">
