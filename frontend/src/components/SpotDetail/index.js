@@ -47,6 +47,8 @@ const SpotsDetail = () => {
   if (findASpotStatus === 200) {
     return (
       <div className= 'detailContainer'>
+        <div className="containerBorder">
+
         <div key={spot.id}>
           <h3 className="nameDetail">{spot.name}</h3>
           <h4></h4>
@@ -55,9 +57,9 @@ const SpotsDetail = () => {
               className="imageDetail"
               src={spot.previewImage}
               alt={spot.name}
-            ></img>
+              ></img>
           </div>
-          <div id="spotDescription">
+          <div id="Description">
             <p>
               {spot.city}, {spot.state}
             </p>
@@ -70,6 +72,7 @@ const SpotsDetail = () => {
         <div className="spotButtons">
         <button onClick={handleEdit}>Edit Spot</button>
         <button onClick={removeSpot}>Delete Spot</button>
+        </div>
         </div>
         <div className="reviewDiv">
           {reviews &&

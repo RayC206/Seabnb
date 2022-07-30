@@ -2,8 +2,23 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 5rem;
+  /* margin: 10px; */
+  padding: 10px;
+  /* width: 50%; */
+
+}
+
+.containerBorder {
+  display: flex;
+  flex-direction: column;
+  border: 2px double rgb(216, 203, 203);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 60%;
+  margin-bottom: 2rem;
+
 }
 
 
@@ -17,12 +32,10 @@
   background-size: cover;
   border-radius: 33px;
   margin: 2rem;
-  display: flex;
   position:static;
-
 }
 
-#spotDescription {
+#Description {
   font-family: sans-serif;
   margin: 2rem;
 }
@@ -38,7 +51,7 @@
 .fourOhFour {
  font-size: 40px;
 }
-/* 
+/*
 .spotButtons {
 
 } */
@@ -62,4 +75,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 }
