@@ -35,7 +35,7 @@ router.get("/", async (req, res, next) => {
     //defaults number of reviews and avg star rating to 0 if there are no reviews on spotId
     let avgStarRating = null;
     if (reviews.count) {
-      avgStarRating = reviews.rows[0].avgStarRating;
+      avgStarRating = reviews.rows[0].avgStarRating.toFixed(1);
     }
 
     spot.avgStarRating = avgStarRating;
@@ -71,7 +71,7 @@ router.get("/:spotId", async (req, res) => {
   let avgStarRating = null;
   if (reviews.count) {
     numReviews = reviews.count;
-    avgStarRating = reviews.rows[0].avgStarRating;
+    avgStarRating = reviews.rows[0].avgStarRating.toFixed(1);
   }
 
   // get owner data from User
