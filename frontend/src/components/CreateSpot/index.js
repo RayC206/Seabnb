@@ -51,14 +51,15 @@ const CreateSpot = () => {
   };
 
   return (
+    <div className="formContainer">
     <form className='spotsCreate' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Name:
+      <label className="createName">
+       <span> Name: </span>
         <input
           type="text"
           placeholder="Name"
@@ -68,7 +69,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        Address:
+        <span>Address:</span>
         <input
           type="text"
           placeholder="Address"
@@ -78,7 +79,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        City:
+        <span>City:</span>
         <input
           type="text"
           placeholder="City"
@@ -88,7 +89,7 @@ const CreateSpot = () => {
         />
       </label>
       <label>
-        State:
+        <span>State:</span>
         <input
           type="text"
           placeholder="State"
@@ -97,8 +98,8 @@ const CreateSpot = () => {
           required
         />
       </label>
-      <label>
-        Country:
+      <label className="createCountry">
+        <span>Country:</span>
         <input
           type="text"
           placeholder="Country"
@@ -107,8 +108,8 @@ const CreateSpot = () => {
           required
         />
       </label>
-      <label>
-        Latitude:
+      <label className="createLat">
+        <span>Latitude:</span>
         <input
           type="text"
           placeholder="Latitude"
@@ -117,8 +118,8 @@ const CreateSpot = () => {
           required
         />
       </label>
-      <label>
-        Longitude:
+      <label className="createLong">
+        <span>Longitude:</span>
         <input
           type="text"
           placeholder="Longitude"
@@ -127,8 +128,8 @@ const CreateSpot = () => {
           required
         />
       </label>
-      <label>
-          Description:
+      <label className="createDescription">
+          <span>Description:</span>
         <input
           type="text"
           placeholder="Description"
@@ -137,8 +138,8 @@ const CreateSpot = () => {
           required
         />
       </label>
-      <label>
-        Price per night:
+      <label className="createPrice">
+        <span>Price per night:</span>
         <input
           type="text"
           placeholder="$"
@@ -147,8 +148,8 @@ const CreateSpot = () => {
           required
         />
         </label>
-      <label >
-        Image Url:
+      <label className="createImg" >
+        <span>Image Url:</span>
         <input
           type="text"
           placeholder="img-url"
@@ -156,8 +157,9 @@ const CreateSpot = () => {
           onChange={(e) => setPreviewImage(e.target.value)}
         />
       </label>
-      <button type="submit">Create a new Spot</button>
+      <button className='createSpotButton' type="submit">Create New Spot</button>
     </form>
+    </div>
   );
 };
 

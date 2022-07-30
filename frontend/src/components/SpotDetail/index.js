@@ -58,12 +58,13 @@ const SpotsDetail = () => {
               ></img>
             </div>
             <div id="Description">
+              <label></label>
               <p>
                 {spot.city}, {spot.state}
               </p>
-              <p>{spot.address}</p>
-              <p>{spot.description}</p>
-              <p> ${spot.price} night</p>
+              <p className="spotDetailAddress">{spot.address}</p>
+              <p className="spotDetailDescription">{spot.description}</p>
+              <p className="spotDetailPrice"> ${spot.price} <a className="priceDetail">night</a> </p>
               <p> Average rating: {Number(spot.avgStarRating).toFixed(1)} / 5</p>
             </div>
           </div>

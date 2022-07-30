@@ -48,6 +48,28 @@
 
 }
 
+#Description > p {
+  margin-left: 12px;
+  margin-right: 5px;
+}
+
+#Description > .spotDetailAddress {
+  text-decoration: underline;
+}
+
+#Description > .spotDetailPrice {
+  font-weight: 550;
+}
+
+#Description > .spotDetailPrice > .priceDetail {
+  font-weight: normal;
+}
+
+#Description > .spotDetailDescription {
+  font-style: italic;
+  font-size: 15px;
+}
+
 .nameDetail {
   font-size: 40px;
   display: flex;
