@@ -7,38 +7,41 @@ import LoginFormModal from "../LoginFormModal";
 
 import "./Navigation.css";
 
-
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  console.log("Navigation");
+  console.log(sessionUser);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
-    <div id='rightNav'>
-    <ProfileButton user={sessionUser}/>
-    </div>
+        <div id="rightNav">
+          <ProfileButton user={sessionUser} />
+        </div>
       </>
-    )
+    );
   } else {
     sessionLinks = (
-      <div id='rightNav'>
+      <div id="rightNav">
         <LoginFormModal />
-        <button><NavLink to="/signup">Sign Up</NavLink></button>
+        <button>
+          <NavLink to="/signup">Sign Up</NavLink>
+        </button>
       </div>
     );
   }
   return (
     <nav>
-    <div id="navBar">
-        <div id='logo_div'>
-            <NavLink exact to="/">
-                <img src="https://i.imgur.com/pd6aZpK.png"></img>
-            </NavLink>
+      <div id="navBar">
+        <div id="logo_div">
+          <NavLink exact to="/">
+            <img src="https://i.imgur.com/pd6aZpK.png"></img>
+          </NavLink>
         </div>
         {isLoaded && sessionLinks}
-    </div >
-</nav >
+      </div>
+    </nav>
   );
 }
 

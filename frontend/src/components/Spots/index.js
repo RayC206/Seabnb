@@ -8,7 +8,15 @@ const SpotsPage = () => {
   const dispatch = useDispatch();
   let { spotId } = useParams();
   spotId = Number(spotId);
-  const spotsList = useSelector((state) => Object.values(state.spots));
+  const spotsList = useSelector((state) => {
+    let spots = Object.values(state.spots);
+    if (spots[0] && spots[0].address) { // if state.spots is a list of spot objects, return the list
+      return spots;
+    }
+    return []; // if not, that means spotsList is just one spot spread out into an array 
+  });
+  console.log("spotslist");
+  console.log(spotsList);
 
   useEffect(() => {
     dispatch(getAllSpots());
@@ -37,7 +45,8 @@ const SpotsPage = () => {
                   <p className="spotPrice"> ${spot.price} night</p>
                   {spot.avgStarRating && (
                     <p className="spotAvgStarRating">
-                      Average Rating: {Number(spot.avgStarRating).toFixed(1)} / 5
+                      Average Rating: {Number(spot.avgStarRating).toFixed(1)} /
+                      5
                     </p>
                   )}
                 </div>

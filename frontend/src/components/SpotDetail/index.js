@@ -64,8 +64,14 @@ const SpotsDetail = () => {
               </p>
               <p className="spotDetailAddress">{spot.address}</p>
               <p className="spotDetailDescription">{spot.description}</p>
-              <p className="spotDetailPrice"> ${spot.price} <a className="priceDetail">night</a> </p>
-              <p> Average rating: {Number(spot.avgStarRating).toFixed(1)} / 5</p>
+              <p className="spotDetailPrice">
+                {" "}
+                ${spot.price} <a className="priceDetail">night</a>{" "}
+              </p>
+              <p>
+                {" "}
+                Average rating: {Number(spot.avgStarRating).toFixed(1)} / 5
+              </p>
             </div>
           </div>
           <div className="spotButtons">
@@ -77,7 +83,7 @@ const SpotsDetail = () => {
           {reviews &&
             reviews.map((review, index) => {
               return (
-                <div class="eachReview" key={index}>
+                <div className="eachReview" key={index}>
                   <label>
                     <span>Review:</span>
                     <div>---</div>
@@ -85,14 +91,20 @@ const SpotsDetail = () => {
                       <div className="reviewMessage"> "{review.review}"</div>
                       <div>---</div>
 
-                      <div className="reviewStars"> <span>Rating :</span> {Number(review.stars).toFixed(1)} out of 5 stars</div>
+                      <div className="reviewStars">
+                        {" "}
+                        <span>Rating :</span> {Number(review.stars).toFixed(1)}{" "}
+                        out of 5 stars
+                      </div>
                     </div>
                   </label>
                 </div>
               );
             })}
         </div>
-        <button className='createReviewButton' onClick={handleCreateReview}>Create Review</button>
+        <button className="createReviewButton" onClick={handleCreateReview}>
+          Create Review
+        </button>
       </div>
     );
   } else if (findASpotStatus === 404) {
