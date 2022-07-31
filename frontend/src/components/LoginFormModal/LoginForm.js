@@ -27,8 +27,6 @@ function LoginForm() {
     );
   };
 
-
-
   return (
     <form onSubmit={handleSubmit} className="loginContainer">
       <ul>
@@ -36,11 +34,11 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <h1 className='welcomeContainer'>Welcome to Seabnb</h1>
+      <h1 className="welcomeContainer">Welcome to Seabnb</h1>
       <label className="loginLable">
         {/* Email */}
         <input
-        className="loginInput email"
+          className="loginInput email"
           type="text"
           placeholder="email"
           value={email}
@@ -58,7 +56,9 @@ function LoginForm() {
           required
         />
       </label>
-      <button className='login-button submitButton' type="submit">Log In</button>
+      <button className="login-button submitButton" type="submit">
+        Log In
+      </button>
       <DemoUser />
     </form>
   );

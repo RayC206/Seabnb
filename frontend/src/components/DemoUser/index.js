@@ -5,18 +5,14 @@ import { useDispatch } from "react-redux";
 function DemoUser() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const loginDemo = (e) => {
     e.preventDefault();
     const email = "demo@user.io";
     const password = "password";
     return dispatch(sessionActions.login({ email, password }));
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit">Demo User</button>
-    </form>
-  );
+  return <button onClick={loginDemo}>Demo User</button>;
 }
 
-export default DemoUser
+export default DemoUser;
