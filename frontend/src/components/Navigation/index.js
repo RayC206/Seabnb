@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
-import DemoUser from "../DemoUser";
+// import DemoUser from "../DemoUser";
 
 import "./Navigation.css";
-import CreateSpotModal from "../CreateSpot";
+
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -25,7 +25,6 @@ function Navigation({ isLoaded }) {
       <div id='rightNav'>
         <LoginFormModal />
         <button><NavLink to="/signup">Sign Up</NavLink></button>
-        <DemoUser />
       </div>
     );
   }

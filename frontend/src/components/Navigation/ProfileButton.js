@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { Link, useHistory  } from "react-router-dom";
+import { FaUserCircle, FaBars} from 'react-icons/fa';
 
-function ProfileButton({ user }) {
+
+function ProfileButton({user}) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory()
 
@@ -34,12 +37,13 @@ function ProfileButton({ user }) {
   return (
     <>
      <div className="button">
-      <button className="navBar" onClick={openMenu}>
-        <i className="fas fa-bars nav_bars_icon"></i>
-        <i className="fas fa-user-circle user_icon"></i>
+      <button className="profileDropdown" onClick={openMenu}>
+        <div className="menu_drop"><FaBars/></div>
+        <div className="user_icon"><FaUserCircle/></div>
       </button>
       {showMenu && (
         <div id="menu">
+          <div> {`Hello, ${user.username}`}  </div>
           <Link to="/spots/create" id="dropdown1">
             Create a Spot
           </Link>

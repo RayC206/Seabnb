@@ -20,9 +20,17 @@ button{
  border-width: 1px
 }
 
-
-#rightNav{
+.profileDropdown {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  height: 43px;
+  width: 77px;
+  border-radius: 20px;
+  color: #717171;
+  border-bottom: 1px solid rgb(216, 203, 203);
+
 }
 
 #rightNav > button {
@@ -57,23 +65,31 @@ button{
 
 .user_icon{
   color: #717171;
-  padding-right: px;
-  font-size: 25px;
+    padding-right: px;
+    font-size: 25px;
 }
 
 
-.nav_bars_icon {
+
+
+/* .nav_bars_icon {
   color: #595959;
   font-size: 17px;
   padding-left: 5px;
 }
 .nav_user_icon {
   margin: 10px;
-}
+} */
 
 .user_icon{
   color: #717171;
   font-size: 25px;
+}
+
+.menu_drop {
+  color: #595959;
+  font-size: 17px;
+  padding-left: 5px;
 }
 
 #menu{
@@ -107,13 +123,11 @@ button{
   font-size: 15px;
   color: rgb(85, 74, 74);
   font-weight: 450;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
 }
 
-button.navbar {
-  border-radius: 20px;
-}
+
 
 
 #nav_right {
