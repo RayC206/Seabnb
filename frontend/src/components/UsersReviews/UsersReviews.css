@@ -40,7 +40,12 @@
   align-items: center;
 }
 
-.deleteReviewButton {
+.reviewPageButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.reviewPageButtons > button {
   background-color: white;
   border: none;
   font-size: 18px;
@@ -51,7 +56,13 @@
   border-radius: 10px;
   color: white;
   font-size: 16px;
-  font-weight: 600;
-  height: 50px;
-  width: 370px;
+  font-weight: 450;
+  height: 42px;
+  margin: 10px;
+  width: 100px;
+}
+
+ a:visited {
+  text-decoration: none;
+  color: white;
 }

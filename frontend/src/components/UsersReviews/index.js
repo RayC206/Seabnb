@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
@@ -49,7 +49,7 @@ const UserReviews = () => {
                 <div>
                 <span>Review:</span>
                   <div>---</div>
-                  <div className="reviewDescription"> {review.review.review} </div>
+                  <div className="reviewDescription"> "{review.review.review}" </div>
                   <div>---</div>
                   <div className="reviewStarsRating">
                     <span>Rating:</span> {Number(review.review.stars).toFixed(1)} / 5
@@ -59,9 +59,15 @@ const UserReviews = () => {
               <br />
               <br />
             </div>
-              <button className='deleteReviewButton' onClick={(e) => handleDeleteReview(e, review.review.id)}>
+            <div className='reviewPageButtons'>
+
+              <button onClick={(e) => handleDeleteReview(e, review.review.id)}>
                 Delete Review
               </button>
+
+              <button><Link to={`/spots/${review.review.spotId}`}>View Spot</Link></button>
+
+            </div>
             </div>
           );
         }

@@ -31,20 +31,23 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="signUpFormContainer">
+    <form className='signupForm' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <h1 className='welcomeContainer'>Welcome to Seabnb</h1>
       <label>
-        First Name
+        <span>First Name</span>
         <input
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
+      </label>
         <label>
-        Last Name
+        <span>Last Name</span>
         <input
           type="text"
           value={lastName}
@@ -52,9 +55,8 @@ function SignupFormPage() {
           required
         />
       </label>
-      </label>
       <label>
-        Email
+        <span>Email</span>
         <input
           type="text"
           value={email}
@@ -63,7 +65,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Username
+        <span>Username</span>
         <input
           type="text"
           value={username}
@@ -72,7 +74,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Password
+        <span>Password</span>
         <input
           type="password"
           value={password}
@@ -81,7 +83,7 @@ function SignupFormPage() {
         />
       </label>
       <label>
-        Confirm Password
+        <span>Confirm Password</span>
         <input
           type="password"
           value={confirmPassword}
@@ -89,8 +91,10 @@ function SignupFormPage() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button className='signUpButton' type="submit">Sign Up</button>
     </form>
+
+    </div>
   );
 }
 

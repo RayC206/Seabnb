@@ -92,7 +92,7 @@ const SpotsDetail = () => {
               );
             })}
         </div>
-        <button onClick={handleCreateReview}>Create Review</button>
+        <button className='createReviewButton' onClick={handleCreateReview}>Create Review</button>
       </div>
     );
   } else if (findASpotStatus === 404) {
