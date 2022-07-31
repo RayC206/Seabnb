@@ -82,7 +82,7 @@ const SpotsDetail = () => {
                     <span>Review:</span>
                     <div>---</div>
                     <div>
-                      <div className="reviewMessage"> {review.review}</div>
+                      <div className="reviewMessage"> "{review.review}"</div>
                       <div>---</div>
 
                       <div className="reviewStars"> <span>Rating :</span> {Number(review.stars).toFixed(1)} out of 5 stars</div>

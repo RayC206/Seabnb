@@ -46,8 +46,8 @@ export const signup = (user) => async (dispatch) => {
     body: JSON.stringify({
       firstName,
       lastName,
-      username,
       email,
+      username,
       password,
     }),
   });

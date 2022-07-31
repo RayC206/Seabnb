@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import * as reviewActions from "../../store/reviews";
+import './CreateReview.css'
 
 const CreateReview = () => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const CreateReview = () => {
           required
         />
       </label>
-      <button type="submit">Create Review</button>
+      <button className="createReviewSubmit" type="submit">Create Review</button>
     </form>
   );
 };
