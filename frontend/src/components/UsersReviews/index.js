@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
+import './UsersReviews.css'
 
 const UserReviews = () => {
   const dispatch = useDispatch();
@@ -38,23 +39,29 @@ const UserReviews = () => {
   };
 
   return (
-    <div>
+    <div className="outerReviewContainer">
       {reviews.map((review, index) => {
         if (review) {
           return (
-            <div key={index}>
+            <div className="innerContainer">
+            <div className='eachReviewContainer' key={index}>
               <label>
-                Review:
                 <div>
-                  <div> {review.review.review}</div>
-                  <div> Rating : {review.review.stars} / 5</div>
+                <span>Review:</span>
+                  <div>---</div>
+                  <div className="reviewDescription"> {review.review.review} </div>
+                  <div>---</div>
+                  <div className="reviewStarsRating">
+                    <span>Rating:</span> {Number(review.review.stars).toFixed(1)} / 5
+                  </div>
                 </div>
               </label>
-              <button onClick={(e) => handleDeleteReview(e, review.review.id)}>
-                Delete
+              <br />
+              <br />
+            </div>
+              <button className='deleteReviewButton' onClick={(e) => handleDeleteReview(e, review.review.id)}>
+                Delete Review
               </button>
-              <br />
-              <br />
             </div>
           );
         }

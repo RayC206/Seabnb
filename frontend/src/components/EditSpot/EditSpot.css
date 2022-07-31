@@ -1,4 +1,37 @@
 .spotsEdit label{
   display: flex;
   padding: 5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.editSpotButton {
+  background-color: white;
+  border: none;
+  font-size: 18px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  width: 370px;
+}
+
+.spotsEdit span {
+  font-size: 15px;
+  margin-right: 12px ;
+ }
+
+.editSpotContainer {
+  display: flex;
+  justify-content: center;
+  width: 50%;;
+  margin: auto;
+  margin-top: 10%;
+  padding:40px;
+  border: 2px double rgb(216, 203, 203);
+  border-radius: 20px;
 }

@@ -79,13 +79,13 @@ const SpotsDetail = () => {
               return (
                 <div class="eachReview" key={index}>
                   <label>
-                    Review:
+                    <span>Review:</span>
                     <div>---</div>
                     <div>
                       <div className="reviewMessage"> {review.review}</div>
                       <div>---</div>
 
-                      <div className="reviewStars"> Rating : {review.stars} out of 5 stars</div>
+                      <div className="reviewStars"> <span>Rating :</span> {Number(review.stars).toFixed(1)} out of 5 stars</div>
                     </div>
                   </label>
                 </div>

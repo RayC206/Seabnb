@@ -37,7 +37,7 @@ const EditSpot = () => {
   if (submitSuccess) {
     return <Redirect to={`/spots/${spotId}`} />;
   }
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -66,6 +66,7 @@ const EditSpot = () => {
   };
 
   return (
+    <div className="editSpotContainer">
     <form className='spotsEdit' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
@@ -73,7 +74,7 @@ const EditSpot = () => {
         ))}
       </ul>
       <label>
-        Name
+        <span>Name:</span>
         <input
           type="text"
           placeholder="Spot name"
@@ -82,7 +83,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        Address
+        <span>Address:</span>
         <input
           type="text"
           placeholder="Address"
@@ -91,7 +92,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        City
+        <span>City:</span>
         <input
           type="text"
           placeholder="City"
@@ -100,7 +101,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        State:
+        <span>State:</span>
         <input
           type="text"
           placeholder="State"
@@ -109,7 +110,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        Country:
+        <span>Country:</span>
         <input
           type="text"
           placeholder="Country"
@@ -118,7 +119,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        Latitude:
+        <span>Latitude:</span>
         <input
           type="text"
           placeholder="Latitude"
@@ -127,7 +128,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        Longitude:
+        <span>Longitude:</span>
         <input
           type="text"
           placeholder="Longitude"
@@ -136,7 +137,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        Description:
+        <span>Description:</span>
         <input
           type="text"
           placeholder="Description"
@@ -145,7 +146,7 @@ const EditSpot = () => {
         />
       </label>
       <label>
-        Price:
+        <span>Price:</span>
         <input
           type="text"
           value={price}
@@ -154,7 +155,7 @@ const EditSpot = () => {
         />
         </label>
       <label >
-        Image URL:
+        <span>Image URL:</span>
         <input
           type="text"
           placeholder="img-url"
@@ -162,8 +163,9 @@ const EditSpot = () => {
           onChange={setPreviewImage}
         />
       </label>
-      <button type="submit">Edit Spot</button>
+      <button className="editSpotButton" type="submit">Edit Spot</button>
     </form>
+    </div>
   );
 };
 

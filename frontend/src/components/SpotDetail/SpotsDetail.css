@@ -117,8 +117,8 @@ div#Description{
 }
 
 .reviewStars {
-
-  font-style: oblique;
+  font-size: 15px;
+  font-style: normal
 }
 
 .reviewDiv {

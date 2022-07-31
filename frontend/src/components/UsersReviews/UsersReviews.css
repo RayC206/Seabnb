@@ -1,0 +1,57 @@
+.eachReviewContainer {
+  display: flex;
+  width: 50%;;
+  margin: auto;
+  margin-top: 10%;
+  padding:40px;
+  border: 2px double rgb(216, 203, 203);
+  border-radius: 20px;
+}
+
+.eachReviewContainer span {
+  font-size: 15px;
+  margin-right: 12px ;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.reviewDescription {
+  font-size: large;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.reviewStarsRating {
+  font-size: large;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.outerReviewContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deleteReviewButton {
+  background-color: white;
+  border: none;
+  font-size: 18px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  width: 370px;
+}
