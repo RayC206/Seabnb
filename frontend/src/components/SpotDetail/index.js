@@ -74,10 +74,10 @@ const SpotsDetail = () => {
               </p>
             </div>
           </div>
-          <div className="spotButtons">
+          {/* <div className="spotButtons">
             <button onClick={handleEdit}>Edit Spot</button>
             <button onClick={removeSpot}>Delete Spot</button>
-          </div>
+          </div> */}
         </div>
         <div className="reviewDiv">
           {reviews &&

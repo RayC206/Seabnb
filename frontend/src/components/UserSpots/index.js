@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
+import { editASpot, findASpot, spotDelete } from "../../store/spots";
 
 const UserSpots = () => {
+  let { spotId } = useParams();
+  spotId = Number(spotId);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const spots = useSelector((state) => Object.values(state.spots));
@@ -20,6 +23,20 @@ const UserSpots = () => {
   useEffect(() => {
     dispatch(getUsersSpots());
   }, [dispatch]);
+
+  const removeSpot = (e) => {
+    e.preventDefault();
+    dispatch(spotDelete(spotId));
+    history.push("/spots");
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    dispatch(editASpot(spotId));
+    let path = `/spots/${spotId}/edit`;
+    history.push(path);
+  };
+
 
 
 
@@ -46,6 +63,10 @@ const UserSpots = () => {
                 <p className="spotPrice"> ${spot.price} night</p>
               </div>
             </NavLink>
+            <div className="spotButtons">
+            <button onClick={handleEdit}>Edit Spot</button>
+            <button onClick={removeSpot}>Delete Spot</button>
+            </div>
             </div>
           );
         }
