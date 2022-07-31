@@ -2,4 +2,4 @@
 
 Seabnb, a simple fun Airbnb clone based on the universe of the TV show Spongebob. 
 
-Live site :  https://ray-airbnb-clone.herokuapp.com/spots
+Live site :  https://ray-airbnb-clone.herokuapp.com/
