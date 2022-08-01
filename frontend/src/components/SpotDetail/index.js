@@ -79,7 +79,12 @@ const SpotsDetail = () => {
                 </p>
                 <p>
                   {" "}
-                  Average rating: {Number(spot.avgStarRating).toFixed(1)} / 5
+                  Average rating:
+                  {Number(spot.avgStarRating) > 0 ? (
+                    <span> {Number(spot.avgStarRating).toFixed(1)} / 5</span>
+                  ) : (
+                    <span> No reviews</span>
+                  )}
                 </p>
               </div>
             </div>

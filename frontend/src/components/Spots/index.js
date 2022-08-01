@@ -51,12 +51,18 @@ const SpotsPage = () => {
                     <p className="spotAddress">{spot.address}</p>
                     <p className="spotDetails">{spot.description}</p>
                     <p className="spotPrice"> ${spot.price} night</p>
-                    {spot.avgStarRating && (
-                      <p className="spotAvgStarRating">
-                        Average Rating: {Number(spot.avgStarRating).toFixed(1)}{" "}
-                        / 5
-                      </p>
-                    )}
+                    <p>
+                      {" "}
+                      Average rating:
+                      {Number(spot.avgStarRating) > 0 ? (
+                        <span>
+                          {" "}
+                          {Number(spot.avgStarRating).toFixed(1)} / 5
+                        </span>
+                      ) : (
+                        <span> No reviews</span>
+                      )}
+                    </p>
                   </div>
                 </NavLink>
               </div>
