@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllSpots } from "../../store/spots";
@@ -10,53 +10,64 @@ const SpotsPage = () => {
   spotId = Number(spotId);
   const spotsList = useSelector((state) => {
     let spots = Object.values(state.spots);
-    if (spots[0] && spots[0].address) { // if state.spots is a list of spot objects, return the list
+    if (spots[0] && spots[0].address) {
+      // if state.spots is a list of spot objects, return the list
       return spots;
     }
-    return []; // if not, that means spotsList is just one spot spread out into an array 
+    return []; // if not, that means spotsList is just one spot spread out into an array
   });
-  console.log("spotslist");
-  console.log(spotsList);
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
-  return (
-    <div className="spotsPage">
-      <div className="left"></div>
-      {spotsList.map((spot, index) => {
-        if (spot) {
-          return (
-            <div key={index}>
-              <NavLink to={`/spots/${spot.id}`}>
-                <div className="eachSpot" key={spot.id}>
-                  <img
-                    className="spotImg"
-                    src={spot.previewImage}
-                    alt={spot.name}
-                  ></img>
-                  <h3 className="spotName">{spot.name}</h3>
-                  <h4 className="spotLocation">
-                    {spot.city}, {spot.state}
-                  </h4>
-                  <p className="spotAddress">{spot.address}</p>
-                  <p className="spotDetails">{spot.description}</p>
-                  <p className="spotPrice"> ${spot.price} night</p>
-                  {spot.avgStarRating && (
-                    <p className="spotAvgStarRating">
-                      Average Rating: {Number(spot.avgStarRating).toFixed(1)} /
-                      5
-                    </p>
-                  )}
-                </div>
-              </NavLink>
-            </div>
-          );
-        }
-      })}
-    </div>
-  );
+  useEffect(() => {
+    if (spotsList.length) {
+      setIsLoaded(true);
+    }
+  }, [spotsList]);
+
+  if (isLoaded) {
+    return (
+      <div className="spotsPage">
+        <div className="left"></div>
+        {spotsList.map((spot, index) => {
+          if (spot) {
+            return (
+              <div key={index}>
+                <NavLink to={`/spots/${spot.id}`}>
+                  <div className="eachSpot" key={spot.id}>
+                    <img
+                      className="spotImg"
+                      src={spot.previewImage}
+                      alt={spot.name}
+                    ></img>
+                    <h3 className="spotName">{spot.name}</h3>
+                    <h4 className="spotLocation">
+                      {spot.city}, {spot.state}
+                    </h4>
+                    <p className="spotAddress">{spot.address}</p>
+                    <p className="spotDetails">{spot.description}</p>
+                    <p className="spotPrice"> ${spot.price} night</p>
+                    {spot.avgStarRating && (
+                      <p className="spotAvgStarRating">
+                        Average Rating: {Number(spot.avgStarRating).toFixed(1)}{" "}
+                        / 5
+                      </p>
+                    )}
+                  </div>
+                </NavLink>
+              </div>
+            );
+          }
+        })}
+      </div>
+    );
+  } else {
+    return <div>Loading... </div>;
+  }
 };
 
 export default SpotsPage;

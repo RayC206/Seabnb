@@ -144,10 +144,7 @@ const spotsReducer = (state = initialState, action) => {
       return { ...state };
     }
     case DELETE_SPOT:
-      const deleteResponse = action.deleteResponse;
-      if (deleteResponse.statusCode === 200) {
-        return [];
-      }
+      return { ...state };
 
     default:
       return state;

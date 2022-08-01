@@ -74,7 +74,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: {
-          msg: 'Username address already in use!'
+          msg: 'Username already in use!'
         },
         validate: {
           len: [4, 30],

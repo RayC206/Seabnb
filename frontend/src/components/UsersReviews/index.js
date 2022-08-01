@@ -3,7 +3,7 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
-import './UsersReviews.css'
+import "./UsersReviews.css";
 
 const UserReviews = () => {
   const dispatch = useDispatch();
@@ -18,8 +18,6 @@ const UserReviews = () => {
     }
     return reviewsFromState;
   });
-  console.log("USERREVIEWS");
-  console.log(reviews);
 
   useEffect(() => {
     if (!sessionUser) {
@@ -44,30 +42,36 @@ const UserReviews = () => {
         if (review) {
           return (
             <div className="innerContainer">
-            <div className='eachReviewContainer' key={index}>
-              <label>
-                <div>
-                <span>Review:</span>
-                  <div>---</div>
-                  <div className="reviewDescription"> "{review.review.review}" </div>
-                  <div>---</div>
-                  <div className="reviewStarsRating">
-                    <span>Rating:</span> {Number(review.review.stars).toFixed(1)} / 5
+              <div className="eachReviewContainer" key={index}>
+                <label>
+                  <div>
+                    <span>Review:</span>
+                    <div>---</div>
+                    <div className="reviewDescription">
+                      {" "}
+                      "{review.review.review}"{" "}
+                    </div>
+                    <div>---</div>
+                    <div className="reviewStarsRating">
+                      <span>Rating:</span>{" "}
+                      {Number(review.review.stars).toFixed(1)} / 5
+                    </div>
                   </div>
-                </div>
-              </label>
-              <br />
-              <br />
-            </div>
-            <div className='reviewPageButtons'>
+                </label>
+                <br />
+                <br />
+              </div>
+              <div className="reviewPageButtons">
+                <button
+                  onClick={(e) => handleDeleteReview(e, review.review.id)}
+                >
+                  Delete Review
+                </button>
 
-              <button onClick={(e) => handleDeleteReview(e, review.review.id)}>
-                Delete Review
-              </button>
-
-              <button><Link to={`/spots/${review.review.spotId}`}>View Spot</Link></button>
-
-            </div>
+                <button>
+                  <Link to={`/spots/${review.review.spotId}`}>View Spot</Link>
+                </button>
+              </div>
             </div>
           );
         }

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import * as reviewActions from "../../store/reviews";
-import './CreateReview.css'
+import "./CreateReview.css";
 
 const CreateReview = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   let { spotId } = useParams();
   spotId = Number(spotId);
   const [reviewMessage, setReviewMessage] = useState("");
@@ -29,8 +30,8 @@ const CreateReview = () => {
         setSubmitSuccess(true);
       })
       .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        const error = await res.json();
+        if (error) setErrors([error.message]);
       });
   };
 
@@ -61,7 +62,21 @@ const CreateReview = () => {
           required
         />
       </label>
-      <button className="createReviewSubmit" type="submit">Create Review</button>
+      {!errors.length ? (
+        <button className="createReviewSubmit" type="submit">
+          Create Review
+        </button>
+      ) : (
+        <button
+          className="backButton"
+          onClick={() => {
+            let path = `/spots/${spotId}`;
+            history.push(path);
+          }}
+        >
+          Back
+        </button>
+      )}
     </form>
   );
 };
