@@ -38,9 +38,10 @@ const editSpot = (spot) => ({
   spot,
 });
 
-const deleteSpot = (deleteResponse) => ({
+const deleteSpot = (deleteResponse, deletedSpotId) => ({
   type: DELETE_SPOT,
   deleteResponse,
+  deletedSpotId,
 });
 
 //Get all spots
@@ -113,7 +114,7 @@ export const spotDelete = (spotId, userId) => async (dispatch) => {
   });
   if (response.ok) {
     const deleteResponse = await response.json();
-    dispatch(deleteSpot(deleteResponse));
+    dispatch(deleteSpot(deleteResponse, spotId));
     return deleteResponse;
   }
 };
@@ -144,7 +145,17 @@ const spotsReducer = (state = initialState, action) => {
       return { ...state };
     }
     case DELETE_SPOT:
-      return { ...state };
+      let newState = Object.keys(state)
+        .filter((spotId) => {
+          spotId = Number(spotId);
+          return spotId !== action.deletedSpotId;
+        })
+        .reduce((obj, key) => {
+          obj[key] = state[key];
+          return obj;
+        }, {});
+
+      return { ...newState };
 
     default:
       return state;
