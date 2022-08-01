@@ -26,7 +26,7 @@ const SpotsDetail = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (Object.keys(spot).length) {
+    if (Object.keys(spot).length && spot.id) {
       setIsLoaded(true);
     }
   }, [spot]);

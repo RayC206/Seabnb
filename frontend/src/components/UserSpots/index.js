@@ -27,7 +27,7 @@ const UserSpots = () => {
 
   useEffect(() => {
     // check if spots is not [] anymore (empty state)
-    if (spots.length) {
+    if (spots.length && spots[0].id) {
       setIsLoaded(true);
     }
   }, [spots]);
