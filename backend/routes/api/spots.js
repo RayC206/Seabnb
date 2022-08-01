@@ -120,8 +120,16 @@ router.get("/:spotId", async (req, res) => {
 router.post("/", requireAuth, async (req, res) => {
   spotParams = req.body;
   spotParams.ownerId = req.user.id;
+  let spot;
 
-  let spot = await Spot.create(spotParams);
+  try {
+    spot = await Spot.create(spotParams);
+  } catch (error) {
+    return res.status(400).json({
+      message: error.message,
+    });
+  }
+
   spot = await Spot.findByPk(spot.id);
   return res.json(spot);
 });
