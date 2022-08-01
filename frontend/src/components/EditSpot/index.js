@@ -55,13 +55,19 @@ const EditSpot = () => {
       price: price,
     };
 
-    return dispatch(spotActions.editASpot(data, spot.id))
+    return dispatch(spotActions.editASpot(data, spotId))
       .then(async (res) => {
         setSubmitSuccess(true);
       })
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data) {
+          if (data.errors) {
+            setErrors(data.errors);
+          } else if (data.message) {
+            setErrors([data.message]);
+          }
+        }
       });
   };
 
