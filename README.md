@@ -15,3 +15,7 @@ Frontend :
 Database: 
 ![image](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 
+## Wiki Link
+- [Database Schema, Store Shape, Features](https://github.com/RayC206/airbnb/wiki)
+
+
