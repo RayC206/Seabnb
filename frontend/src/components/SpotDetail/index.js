@@ -13,7 +13,7 @@ const SpotsDetail = () => {
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
-  const isSpotOwner = spot.ownerId === sessionUser.id;
+  const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
 
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
