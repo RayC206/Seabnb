@@ -74,7 +74,7 @@ const CreateReview = () => {
             history.push(path);
           }}
         >
-          Back
+          Go Back
         </button>
       )}
     </form>
