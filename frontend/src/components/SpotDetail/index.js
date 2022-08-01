@@ -34,7 +34,7 @@ const SpotsDetail = () => {
   const removeSpot = (e) => {
     e.preventDefault();
     dispatch(spotDelete(spotId));
-    history.push("/my-spots");
+    history.goBack();
   };
 
   const handleEdit = (e) => {
