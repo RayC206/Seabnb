@@ -31,18 +31,18 @@ const SpotsDetail = () => {
     }
   }, [spot]);
 
-  const removeSpot = (e) => {
-    e.preventDefault();
-    dispatch(spotDelete(spotId));
-    history.goBack();
-  };
+  // const removeSpot = (e) => {
+  //   e.preventDefault();
+  //   dispatch(spotDelete(spotId));
+  //   history.goBack();
+  // };
 
-  const handleEdit = (e) => {
-    e.preventDefault();
-    dispatch(editASpot(spotId));
-    let path = `/spots/${spotId}/edit`;
-    history.push(path);
-  };
+  // const handleEdit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(editASpot(spotId));
+  //   let path = `/spots/${spotId}/edit`;
+  //   history.push(path);
+  // };
 
   const handleCreateReview = (e) => {
     e.preventDefault();
@@ -88,12 +88,12 @@ const SpotsDetail = () => {
                 </p>
               </div>
             </div>
-            {isSpotOwner && (
-              <div className="spotButtons">
-                <button onClick={handleEdit}>Edit Spot</button>
-                <button onClick={removeSpot}>Delete Spot</button>
-              </div>
-            )}
+            {/* {isSpotOwner && (
+              // <div className="spotButtons">
+              //   <button onClick={handleEdit}>Edit Spot</button>
+              //   <button onClick={removeSpot}>Delete Spot</button>
+              // </div>
+            )} */}
           </div>
           <div className="reviewDiv">
             {reviews &&
