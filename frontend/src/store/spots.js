@@ -49,6 +49,8 @@ export const getAllSpots = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
     const spots = await response.json();
+    console.log("SPOTS FETCH");
+    console.log(spots);
     dispatch(getAll(spots));
     // const all = {};
     // spots.forEach((spot) => (all[spot.id] = spot));
@@ -142,9 +144,14 @@ const spotsReducer = (state = initialState, action) => {
       return { ...state };
     }
     case EDIT_SPOT: {
+      console.log("STATE");
+      console.log(state);
       return { ...state };
     }
     case DELETE_SPOT:
+      console.log(state);
+      console.log(Object.keys(state));
+      console.log(action.deletedSpotId);
       let newState = Object.keys(state)
         .filter((spotId) => {
           spotId = Number(spotId);
@@ -154,8 +161,17 @@ const spotsReducer = (state = initialState, action) => {
           obj[key] = state[key];
           return obj;
         }, {});
-
+      console.log(newState);
       return { ...newState };
+    // const deleteResponse = action.deleteResponse;
+    // if (deleteResponse.statusCode === 200) {
+    // return [
+    //   ...state.filter((spot) => {
+    //     return spot.id !== action.deletedSpotId;
+    //   }),
+    // ];
+    // }
+    // return { ...state };
 
     default:
       return state;

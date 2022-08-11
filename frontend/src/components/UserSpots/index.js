@@ -32,6 +32,20 @@ const UserSpots = () => {
     }
   }, [spots]);
 
+  const removeSpot = (e, spotId) => {
+    e.preventDefault();
+    dispatch(spotDelete(spotId));
+    // history.goBack();
+  };
+
+  const handleEdit = (e, spotId) => {
+    e.preventDefault();
+    // dispatch(findASpot(spotId));
+    // dispatch(editASpot(spotId));
+    let path = `/spots/${spotId}/edit`;
+    history.push(path);
+  };
+
   if (isLoaded) {
     return (
       <div className="spotsPage">
@@ -56,14 +70,18 @@ const UserSpots = () => {
                     <p className="spotPrice"> ${spot.price} night</p>
                   </div>
                 </NavLink>
-                {/* <div className="spotButtons">
+                <div className="spotButtons">
                   <button onClick={(e) => handleEdit(e, spot.id)}>
                     Edit Spot
                   </button>
                   <button onClick={(e) => removeSpot(e, spot.id)}>
                     Delete Spot
                   </button>
-                </div> */}
+                </div>
+
+                {/* <button onClick={(e) => removeSpot(e, spot.id)}>
+                  Delete Spot
+                </button> */}
               </div>
             );
           }

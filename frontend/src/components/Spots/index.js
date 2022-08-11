@@ -16,6 +16,7 @@ const SpotsPage = () => {
     }
     return []; // if not, that means spotsList is just one spot spread out into an array
   });
+  console.log(spotsList);
 
   const [isLoaded, setIsLoaded] = useState(false);
 
