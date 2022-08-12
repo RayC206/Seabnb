@@ -55,7 +55,7 @@ const SpotsPage = () => {
                         {Number(spot.avgStarRating) > 0 ? (
                           <span>
                             {" "}
-                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
+                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} 
                           </span>
                         ) : (
                           <span> No reviews</span>

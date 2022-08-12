@@ -13,11 +13,12 @@
 
 .spotImg {
     float: left;
-    width: 350px;
+    width: 360px;
     height: 300px;
     background-size: cover;
     border-radius: 33px;
     margin: 1rem;
+    margin-left: 5px ;
 }
 .spotName {
     padding-right: 20px;
@@ -27,6 +28,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 600;
+
 }
 .spotLocation {
     font-weight: normal;
@@ -36,6 +38,7 @@
 .spotAddress{
     text-decoration: underline;
     color: gray;
+    margin-left: 2rem;
 }
 .spotDetails {
     font-style: italic;
@@ -65,11 +68,14 @@ a:link {
     margin: 2px
 }
 
+/* .eachSpotDetail p:not(.spotImg) {
+    margin-left: 15px;
+} */
 
 
 .eachSpot {
   background-color: white;
-  border: 2px double rgb(216, 203, 203);
+  /* border: 2px double rgb(216, 203, 203); */
   font-family: 'Montserrat', sans-serif;
   color: black;
   border-radius: 20px;

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
+import { FaStar} from 'react-icons/fa';
 
 const UserSpots = () => {
   const history = useHistory();
@@ -55,19 +56,47 @@ const UserSpots = () => {
             return (
               <div key={index}>
                 <NavLink to={`/spots/${spot.id}`}>
-                  <div className="eachSpot">
+                  <div className="eachSpot" key={spot.id}>
+                    <div className="eachSpotDetail">
                     <img
                       className="spotImg"
                       src={spot.previewImage}
                       alt={spot.name}
                     ></img>
-                    <h3 className="spotName">{spot.name}</h3>
-                    <h4 className="spotLocation">
-                      {spot.city}, {spot.state}
-                    </h4>
-                    <p className="spotAddress">{spot.address}</p>
-                    <p className="spotDetails">{spot.description}</p>
-                    <p className="spotPrice"> ${spot.price} night</p>
+                      <p className="spotName">
+                        <p>{spot.name}</p>
+                        {/* <p className="spotAverageRating">
+                        {" "}
+                        {Number(spot.avgStarRating) > 0 ? (
+                          <span>
+                            {" "}
+                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
+                          </span>
+                        ) : (
+                          <span> No reviews</span>
+                        )}
+                      </p> */}
+
+                      </p>
+                      <p className="spotLocation">
+                        {spot.city}, {spot.state}
+                      </p>
+                      <p className="spotAddress">{spot.address}</p>
+                      <p className="spotDetails">{spot.description}</p>
+                      <p className="spotPrice"> <b>${spot.price}</b> night </p>
+
+                      {/* <p className="spotAverageRating">
+                        {" "}
+                        {Number(spot.avgStarRating) > 0 ? (
+                          <span>
+                            {" "}
+                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
+                          </span>
+                        ) : (
+                          <span> No reviews</span>
+                        )}
+                      </p> */}
+                    </div>
                   </div>
                 </NavLink>
                 <div className="spotButtons">
@@ -78,10 +107,6 @@ const UserSpots = () => {
                     Delete Spot
                   </button>
                 </div>
-
-                {/* <button onClick={(e) => removeSpot(e, spot.id)}>
-                  Delete Spot
-                </button> */}
               </div>
             );
           }
