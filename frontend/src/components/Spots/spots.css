@@ -20,28 +20,52 @@
     margin: 1rem;
 }
 .spotName {
-
+    padding-right: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     font-weight: 600;
 }
 .spotLocation {
     font-weight: normal;
+    color: gray;
 }
 
 .spotAddress{
     text-decoration: underline;
+    color: gray;
 }
-.spotDetails{
+.spotDetails {
     font-style: italic;
     font-size: 15px;
-}
-.spotPrice {
-    font-weight: bold;
+    color: gray;
+    margin-top: 2px;
+    margin-bottom: 10px;
+
 }
 
+.spotPrice span {
+    font-style: normal;
+}
 a:link {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
+
+.eachSpotDetail {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+.eachSpotDetail p:not(.spotDetails) {
+    margin: 2px
+}
+
+
 
 .eachSpot {
   background-color: white;
@@ -50,6 +74,6 @@ a:link {
   color: black;
   border-radius: 20px;
   margin: 10px;
-  text-align: center;
+  /* text-align: center; */
 
 }
