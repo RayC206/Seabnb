@@ -2,28 +2,36 @@
 
 
 .detailContainer {
+  margin: 20px auto 0 auto;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
-  margin-top: 5rem;
-  /* margin: 10px; */
-  padding: 10px;
-  /* width: 50%; */
-
+  width: 70%;
+  gap: 15px;
 }
 
 .containerBorder {
   display: flex;
   flex-direction: column;
-  border: 2px double rgb(216, 203, 203);
-  padding: 2rem;
-  border-radius: 10px;
-  width: 60%;
-  margin-bottom: 2rem;
-
+  gap: 15px;
+  margin: auto auto 0 30px;
+  width: 100%;
 }
 
+.topText {
+  margin-top: 0px;
+}
+
+.topDescription {
+  padding-right: 20px;
+  /* margin-top: 10px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
 
 .imageDetail {
   display: flex;
@@ -34,21 +42,35 @@
   height: 350px;
   background-size: cover;
   border-radius: 33px;
-  margin: 2rem;
-  position:static;
+  /* margin: 2rem; */
+  margin-top: 0px;
+  margin-bottom: 2rem;
+
+
+}
+
+.descriptionSection{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  padding-bottom: 20px;
+  border-bottom: 2px double rgb(216, 203, 203);
+  font-weight: 500;
+  width: 60%;
 }
 
 #Description {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 7rem;
-  margin-left: 2rem;
+  flex-direction: wrap;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 80px;
   font-family: 'Montserrat', sans-serif;
+
+
 
 }
 
-#Description > p {
+/* #Description > p {
   margin-left: 12px;
   margin-right: 5px;
 }
@@ -68,17 +90,39 @@
 #Description > .spotDetailDescription {
   font-style: italic;
   font-size: 15px;
-}
+} */
 
 .nameDetail {
   font-size: 40px;
   display: flex;
-  justify-content: center;
+  justify-content:flex-start;
   align-items: center;
   font-family: 'Montserrat', sans-serif;;
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  margin-bottom: 0px;
   font-style: normal;
   font-weight: 460;
+}
+
+.bookingBox {
+  width: 20%;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+
+.bookingPriceContainer {
+  display: flex ;
+  flex-flow: row wrap ;
+  justify-content: space-between ;
+  align-items: baseline ;
+  margin-bottom: 24px ;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.priceDetail > span {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .fourOhFour {
@@ -90,7 +134,7 @@
   justify-content: center;
 }
 
-.spotButtons > button {
+/* .spotButtons > button {
   background-color: white;
   border: none;
   font-size: 18px;
@@ -106,30 +150,14 @@
   margin: 10px;
   width: 100px;
 
-}
+} */
 
-.createReviewButton {
-  background-color: white;
-  border: none;
-  font-size: 18px;
-  margin-top: 20px;
+
+.reviewSection {
+  border-top: 2px double rgb(216, 203, 203);
   font-family: 'Montserrat', sans-serif;
-  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
-  font-weight: 450;
-  height: 42px;
-  margin: 10px;
-  width: 100px;
+
 }
-
-
-div#Description{
- border: 2px double rgb(216, 203, 203);
-}
-
 
 .eachReview {
   display: flex;
@@ -159,4 +187,22 @@ div#Description{
   flex-direction: column;
   align-items: center;
   width: 50%;
+}
+
+.createReviewButton {
+  align-self: center;
+  background-color: white;
+  border: none;
+  font-size: 18px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 450;
+  height: 42px;
+  margin: 10px;
+  width: 100px;
 }

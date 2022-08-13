@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
 import "./SpotsDetail.css";
+import { FaStar} from 'react-icons/fa';
+
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -56,44 +58,53 @@ const SpotsDetail = () => {
       return (
         <div className="detailContainer">
           <div className="containerBorder">
-            <div key={spot.id}>
+            <div className="topText" key={spot.id}>
               <h3 className="nameDetail">{spot.name}</h3>
-              <h4></h4>
-              <div>
+              <h2 className="topText">
+              <p className="topDescription">
+                  {" "}
+                  {Number(spot.avgStarRating) > 0 ? (
+                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} - {spot.city}, {spot.state}</span>
+                  ) : (
+                    <span> No reviews</span>
+                  )}
+                </p>
+              </h2>
+              <div className="imageSection">
                 <img
                   className="imageDetail"
                   src={spot.previewImage}
                   alt={spot.name}
                 ></img>
               </div>
-              <div id="Description">
-                <label></label>
-                <p>
+            </div>
+          </div>
+          <div className="descriptionSection"> Entire home hosted by Owner ID #{spot.ownerId}</div>
+            <div id="Description">
+                {/* <p>
                   {spot.city}, {spot.state}
-                </p>
-                <p className="spotDetailAddress">{spot.address}</p>
+                </p> */}
+                {/* <p className="spotDetailAddress">{spot.address}</p> */}
                 <p className="spotDetailDescription">{spot.description}</p>
-                <p className="spotDetailPrice">
-                  {" "}
-                  ${spot.price} <a className="priceDetail">night</a>{" "}
-                </p>
-                <p>
-                  {" "}
-                  Average rating:
-                  {Number(spot.avgStarRating) > 0 ? (
-                    <span> {Number(spot.avgStarRating).toFixed(1)} / 5</span>
+                <div className="bookingBox">
+                  <p className="bookingPriceContainer">
+                    {" "}
+                    <a className="priceDetail"> <b>${spot.price}</b> night</a>{" "}
+
+                    <div className="reviewDiv">{Number(spot.avgStarRating) > 0 ? (
+                      <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(2)} </span>
+                     ) : (
+                      <span> No reviews</span>
+                    )}</div>
+                  </p>
+                </div>
+            </div>
+          <div className="reviewSection">
+            <h2>Reviews {Number(spot.avgStarRating) > 0 ? (
+                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} </span>
                   ) : (
                     <span> No reviews</span>
-                  )}
-                </p>
-              </div>
-            </div>
-            {/* {isSpotOwner && (
-              // <div className="spotButtons">
-              //   <button onClick={handleEdit}>Edit Spot</button>
-              //   <button onClick={removeSpot}>Delete Spot</button>
-              // </div>
-            )} */}
+                  )}</h2>
           </div>
           <div className="reviewDiv">
             {reviews &&
@@ -110,7 +121,7 @@ const SpotsDetail = () => {
                         <div className="reviewStars">
                           {" "}
                           <span>Rating :</span>{" "}
-                          {Number(review.stars).toFixed(1)} out of 5 stars
+                          {Number(review.stars).toFixed(2)} out of 5 stars
                         </div>
                       </div>
                     </label>
