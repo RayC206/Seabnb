@@ -89,7 +89,7 @@ const SpotsDetail = () => {
                 <div className="bookingBox">
                   <p className="bookingPriceContainer">
                     {" "}
-                    <a className="priceDetail"> <b>${spot.price}</b> night</a>{" "}
+                    <a className="priceDetail"> <span>${spot.price}</span> night</a>{" "}
 
                     <div className="reviewDiv">{Number(spot.avgStarRating) > 0 ? (
                       <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(2)} </span>
@@ -100,11 +100,11 @@ const SpotsDetail = () => {
                 </div>
             </div>
           <div className="reviewSection">
-            <h2>Reviews {Number(spot.avgStarRating) > 0 ? (
+            <h3>Reviews {Number(spot.avgStarRating) > 0 ? (
                     <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} </span>
                   ) : (
                     <span> No reviews</span>
-                  )}</h2>
+                  )}</h3>
           </div>
           <div className="reviewDiv">
             {reviews &&
