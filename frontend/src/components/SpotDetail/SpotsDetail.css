@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+.nameDetail {
+  font-size: 26px;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;;
+  /* margin-top: 20px; */
+  margin-bottom: 0px;
+  font-style: normal;
+  font-weight: 460;
+}
 
 .detailContainer {
   margin: 20px auto 0 auto;
@@ -51,7 +62,7 @@
 
 .descriptionSection{
   font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   padding-bottom: 20px;
   border-bottom: 2px double rgb(216, 203, 203);
   font-weight: 500;
@@ -92,17 +103,6 @@
   font-size: 15px;
 } */
 
-.nameDetail {
-  font-size: 40px;
-  display: flex;
-  justify-content:flex-start;
-  align-items: center;
-  font-family: 'Montserrat', sans-serif;;
-  /* margin-top: 20px; */
-  margin-bottom: 0px;
-  font-style: normal;
-  font-weight: 460;
-}
 
 .bookingBox {
   width: 20%;
@@ -122,6 +122,8 @@
 }
 
 .priceDetail > span {
+  font-size: 20px;
+  font-weight: 500;
   font-family: 'Montserrat', sans-serif;
 }
 
