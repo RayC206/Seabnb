@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
-import "./SpotsDetail.css";
+import "../CSS/SpotsDetail.css";
 import { FaStar} from 'react-icons/fa';
 
 
