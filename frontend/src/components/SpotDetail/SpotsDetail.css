@@ -6,7 +6,6 @@
   justify-content:flex-start;
   align-items: center;
   font-family: 'Montserrat', sans-serif;;
-  /* margin-top: 20px; */
   margin-bottom: 0px;
   font-style: normal;
   font-weight: 460;
@@ -34,7 +33,6 @@
 
 .topDescription {
   padding-right: 20px;
-  /* margin-top: 10px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,7 +51,6 @@
   height: 350px;
   background-size: cover;
   border-radius: 33px;
-  /* margin: 2rem; */
   margin-top: 0px;
   margin-bottom: 2rem;
 
@@ -81,27 +78,6 @@
 
 }
 
-/* #Description > p {
-  margin-left: 12px;
-  margin-right: 5px;
-}
-
-#Description > .spotDetailAddress {
-  text-decoration: underline;
-}
-
-#Description > .spotDetailPrice {
-  font-weight: 550;
-}
-
-#Description > .spotDetailPrice > .priceDetail {
-  font-weight: normal;
-}
-
-#Description > .spotDetailDescription {
-  font-style: italic;
-  font-size: 15px;
-} */
 
 
 .bookingBox {
@@ -136,23 +112,6 @@
   justify-content: center;
 }
 
-/* .spotButtons > button {
-  background-color: white;
-  border: none;
-  font-size: 18px;
-  margin-top: 20px;
-  font-family: 'Montserrat', sans-serif;
-  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
-  font-weight: 450;
-  height: 42px;
-  margin: 10px;
-  width: 100px;
-
-} */
 
 
 .reviewSection {
