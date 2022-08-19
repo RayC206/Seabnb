@@ -40,12 +40,12 @@
   align-items: center;
 }
 
-.reviewPageButtons {
+.pageButtons {
   display: flex;
   justify-content: center;
 }
 
-.reviewPageButtons > button {
+.pageButtons > button {
   background-color: white;
   border: none;
   font-size: 18px;

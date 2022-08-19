@@ -61,7 +61,7 @@ const UserReviews = () => {
                 <br />
                 <br />
               </div>
-              <div className="reviewPageButtons">
+              <div className="pageButtons">
                 <button
                   onClick={(e) => handleDeleteReview(e, review.review.id)}
                 >

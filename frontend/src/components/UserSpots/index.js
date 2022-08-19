@@ -3,8 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
-import { editASpot, findASpot, spotDelete } from "../../store/spots";
-import { FaStar} from 'react-icons/fa';
+import { spotDelete } from "../../store/spots";
 
 const UserSpots = () => {
   const history = useHistory();
@@ -36,13 +35,10 @@ const UserSpots = () => {
   const removeSpot = (e, spotId) => {
     e.preventDefault();
     dispatch(spotDelete(spotId));
-    // history.goBack();
   };
 
   const handleEdit = (e, spotId) => {
     e.preventDefault();
-    // dispatch(findASpot(spotId));
-    // dispatch(editASpot(spotId));
     let path = `/spots/${spotId}/edit`;
     history.push(path);
   };
@@ -99,7 +95,7 @@ const UserSpots = () => {
                     </div>
                   </div>
                 </NavLink>
-                <div className="spotButtons">
+                <div className="pageButtons">
                   <button onClick={(e) => handleEdit(e, spot.id)}>
                     Edit Spot
                   </button>
