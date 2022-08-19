@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as spotActions from "../../store/spots";
-import "./CreateSpot.css";
+import "../CSS/CreateSpot.css";
 
 const CreateSpot = () => {
   // const sessionUser = useSelector((state) => state.session.user);
