@@ -20,6 +20,11 @@ button{
  border-width: 1px
 }
 
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
 .profileDropdown {
   display: flex;
   align-items: center;
@@ -31,6 +36,10 @@ button{
   color: #717171;
   border-bottom: 1px solid rgb(216, 203, 203);
 
+}
+
+.profileDropdown:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #rightNav > button {
@@ -69,18 +78,6 @@ button{
     font-size: 25px;
 }
 
-
-
-
-/* .nav_bars_icon {
-  color: #595959;
-  font-size: 17px;
-  padding-left: 5px;
-}
-.nav_user_icon {
-  margin: 10px;
-} */
-
 .user_icon{
   color: #717171;
   font-size: 25px;
@@ -108,9 +105,9 @@ button{
 
 }
 
-#menu > * {
+#menu > *{
   padding: 15px;
-  width: 100%;
+  /* width: 100%; */
   font-size: 15px;
   display: flex;
   align-items: center;
@@ -118,13 +115,23 @@ button{
   letter-spacing: .5px;
 }
 
-#dropdown1,
-#dropdown2 {
+#menu > *:hover:not(.loggedInUser) {
+  text-shadow: 2px 2px 4px #5c5757;
+}
+
+
+#dropDown1,
+#dropDown2 {
   font-size: 15px;
   color: rgb(85, 74, 74);
   font-weight: 450;
   font-family: 'Montserrat', sans-serif;
 
+}
+
+.createSpotDropdown {
+  border-top: 1px solid rgb(216, 203, 203);
+  border-width: 0%;
 }
 
 

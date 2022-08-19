@@ -64,7 +64,7 @@ const SpotsDetail = () => {
               <p className="topDescription">
                   {" "}
                   {Number(spot.avgStarRating) > 0 ? (
-                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} - {spot.city}, {spot.state}</span>
+                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} - <span className="reviewTopDescription"> {reviews.length} reviews</span> - {spot.city}, {spot.state}</span>
                   ) : (
                     <span> No reviews</span>
                   )}
@@ -92,7 +92,7 @@ const SpotsDetail = () => {
                     <a className="priceDetail"> <span>${spot.price}</span> night</a>{" "}
 
                     <div className="reviewDiv">{Number(spot.avgStarRating) > 0 ? (
-                      <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(2)} </span>
+                      <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(2)} ({reviews.length})</span>
                      ) : (
                       <span> No reviews</span>
                     )}</div>
@@ -100,8 +100,8 @@ const SpotsDetail = () => {
                 </div>
             </div>
           <div className="reviewSection">
-            <h3>Reviews {Number(spot.avgStarRating) > 0 ? (
-                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} </span>
+            <h3>{Number(spot.avgStarRating) > 0 ? (
+                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} - {reviews.length} reviews</span>
                   ) : (
                     <span> No reviews</span>
                   )}</h3>

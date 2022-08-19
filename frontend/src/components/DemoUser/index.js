@@ -1,6 +1,7 @@
 import React from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import './DemoUser.css'
 
 function DemoUser() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function DemoUser() {
     return dispatch(sessionActions.login({ email, password }));
   };
 
-  return <button onClick={loginDemo}>Demo User</button>;
+  return <button className="demoLoginButton" onClick={loginDemo}>Demo User</button>;
 }
 
 export default DemoUser;

@@ -1,0 +1,16 @@
+.demoLoginButton {
+  background-color: white;
+  border: none;
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  width: 370px;
+}

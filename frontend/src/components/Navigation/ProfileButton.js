@@ -43,17 +43,19 @@ function ProfileButton({user}) {
       </button>
       {showMenu && (
         <div id="menu">
-          <div> {`Hello, ${user.username}`}  </div>
-          <Link to="/spots/create" id="dropdown1">
+          <div className="loggedInUser"> {`Hello, ${user.username}`}
+          </div>
+          {/* <div className="dividerDropdown"></div> */}
+          <Link className='createSpotDropdown' to="/spots/create" id="dropDown1">
             Create a Spot
           </Link>
-          <Link to="/my-spots" id="dropdown1">
+          <Link to="/my-spots" id="dropDown1">
             My Spots
           </Link>
-          <Link to="/my-reviews" id="dropdown1">
+          <Link to="/my-reviews" id="dropDown1">
             My Reviews
           </Link>
-          <div onClick={logout} id="dropdown2">
+          <div onClick={logout} id="dropDown2">
             Log out
           </div>
         </div>
