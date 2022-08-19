@@ -38,6 +38,9 @@ function Navigation({ isLoaded }) {
         </div>
         {isLoaded && sessionLinks}
       </div>
+      <div id="footerBar">
+        
+      </div>
     </nav>
   );
 }
