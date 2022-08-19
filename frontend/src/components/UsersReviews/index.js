@@ -3,7 +3,7 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
-import "./UsersReviews.css";
+import "../CSS/UsersReviews.css";
 
 const UserReviews = () => {
   const dispatch = useDispatch();

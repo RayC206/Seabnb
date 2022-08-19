@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
-import "./EditSpot.css";
+import "../CSS/EditSpot.css";
 
 const EditSpot = () => {
   const dispatch = useDispatch();

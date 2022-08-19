@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllSpots } from "../../store/spots";
 import { FaStar} from 'react-icons/fa';
-
-import "./spots.css";
+import "../CSS/spots.css";
 
 const SpotsPage = () => {
   const dispatch = useDispatch();
@@ -55,7 +54,7 @@ const SpotsPage = () => {
                         {Number(spot.avgStarRating) > 0 ? (
                           <span>
                             {" "}
-                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} 
+                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
                           </span>
                         ) : (
                           <span> No reviews</span>

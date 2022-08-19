@@ -1,7 +1,7 @@
 import React from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-import './DemoUser.css'
+import '../CSS/DemoUser.css'
 
 function DemoUser() {
   const dispatch = useDispatch();
