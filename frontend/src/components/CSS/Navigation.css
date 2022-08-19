@@ -107,7 +107,6 @@ button:hover {
 
 #menu > *{
   padding: 15px;
-  /* width: 100%; */
   font-size: 15px;
   display: flex;
   align-items: center;

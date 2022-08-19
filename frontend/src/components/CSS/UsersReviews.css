@@ -6,13 +6,16 @@
   padding:40px;
   border: 2px double rgb(216, 203, 203);
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 
 .eachReviewContainer span {
   font-size: 15px;
   margin-right: 12px ;
   font-family: 'Montserrat', sans-serif;
 }
+
 
 
 .reviewDescription {

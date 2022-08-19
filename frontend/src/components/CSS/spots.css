@@ -8,7 +8,6 @@
     display: flex;
     flex-wrap: wrap;
     margin: 1rem;
-
 }
 
 .spotImg {
@@ -28,8 +27,8 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 600;
-
 }
+
 .spotLocation {
     font-weight: normal;
     color: gray;
@@ -78,8 +77,6 @@ a:link {
     color: black;
     border-radius: 20px;
     margin: 10px;
-
-
 }
 
 .eachSpot:hover {
