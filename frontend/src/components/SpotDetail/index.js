@@ -62,7 +62,7 @@ const SpotsDetail = () => {
               <h2 className="topText">
                 <p className="topDescription">
                   {" "}
-                  {Number(spot.avgStarRating) > 0 ? (
+                  {Number(spot.avgStarRating) > 0 && reviews ? (
                     <span>
                       {" "}
                       <FaStar className="starRating" />{" "}
@@ -101,7 +101,7 @@ const SpotsDetail = () => {
                   <span>${spot.price}</span> night
                 </a>{" "}
                 <div className="reviewDiv">
-                  {Number(spot.avgStarRating) > 0 ? (
+                  {Number(spot.avgStarRating) > 0 && reviews ? (
                     <span>
                       {" "}
                       <FaStar className="starRating" />{" "}

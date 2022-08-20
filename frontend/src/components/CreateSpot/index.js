@@ -11,9 +11,7 @@ const CreateSpot = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [previewImage, setPreviewImage] = useState(
-    "https://static.wikia.nocookie.net/hypotheticalspongebob/images/2/2d/Plankton%27s_House.png"
-  );
+  const [previewImage, setPreviewImage] = useState("");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
   const [name, setName] = useState("");
