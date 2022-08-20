@@ -36,7 +36,7 @@ function ProfileButton({user}) {
 
   return (
     <>
-     <div className="button">
+     <div className="profileDropdownDiv">
       <button className="profileDropdown" onClick={openMenu}>
         <div className="menu_drop"><FaBars/></div>
         <div className="user_icon"><FaUserCircle/></div>

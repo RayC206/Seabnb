@@ -11,6 +11,10 @@
 
 }
 
+.profileDropdownDiv {
+  margin-right: 20px;
+}
+
 button{
  border-radius: 100px;
  height: 40px;
@@ -30,8 +34,8 @@ button:hover {
   align-items: center;
   justify-content: space-around;
   background-color: white;
-  height: 43px;
-  width: 77px;
+  height: 45px;
+  width: 80px;
   border-radius: 20px;
   color: #717171;
   border-bottom: 1px solid rgb(216, 203, 203);
@@ -61,21 +65,22 @@ button:hover {
 
 #logo_div {
   height: 100%;
-  width: 16%;
+  width: 12%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #logo_div > a > img {
-  height: 70px;
-  width: 170px;
+  height: 65px;
+  width: 160px;
 }
 
 .user_icon{
   color: #717171;
-    padding-right: px;
+    padding: 2px;
     font-size: 25px;
+    margin-top: 4px;
 }
 
 .user_icon{
@@ -87,6 +92,7 @@ button:hover {
   color: #595959;
   font-size: 17px;
   padding-left: 5px;
+  margin-top: 4px;
 }
 
 #menu{
