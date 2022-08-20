@@ -156,3 +156,24 @@ button:hover {
   background-color: white;
   border-top: 1px solid rgb(216, 203, 203);
 } */
+
+
+
+/* Testing media queries */
+@media only screen and (max-width: 600px) {
+   #navBar {
+    width: 140%;
+  }
+
+  #logo_div {
+    height: 100%;
+    width: 35%;
+  }
+
+  #menu {
+    top: 11%;
+    right: -30%;
+    width: 200px;
+  }
+
+}

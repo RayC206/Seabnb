@@ -68,3 +68,19 @@ div .ImageCard {
 .imageOverlay > button > p:hover {
   cursor: pointer;
 }
+
+
+
+/* Testing media queries */
+@media only screen and (max-width: 600px) {
+  .image {
+    top: 2%;
+    width: 140%;
+    height: 150%;
+  }
+
+  .imageOverlay {
+    left: 67%;
+    top: 67%;
+  }
+}

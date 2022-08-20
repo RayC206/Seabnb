@@ -149,6 +149,7 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
+
 }
 
 .createReviewButton {
@@ -167,4 +168,41 @@
   height: 42px;
   margin: 10px;
   width: 100px;
+}
+
+
+
+/* Testing media queries */
+@media only screen and (max-width: 600px) {
+  .nameDetail {
+    width: 120%;
+  }
+  .detailContainer {
+    width: 100%;
+  }
+  .descriptionSection{
+    width: 100%;
+    margin-left: 2rem;
+  }
+  #Description {
+    width: 120%;
+    margin-left: 2rem;
+  }
+
+  .bookingPriceContainer > .reviewDiv {
+    display: none;
+  }
+
+  .reviewSection {
+    width: 100%;
+    margin-left: 2rem;
+  }
+
+  .reviewDiv {
+    width: 100%;
+    margin-left: 2rem;
+  }
+  .createReviewButton {
+    margin-left: 4rem;
+  }
 }
