@@ -14,9 +14,9 @@ return (
   // <main>
     <div className="homeImageCard">
        <div className="ImageCard">
-          <img className="image" src='https://i.imgur.com/vSe9cmD.jpeg'></img>
+          <img className="image" src='https://images.pexels.com/photos/5232185/pexels-photo-5232185.jpeg'></img>
              <div className="imageOverlay">
-              <p></p>
+              <p>Need a Beach Vacation?</p>
                <button onClick={redirect}><p>Discover</p></button>
              </div>
            </div>

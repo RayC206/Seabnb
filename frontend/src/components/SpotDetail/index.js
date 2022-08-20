@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { editASpot, findASpot, spotDelete } from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
 import "../CSS/SpotsDetail.css";
-import { FaStar} from 'react-icons/fa';
-
+import { FaStar } from "react-icons/fa";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -61,10 +60,15 @@ const SpotsDetail = () => {
             <div className="topText" key={spot.id}>
               <h3 className="nameDetail">{spot.name}</h3>
               <h2 className="topText">
-              <p className="topDescription">
+                <p className="topDescription">
                   {" "}
                   {Number(spot.avgStarRating) > 0 ? (
-                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} - {reviews.length} reviews - {spot.city}, {spot.state}</span>
+                    <span>
+                      {" "}
+                      <FaStar className="starRating" />{" "}
+                      {Number(spot.avgStarRating).toFixed(1)} - {reviews.length}{" "}
+                      reviews - {spot.city}, {spot.state}
+                    </span>
                   ) : (
                     <span> No reviews</span>
                   )}
@@ -79,32 +83,50 @@ const SpotsDetail = () => {
               </div>
             </div>
           </div>
-          <div className="descriptionSection"> Entire home hosted by Owner ID #{spot.ownerId}</div>
-            <div id="Description">
-                {/* <p>
+          <div className="descriptionSection">
+            {" "}
+            Entire home hosted by Owner ID #{spot.ownerId}
+          </div>
+          <div id="Description">
+            {/* <p>
                   {spot.city}, {spot.state}
                 </p> */}
-                {/* <p className="spotDetailAddress">{spot.address}</p> */}
-                <p className="spotDetailDescription">{spot.description}</p>
-                <div className="bookingBox">
-                  <p className="bookingPriceContainer">
-                    {" "}
-                    <a className="priceDetail"> <span>${spot.price}</span> night</a>{" "}
-
-                    <div className="reviewDiv">{Number(spot.avgStarRating) > 0 ? (
-                      <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(2)} ({reviews.length})</span>
-                     ) : (
-                      <span> No reviews</span>
-                    )}</div>
-                  </p>
-                </div>
-            </div>
-          <div className="reviewSection">
-            <h3>{Number(spot.avgStarRating) > 0 ? (
-                    <span> <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)} - {reviews.length} reviews</span>
+            {/* <p className="spotDetailAddress">{spot.address}</p> */}
+            <p className="spotDetailDescription">{spot.description}</p>
+            <div className="bookingBox">
+              <p className="bookingPriceContainer">
+                {" "}
+                <a className="priceDetail">
+                  {" "}
+                  <span>${spot.price}</span> night
+                </a>{" "}
+                <div className="reviewDiv">
+                  {Number(spot.avgStarRating) > 0 ? (
+                    <span>
+                      {" "}
+                      <FaStar className="starRating" />{" "}
+                      {Number(spot.avgStarRating).toFixed(2)} ({reviews.length})
+                    </span>
                   ) : (
                     <span> No reviews</span>
-                  )}</h3>
+                  )}
+                </div>
+              </p>
+            </div>
+          </div>
+          <div className="reviewSection">
+            <h3>
+              {Number(spot.avgStarRating) > 0 && reviews ? (
+                <span>
+                  {" "}
+                  <FaStar className="starRating" />{" "}
+                  {Number(spot.avgStarRating).toFixed(1)} - {reviews.length}{" "}
+                  reviews
+                </span>
+              ) : (
+                <span> No reviews</span>
+              )}
+            </h3>
           </div>
           <div className="reviewDiv">
             {reviews &&

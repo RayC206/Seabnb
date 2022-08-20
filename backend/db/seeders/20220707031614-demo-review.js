@@ -6,32 +6,32 @@ module.exports = {
       {
         userId: 1,
         spotId: 1,
-        review: 'The bed was a little too high, the pet snail meows when he wants food. Other than that, the place is welcoming',
+        review: 'Without a doubt a great experience for us staying here. Place was clean with an amazing view of the sunset. Only con is being far away from a lot of things but it gives you a great chance to explore the island more with the drive.',
         stars: 4
       },
       {
         userId: 2,
         spotId: 2,
-        review: 'Very tight space, not recommended if you are claustrophobic.',
-        stars: 2
+        review: 'Loved this spot. Fantastic beaches are right around the corner - the waves in Makaha were world class and the hike to the point was excellent. Would stay again!',
+        stars: 5
       },
       {
         userId: 3,
         spotId: 3,
-        review: 'Neighbors were noisy, and the art pieces displayed were very strange.',
-        stars: 3
+        review: 'Great Location, perfect place to stay if you want to be close to the beach',
+        stars: 4
       },
       {
         userId: 4,
         spotId: 4,
-        review: 'Water helmet is needed if you have gills, very nice land experience.',
+        review: 'Amazing host and Beautiful Home, really enjoyed the short walk to the beach.',
         stars: 5
       },
       {
         userId: 5,
         spotId: 5,
-        review: 'Too expensive, I was told extra pillows and blankets were 10 dollars extra! Also, The appliances were all coin operated! Rip off.',
-        stars: 2
+        review: 'Beautiful view of the Ocean, Looking forward to returning',
+        stars: 5
       }
     ], {});
   },
