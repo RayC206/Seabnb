@@ -66,7 +66,7 @@ const SpotsPage = () => {
                         {spot.city}, {spot.state}
                       </p>
                       <p className="spotAddress">{spot.address}</p>
-                      <p className="spotDetails">{spot.description}</p>
+                      {/* <p className="spotDetails">{spot.description}</p> */}
                       <p className="spotPrice"> <b>${spot.price}</b> night </p>
 
                       {/* <p className="spotAverageRating">
