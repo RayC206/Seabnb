@@ -15,7 +15,7 @@
   align-items: center;
   position: absolute;
   left: 50%;
-  top: 67%;
+  top: 35%;
   transform: translate(-50%, 0);
 }
 
@@ -36,10 +36,11 @@ div .ImageCard {
 
 /* Font overlay */
 .imageOverlay > p {
-  color: rgb(252, 252, 252, .8);
-  font-family: sans-serif;
+  color: rgb(252, 252, 252, 1);
+  text-shadow: 0px 1px 4px #181b16;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600px;
-  font-size: 35px;
+  font-size: 40px;
   white-space: nowrap;
 
 }
@@ -59,6 +60,7 @@ div .ImageCard {
 .imageOverlay >button > p {
   font-weight: 700;
   font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
   background:
       linear-gradient(100deg, #5272c6, #907bc9);
   background-clip: text;
@@ -82,5 +84,9 @@ div .ImageCard {
   .imageOverlay {
     left: 67%;
     top: 67%;
+  }
+
+  .imageOverlay > p {
+    font-size: 33px;
   }
 }
