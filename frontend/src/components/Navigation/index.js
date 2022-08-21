@@ -15,6 +15,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <div id="rightNav">
+          <NavLink className='hostSpot' to='/spots/create'>Become a Host</NavLink>
           <ProfileButton user={sessionUser} />
         </div>
       </>

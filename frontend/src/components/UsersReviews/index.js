@@ -44,7 +44,7 @@ const UserReviews = () => {
             <div className="innerContainer">
               <div className="eachReviewContainer" key={index}>
                 <label>
-                  <div>
+                  <div key={index}>
                     <span>Review:</span>
                     <div>---</div>
                     <div className="reviewDescription">
