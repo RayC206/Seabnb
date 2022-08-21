@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { editASpot, findASpot, spotDelete } from "../../store/spots";
+import { findASpot} from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
@@ -11,13 +11,16 @@ const SpotsDetail = () => {
   spotId = Number(spotId);
   const history = useHistory();
   const dispatch = useDispatch();
+
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
-  const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
+  // might use this later
+  // const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
 
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
+
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -32,24 +35,15 @@ const SpotsDetail = () => {
     }
   }, [spot]);
 
-  // const removeSpot = (e) => {
-  //   e.preventDefault();
-  //   dispatch(spotDelete(spotId));
-  //   history.goBack();
-  // };
-
-  // const handleEdit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(editASpot(spotId));
-  //   let path = `/spots/${spotId}/edit`;
-  //   history.push(path);
-  // };
-
   const handleCreateReview = (e) => {
     e.preventDefault();
     dispatch(createReview(spotId));
     let path = `/spots/${spotId}/create-review`;
-    history.push(path);
+    if (sessionUser) {
+      history.push(path);
+    } else {
+      history.push("/login");
+    }
   };
 
   if (isLoaded) {
@@ -94,7 +88,7 @@ const SpotsDetail = () => {
             {/* <p className="spotDetailAddress">{spot.address}</p> */}
             <p className="spotDetailDescription">{spot.description}</p>
             <div className="bookingBox">
-              <p className="bookingPriceContainer">
+              <div className="bookingPriceContainer">
                 {" "}
                 <a className="priceDetail">
                   {" "}
@@ -111,7 +105,7 @@ const SpotsDetail = () => {
                     <span> No reviews</span>
                   )}
                 </div>
-              </p>
+              </div>
             </div>
           </div>
           <div className="reviewSection">
@@ -160,9 +154,6 @@ const SpotsDetail = () => {
       return (
         <div className="fourOhFour">
           <a className="fourOh">404: Spot not found</a>
-          <div>
-            <img src="https://images6.fanpop.com/image/photos/36500000/spongebob-spongebob-squarepants-36544130-500-338.png"></img>
-          </div>
         </div>
       );
     }

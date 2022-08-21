@@ -61,18 +61,6 @@ const UserSpots = () => {
                     ></img>
                       <p className="spotName">
                         <p>{spot.name}</p>
-                        {/* <p className="spotAverageRating">
-                        {" "}
-                        {Number(spot.avgStarRating) > 0 ? (
-                          <span>
-                            {" "}
-                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
-                          </span>
-                        ) : (
-                          <span> No reviews</span>
-                        )}
-                      </p> */}
-
                       </p>
                       <p className="spotLocation">
                         {spot.city}, {spot.state}
@@ -80,18 +68,6 @@ const UserSpots = () => {
                       <p className="spotAddress">{spot.address}</p>
                       {/* <p className="spotDetails">{spot.description}</p> */}
                       <p className="spotPrice"> <b>${spot.price}</b> night </p>
-
-                      {/* <p className="spotAverageRating">
-                        {" "}
-                        {Number(spot.avgStarRating) > 0 ? (
-                          <span>
-                            {" "}
-                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
-                          </span>
-                        ) : (
-                          <span> No reviews</span>
-                        )}
-                      </p> */}
                     </div>
                   </div>
                 </NavLink>

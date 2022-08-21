@@ -1,30 +1,35 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "../CSS/LoginForm.css";
 import DemoUser from "../DemoUser";
 
-function LoginForm() {
+function LoginForm({ modalToggle }) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) {
-    return <Redirect to="/" />;
+    history.goBack();
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ email, password })).catch(
-      async (res) => {
+    return dispatch(sessionActions.login({ email, password }))
+      .then(() => {
+        modalToggle(false);
+      })
+      .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      }
-    );
+      });
   };
 
   return (

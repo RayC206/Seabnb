@@ -11,7 +11,6 @@ const Homepage = () => {
   };
 
 return (
-  // <main>
     <div className="homeImageCard">
        <div className="ImageCard">
           <img className="image" src='https://images.pexels.com/photos/5232185/pexels-photo-5232185.jpeg'></img>
@@ -21,7 +20,6 @@ return (
              </div>
            </div>
        </div>
-    // </main>
   )
 }
 

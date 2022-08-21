@@ -17,6 +17,7 @@ import UserReviews from "./components/UsersReviews";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -26,14 +27,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-           <Route exact path="/">
-            <Homepage/>
+          <Route exact path="/">
+            <Homepage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
           <Route path="/login">
-            <LoginFormModal />
+            <LoginFormModal isOpen={true} modalToggle={() => {}} />
           </Route>
           <Route exact path="/spots/">
             <SpotsPage />

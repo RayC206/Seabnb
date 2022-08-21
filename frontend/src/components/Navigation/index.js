@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -8,6 +8,7 @@ import "../CSS/Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const [loginFormModalIsOpen, setLoginFormModalIsOpen] = useState(false);
 
   let sessionLinks;
   if (sessionUser) {
@@ -21,7 +22,11 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div id="rightNav">
-        <LoginFormModal />
+        <button onClick={() => setLoginFormModalIsOpen(true)}>Log In</button>
+        <LoginFormModal
+          isOpen={loginFormModalIsOpen}
+          modalToggle={setLoginFormModalIsOpen}
+        />
         <button className="signUpButton">
           <Link to="/signup">Sign Up</Link>
         </button>
