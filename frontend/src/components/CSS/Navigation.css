@@ -157,8 +157,9 @@ button:hover {
   border-top: 1px solid rgb(216, 203, 203);
 } */
 
-a {
+.signUpButton Link {
   text-decoration: none;
+  color: white;
 }
 
 
