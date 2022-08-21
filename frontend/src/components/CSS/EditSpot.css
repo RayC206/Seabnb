@@ -9,6 +9,7 @@
   border: none;
   font-size: 18px;
   margin-top: 20px;
+  margin-left: 2rem;
   font-family: 'Montserrat', sans-serif;
   background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
   border: none;
@@ -23,15 +24,27 @@
 .spotsEdit span {
   font-size: 15px;
   margin-right: 12px ;
+  width: 19%;
  }
 
 .editSpotContainer {
   display: flex;
   justify-content: center;
-  width: 50%;;
+  width: 35%;;
   margin: auto;
   margin-top: 10%;
   padding:40px;
   border: 2px double rgb(216, 203, 203);
   border-radius: 20px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .editSpotContainer {
+    width: 115%;
+  }
+
+  .editSpotButton {
+    margin-left: 3rem;
+  }
 }
