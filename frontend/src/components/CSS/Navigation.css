@@ -53,6 +53,9 @@ button:hover {
   margin-right: 20px;
 }
 
+.hostSpot:hover {
+  font-weight: 600;
+}
 
 #rightNav {
   display: flex;
