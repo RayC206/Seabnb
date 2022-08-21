@@ -63,6 +63,7 @@ const CreateSpot = () => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <h1 className="createFormTitle">Welcome to Seabnb</h1>
         <label className="createName">
           <span> Name: </span>
           <input

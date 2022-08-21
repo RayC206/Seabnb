@@ -10,6 +10,11 @@
   margin-right: 12px ;
 }
 
+.signUpFormContainer span {
+  width: 20%;
+}
+
+
 .signUpFormContainer {
   display: flex;
   justify-content: center;
@@ -35,5 +40,22 @@
   font-weight: 600;
   height: 50px;
   width: 150px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .welcomeContainer {
+    margin: 0px 0px 20px 20%;
+  }
+
+  .signUpFormContainer {
+    width: 110%;
+    margin-left: 10px;
+  }
+
+  .signUpButton {
+    width: 50%;
+    margin-left: 7rem;
+  }
 
 }

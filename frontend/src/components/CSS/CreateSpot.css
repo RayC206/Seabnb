@@ -1,3 +1,13 @@
+.createFormTitle {
+  display: flex;
+  align-content: center;
+  text-align: center;
+  margin: 0px 0px 20px 20%;
+  font-size: 24px;
+  font-weight: 500px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .spotsCreate label{
   display: flex;
   padding: 5px;
@@ -8,6 +18,7 @@
   border: none;
   font-size: 18px;
   margin-top: 20px;
+  margin-left: 3rem;
   font-family: 'Montserrat', sans-serif;
   background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
   border: none;
@@ -22,6 +33,7 @@
  .spotsCreate span {
   font-size: 15px;
   margin-right: 12px ;
+  width: 20%;
  }
 
  input {
@@ -47,3 +59,14 @@
 }
 
 
+@media only screen and (max-width: 600px) {
+    .createFormTitle {
+      margin: 0px 0px 20px 20%;
+    }
+
+    .formContainer{
+      width: 110%;
+      margin-left: 9px;
+    }
+
+}
