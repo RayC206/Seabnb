@@ -1,8 +1,33 @@
+
+.createReviewContainer {
+  display: flex;
+  justify-content: center;
+  width: 35%;
+  margin: auto;
+  margin-top: 15%;
+  padding:20px;
+  border: 2px double rgb(216, 203, 203);
+  border-radius: 20px;
+}
+
+.reviewFormTitle {
+  display: flex;
+  align-content: center;
+  text-align: center;
+  margin: 0px 0px 20px 20%;
+  font-size: 24px;
+  font-weight: 500px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
 .createReviewSubmit {
   background-color: white;
   border: none;
   font-size: 18px;
   margin-top: 20px;
+  margin-left: 2rem;
   font-family: 'Montserrat', sans-serif;
   background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
   border: none;
@@ -33,6 +58,7 @@
 .spotsReview span {
   font-size: 15px;
   margin-right: 12px ;
+  width: 15%;
  }
 
 
@@ -40,4 +66,12 @@
   display: flex;
   padding: 5px;
   font-family: 'Montserrat', sans-serif;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .createReviewContainer  {
+    width: 120%;
+    margin-left: 9px;
+  }
 }

@@ -36,48 +36,51 @@ const CreateReview = () => {
   };
 
   return (
-    <form className="spotsReview" onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Message:
-        <input
-          type="text"
-          placeholder="Review Message"
-          value={reviewMessage}
-          onChange={(e) => setReviewMessage(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Stars:
-        <input
-          type="text"
-          placeholder="Rating"
-          value={stars}
-          onChange={(e) => setStars(e.target.value)}
-          required
-        />
-      </label>
-      {!errors.length ? (
-        <button className="createReviewSubmit" type="submit">
-          Create Review
-        </button>
-      ) : (
-        <button
-          className="backButton"
-          onClick={() => {
-            let path = `/spots/${spotId}`;
-            history.push(path);
-          }}
-        >
-          Go Back
-        </button>
-      )}
-    </form>
+    <div className="createReviewContainer">
+      <form className="spotsReview" onSubmit={handleSubmit}>
+        <h1 className="reviewFormTitle">How was your stay?</h1>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <label>
+         <span> Message: </span>
+          <input
+            type="text"
+            placeholder="Review Message"
+            value={reviewMessage}
+            onChange={(e) => setReviewMessage(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          <span> Stars: </span>
+          <input
+            type="text"
+            placeholder="Rating"
+            value={stars}
+            onChange={(e) => setStars(e.target.value)}
+            required
+          />
+        </label>
+        {!errors.length ? (
+          <button className="createReviewSubmit" type="submit">
+            Create Review
+          </button>
+        ) : (
+          <button
+            className="backButton"
+            onClick={() => {
+              let path = `/spots/${spotId}`;
+              history.push(path);
+            }}
+          >
+            Go Back
+          </button>
+        )}
+      </form>
+    </div>
   );
 };
 
