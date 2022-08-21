@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { Link, useHistory } from "react-router-dom";
 import { FaUserCircle, FaBars } from "react-icons/fa";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
 
@@ -53,7 +53,7 @@ function ProfileButton({ user }) {
               to="/spots/create"
               id="dropDown1"
             >
-              Create a Spot
+              Host your home
             </Link>
             <Link to="/my-spots" id="dropDown1">
               My Spots
