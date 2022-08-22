@@ -153,11 +153,11 @@ const spotsReducer = (state = initialState, action) => {
       console.log(Object.keys(state));
       console.log(action.deletedSpotId);
       let newState = Object.keys(state)
-        .filter((spotId) => {
+        .filter((spotId) => { // filter out deleted spot -- only return if spotid is not the deletedspotid
           spotId = Number(spotId);
           return spotId !== action.deletedSpotId;
         })
-        .reduce((obj, key) => {
+        .reduce((obj, key) => { // transform array to object key-value pair bec state has to be an object
           obj[key] = state[key];
           return obj;
         }, {});

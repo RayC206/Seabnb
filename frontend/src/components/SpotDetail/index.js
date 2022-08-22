@@ -11,10 +11,13 @@ const SpotsDetail = () => {
   spotId = Number(spotId);
   const history = useHistory();
   const dispatch = useDispatch();
-
   const spot = useSelector((state) => state.spots);
+  const review = useSelector((state) => state.reviews)
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
+  console.log("here")
+  console.log(review)
+
   // might use this later
   // const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
 
@@ -79,7 +82,7 @@ const SpotsDetail = () => {
           </div>
           <div className="descriptionSection">
             {" "}
-            Entire home hosted by Owner ID #{spot.ownerId}
+            Entire home hosted by {spot.owner.firstName}
           </div>
           <div id="Description">
             {/* <p>

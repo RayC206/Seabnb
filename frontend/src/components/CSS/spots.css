@@ -7,7 +7,9 @@
 .spotsPage {
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem;
+    margin-top: 2rem;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .spotImg {
@@ -86,6 +88,6 @@ a:link {
 
 @media only screen and (max-width: 600px) {
     .eachSpot {
-        margin-left: 2rem;
+        margin-left: 1rem;
     }
 }
