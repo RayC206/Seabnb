@@ -30,6 +30,7 @@
 
 .topText {
   margin-top: 0px;
+  margin-left: -2%;
 }
 
 .reviewTopDescription {
@@ -37,6 +38,7 @@
 }
 
 .topDescription {
+  margin-left: 2%;
   padding-right: 20px;
   display: flex;
   justify-content: space-between;
@@ -52,9 +54,9 @@
   --gap: 16px;
   --num-cols: 4;
   --row-height: 300px;
-  border: red;
 
   box-sizing: border-box;
+  margin-left: -2%;
   padding: var(--gap);
 
   display: grid;
@@ -228,6 +230,7 @@
   .image-grid {
     --num-cols: 2;
     --row-height: 200px;
+    width: 120%;
   }
 
   .nameDetail {

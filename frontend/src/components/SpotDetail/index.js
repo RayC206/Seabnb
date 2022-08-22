@@ -63,8 +63,8 @@ const SpotsDetail = () => {
                     <span>
                       {" "}
                       <FaStar className="starRating" />{" "}
-                      {Number(spot.avgStarRating).toFixed(1)} - {reviews.length}{" "}
-                      reviews - {spot.city}, {spot.state}
+                      {Number(spot.avgStarRating).toFixed(1)} - <span className="reviewTopDescription">{reviews.length}{" "}
+                      reviews </span>  - {spot.city}, {spot.state}
                     </span>
                   ) : (
                     <span> No reviews</span>
