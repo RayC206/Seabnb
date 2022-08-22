@@ -71,9 +71,29 @@ const SpotsDetail = () => {
                   )}
                 </p>
               </h2>
-              <div className="imageSection">
+              <div className="image-grid">
                 <img
-                  className="imageDetail"
+                  className="image-grid-col-2 image-grid-row-2"
+                  src={spot.previewImage}
+                  alt={spot.name}
+                ></img>
+                 <img
+                  className=""
+                  src={spot.previewImage}
+                  alt={spot.name}
+                ></img>
+                 <img
+                  className="top-right-image"
+                  src={spot.previewImage}
+                  alt={spot.name}
+                ></img>
+                 <img
+                  className=""
+                  src={spot.previewImage}
+                  alt={spot.name}
+                ></img>
+                 <img
+                  className="bottom-left-image"
                   src={spot.previewImage}
                   alt={spot.name}
                 ></img>
@@ -153,7 +173,7 @@ const SpotsDetail = () => {
           </button>
         </div>
       );
-    } 
+    }
   } else if (findASpotStatus === 404){
     return (
       <div className="fourOhFour">

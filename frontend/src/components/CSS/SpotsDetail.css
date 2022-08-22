@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+/* Spot title and top description */
 .nameDetail {
   font-size: 26px;
   display: flex;
@@ -46,7 +47,53 @@
   font-weight: 600;
 }
 
-.imageDetail {
+/* Image grid (work in progress) */
+.image-grid {
+  --gap: 16px;
+  --num-cols: 4;
+  --row-height: 300px;
+  border: red;
+
+  box-sizing: border-box;
+  padding: var(--gap);
+
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  grid-auto-rows: var(--row-height);
+  gap: var(--gap);
+}
+
+.image-grid > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-grid > img:hover {
+ filter: brightness(.7);
+ transition: .25s;
+
+}
+
+.image-grid-col-2 {
+  grid-column: span 2;
+  border-top-left-radius: 2%;
+  border-bottom-left-radius: 2%;
+}
+
+.image-grid-row-2 {
+  grid-row: span 2;
+}
+
+.top-right-image {
+  border-top-right-radius: 5% ;
+}
+
+.bottom-left-image {
+  border-bottom-right-radius: 5%;
+}
+
+/* .imageDetail {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +104,9 @@
   border-radius: 33px;
   margin-top: 0px;
   margin-bottom: 2rem;
-}
+} */
+
+/* Description section */
 
 .descriptionSection{
   font-family: 'Montserrat', sans-serif;
@@ -82,7 +131,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-
+/*  Booking box */
 .bookingBox {
   width: 30%;
   border: 1px solid rgb(221, 221, 221);
@@ -106,16 +155,13 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.fourOhFour {
- font-size: 40px;
-}
 
 .spotButtons {
   display: flex;
   justify-content: center;
 }
 
-
+/* Review section */
 .reviewSection {
   border-top: 2px double rgb(216, 203, 203);
   font-family: 'Montserrat', sans-serif;
@@ -171,10 +217,19 @@
   width: 100px;
 }
 
-
+/* 404 message if spot does not exist */
+.fourOhFour {
+ font-size: 40px;
+}
 
 /* Testing media queries */
 @media only screen and (max-width: 600px) {
+
+  .image-grid {
+    --num-cols: 2;
+    --row-height: 200px;
+  }
+
   .nameDetail {
     width: 120%;
   }
