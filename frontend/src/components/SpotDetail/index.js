@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory} from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { findASpot} from "../../store/spots";
+import { findASpot } from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
@@ -12,18 +12,18 @@ const SpotsDetail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
-  const review = useSelector((state) => state.reviews)
+  // const review = useSelector((state) => state.reviews)
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("here")
-  console.log(review)
+  console.log("here");
+  console.log(reviews);
+  // console.log(review);
 
   // might use this later
   // const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
 
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -131,7 +131,7 @@ const SpotsDetail = () => {
                 return (
                   <div className="eachReview" key={index}>
                     <label>
-                      <span>Review:</span>
+                      <div>{review.user.firstName}</div>
                       <div>---</div>
                       <div>
                         <div className="reviewMessage"> "{review.review}"</div>

@@ -205,15 +205,23 @@ router.get("/:spotId/reviews", async (req, res) => {
     where: {
       spotId: spotId,
     },
+    raw: true, // get only the dataValues from sequelize object
   });
 
-  let user = await User.findByPk(spot.ownerId);
-  let images = await Image.findByPk(spot.id);
+  for await (let review of reviews) {
+    let user = await User.findByPk(review.userId, { raw: true });
+    review.user = user;
+    let images = await Image.findAll({
+      where: {
+        reviewId: review.id,
+      },
+      raw: true,
+    });
+    review.images = images;
+  }
 
   return res.json({
     reviews,
-    user,
-    images,
   });
 });
 
