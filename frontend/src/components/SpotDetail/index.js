@@ -153,13 +153,13 @@ const SpotsDetail = () => {
           </button>
         </div>
       );
-    } else if (findASpotStatus === 404) {
-      return (
-        <div className="fourOhFour">
-          <a className="fourOh">404: Spot not found</a>
-        </div>
-      );
-    }
+    } 
+  } else if (findASpotStatus === 404){
+    return (
+      <div className="fourOhFour">
+        <a className="fourOh">404: Spot not found</a>
+      </div>
+    );
   } else {
     return <div>Loading... </div>;
   }
