@@ -18,9 +18,7 @@ const EditSpot = () => {
   const [name, setName] = useState(spot.name);
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
-  const [previewImage, setPreviewImage] = useState(
-    "https://static.wikia.nocookie.net/hypotheticalspongebob/images/2/2d/Plankton%27s_House.png"
-  );
+  const [previewImage, setPreviewImage] = useState(spot.previewImage);
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -31,6 +29,7 @@ const EditSpot = () => {
   const updateLat = (e) => setLat(e.target.value);
   const updateLng = (e) => setLng(e.target.value);
   const updateName = (e) => setName(e.target.value);
+  const updatePreviewImage = (e) => setPreviewImage(e.target.value)
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
   // const updatePreviewImage = (e) => setPreviewImage(e.target.value);
@@ -191,7 +190,7 @@ const EditSpot = () => {
               type="text"
               placeholder="img-url"
               value={previewImage}
-              onChange={setPreviewImage}
+              onChange={updatePreviewImage}
             />
           </label>
           <button className="editSpotButton" type="submit">

@@ -119,7 +119,14 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             msg: 'Price is required.'
         }
-      }
+      },
+      validate: {
+       minVal(value) {
+        if (value <= 0 ){
+          throw new Error("Price needs to be above 0")
+        }
+       }
+    }
     },
     previewImage: DataTypes.STRING,
     ownerId: DataTypes.INTEGER

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { addSpotImage } from '../../store/images'
 import { findASpot } from "../../store/spots";
 import '../CSS/SpotImages.css'
@@ -11,12 +11,12 @@ const SpotImages = () => {
   const spot = useSelector((state) => state.spots);
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
   console.log("HERE")
   console.log(spot.images)
-
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -35,7 +35,8 @@ const SpotImages = () => {
   if (isLoaded) {
     if (findASpotStatus === 200) {
       return (
-      <div className="imagePageContainer">
+        <div className="imagePageContainer">
+        <button className="backButton" onClick={history.goBack}>Go Back</button>
         <div className="imagePage-grid">
         <img
           className="imagePage-grid-col-2 imagePage-grid-row-2"
@@ -55,7 +56,7 @@ const SpotImages = () => {
           if (index === 1) {
             return(
               <img
-               className="top-right-image"
+               className=""
                src={image}
                alt={spot.name}
              ></img>
@@ -73,7 +74,7 @@ const SpotImages = () => {
           if (index === 3) {
             return (
               <img
-               className="bottom-left-image"
+               className=""
                src={image}
                alt={spot.name}
              ></img>
