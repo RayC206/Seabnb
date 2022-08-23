@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addSpotImage } from '../../store/images'
 import { findASpot } from "../../store/spots";
+import '../CSS/SpotImages.css'
 
 const SpotImages = () => {
   let { spotId } = useParams();
@@ -34,9 +35,10 @@ const SpotImages = () => {
   if (isLoaded) {
     if (findASpotStatus === 200) {
       return (
-        <div >
+      <div className="imagePageContainer">
+        <div className="imagePage-grid">
         <img
-          className="image-grid-col-2 image-grid-row-2"
+          className="imagePage-grid-col-2 imagePage-grid-row-2"
           src={spot.previewImage}
           alt={spot.name}
         ></img>
@@ -77,10 +79,12 @@ const SpotImages = () => {
              ></img>
             )
           } else {
-            
 
-          }
-        })}
+
+            }
+          })}
+        </div>
+
       </div>
       )
     } else if (findASpotStatus === 404) {
