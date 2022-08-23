@@ -13,7 +13,7 @@ const Homepage = () => {
 return (
     <div className="homeImageCard">
        <div className="ImageCard">
-          <img className="image" src='https://images.pexels.com/photos/5232185/pexels-photo-5232185.jpeg' alt='beach splash page background'></img>
+          <img className="image" src='https://i3.lensdump.com/i/16KtJA.jpg' alt='beach splash page background'></img>
              <div className="imageOverlay">
               <p>Need a Beach Vacation?</p>
                <button onClick={redirect}><p>Discover</p></button>
