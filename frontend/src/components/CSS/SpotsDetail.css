@@ -221,7 +221,8 @@
 
 /* 404 message if spot does not exist */
 .fourOhFour {
- font-size: 40px;
+ font-size: 45px;
+ font-family: 'Montserrat', sans-serif;
 }
 
 /* Testing media queries */

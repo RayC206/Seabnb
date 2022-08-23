@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const ADD_IMAGES = 'images/add-image'
-const GET_IMAGES = 'images/get-image'
 const REMOVE_IMAGE ='images/delete'
 
 const addImage = (image) => ({
