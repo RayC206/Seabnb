@@ -16,7 +16,7 @@ const SpotsDetail = () => {
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
   console.log("here");
-  console.log(reviews);
+  console.log(spot);
   // console.log(review);
 
   // might use this later
@@ -63,20 +63,58 @@ const SpotsDetail = () => {
                     <span>
                       {" "}
                       <FaStar className="starRating" />{" "}
-                      {Number(spot.avgStarRating).toFixed(1)} - {reviews.length}{" "}
-                      reviews - {spot.city}, {spot.state}
+                      {Number(spot.avgStarRating).toFixed(1)} - <span className="reviewTopDescription">{reviews.length}{" "}
+                      reviews </span>  - {spot.city}, {spot.state}
                     </span>
                   ) : (
                     <span> No reviews</span>
                   )}
                 </p>
               </h2>
-              <div className="imageSection">
+              <div className="image-grid">
                 <img
-                  className="imageDetail"
+                  className="image-grid-col-2 image-grid-row-2"
                   src={spot.previewImage}
                   alt={spot.name}
                 ></img>
+                {spot.images.map((image,index)=>{
+                  if (index === 0) {
+                    return (
+                      <img
+                       className=""
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                  if (index === 1) {
+                    return(
+                      <img
+                       className="top-right-image"
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                  if (index === 2) {
+                    return (
+                      <img
+                       className=""
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                  if (index === 3) {
+                    return (
+                      <img
+                       className="bottom-left-image"
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                })}
               </div>
             </div>
           </div>
@@ -153,7 +191,7 @@ const SpotsDetail = () => {
           </button>
         </div>
       );
-    } 
+    }
   } else if (findASpotStatus === 404){
     return (
       <div className="fourOhFour">
