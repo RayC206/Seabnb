@@ -16,7 +16,7 @@ const SpotsDetail = () => {
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
   console.log("here");
-  console.log(reviews);
+  console.log(spot);
   // console.log(review);
 
   // might use this later
@@ -77,26 +77,44 @@ const SpotsDetail = () => {
                   src={spot.previewImage}
                   alt={spot.name}
                 ></img>
-                 <img
-                  className=""
-                  src={spot.previewImage}
-                  alt={spot.name}
-                ></img>
-                 <img
-                  className="top-right-image"
-                  src={spot.previewImage}
-                  alt={spot.name}
-                ></img>
-                 <img
-                  className=""
-                  src={spot.previewImage}
-                  alt={spot.name}
-                ></img>
-                 <img
-                  className="bottom-left-image"
-                  src={spot.previewImage}
-                  alt={spot.name}
-                ></img>
+                {spot.images.map((image,index)=>{
+                  if (index === 0) {
+                    return (
+                      <img
+                       className=""
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                  if (index === 1) {
+                    return(
+                      <img
+                       className="top-right-image"
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                  if (index === 2) {
+                    return (
+                      <img
+                       className=""
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                  if (index === 3) {
+                    return (
+                      <img
+                       className="bottom-left-image"
+                       src={image}
+                       alt={spot.name}
+                     ></img>
+                    )
+                  }
+                })}
               </div>
             </div>
           </div>
