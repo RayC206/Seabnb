@@ -51,7 +51,7 @@
 
 /* Image grid (work in progress) */
 .image-grid {
-  --gap: 16px;
+  --gap: 10px;
   --num-cols: 4;
   --row-height: 300px;
 
