@@ -12,7 +12,6 @@ const SpotsDetail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spots);
-  // const review = useSelector((state) => state.reviews)
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
   console.log("here");
@@ -127,10 +126,6 @@ const SpotsDetail = () => {
             Entire home hosted by {spot.owner.firstName}
           </div>
           <div id="Description">
-            {/* <p>
-                  {spot.city}, {spot.state}
-                </p> */}
-            {/* <p className="spotDetailAddress">{spot.address}</p> */}
             <p className="spotDetailDescription">{spot.description}</p>
             <div className="bookingBox">
               <div className="bookingPriceContainer">
