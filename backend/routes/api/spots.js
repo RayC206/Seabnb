@@ -85,7 +85,10 @@ router.get("/:spotId", async (req, res) => {
   });
   let imagesArray = [];
   for (let image of images) {
-    imagesArray.push(image.url);
+    imagesArray.push({
+      id: image.id,
+      url: image.url,
+    });
   }
 
   let spotDetails = {

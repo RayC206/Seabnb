@@ -86,7 +86,7 @@ const SpotsDetail = () => {
                     return (
                       <img
                        className=""
-                       src={image}
+                       src={image.url}
                        alt={spot.name}
                      ></img>
                     )
@@ -95,7 +95,7 @@ const SpotsDetail = () => {
                     return(
                       <img
                        className="top-right-image"
-                       src={image}
+                       src={image.url}
                        alt={spot.name}
                      ></img>
                     )
@@ -104,7 +104,7 @@ const SpotsDetail = () => {
                     return (
                       <img
                        className=""
-                       src={image}
+                       src={image.url}
                        alt={spot.name}
                      ></img>
                     )
@@ -113,7 +113,7 @@ const SpotsDetail = () => {
                     return (
                       <img
                        className="bottom-left-image"
-                       src={image}
+                       src={image.url}
                        alt={spot.name}
                      ></img>
                     )
