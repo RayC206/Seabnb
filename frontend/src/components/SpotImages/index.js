@@ -39,12 +39,26 @@ const SpotImages = () => {
     });
   };
 
+  const spotsPage = () => {
+    let route = `/spots/${spot.id}`
+    history.push(route)
+  }
+
+  const imageFormPage = () => {
+    let route = `/spots/${spot.id}/images/add-image`
+    history.push(route)
+  }
+
+
   if (isLoaded) {
     if (findASpotStatus === 200) {
       return (
         <div className="imagePageContainer">
-          <button className="backButton" onClick={history.goBack}>
+          <button className="backButton" onClick={spotsPage}>
             Go Back
+          </button>
+          <button className="backButton" onClick={imageFormPage}>
+            Add Image
           </button>
           <div className="imagePage-grid">
             <img
