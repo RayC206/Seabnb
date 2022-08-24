@@ -15,7 +15,7 @@ const SpotImages = () => {
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageFormModalIsOpen, setImageFormModalIsOpen] = useState(false);
-  const viewingAsOwner = sessionUser.id === spot.ownerId;
+  const viewingAsOwner = sessionUser && sessionUser.id === spot.ownerId;
 
   // console.log(spot);
 
@@ -88,31 +88,31 @@ const SpotImages = () => {
         );
       } else {
         return (
-        <div className="imagePageContainer">
+          <div className="imagePageContainer">
             <button className="backButton" onClick={history.goBack}>
-            Go Back
-          </button>
-          <div className="imagePage-grid2">
-            <img
-              className="imagePage-grid-col-2 imagePage-grid-row-2"
-              src={spot.previewImage}
-              alt={spot.name}
-            ></img>
-            {spot.images.map((image) => {
-              return (
-                <>
-                  <img
-                    className=""
-                    key={image.id}
-                    src={image.url}
-                    alt={spot.name}
-                  ></img>
-                </>
-              );
-            })}
+              Go Back
+            </button>
+            <div className="imagePage-grid2">
+              <img
+                className="imagePage-grid-col-2 imagePage-grid-row-2"
+                src={spot.previewImage}
+                alt={spot.name}
+              ></img>
+              {spot.images.map((image) => {
+                return (
+                  <>
+                    <img
+                      className=""
+                      key={image.id}
+                      src={image.url}
+                      alt={spot.name}
+                    ></img>
+                  </>
+                );
+              })}
+            </div>
           </div>
-        </div>
-        )
+        );
       }
     } else if (findASpotStatus === 404) {
       return (
