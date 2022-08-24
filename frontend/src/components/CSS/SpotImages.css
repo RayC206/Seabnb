@@ -88,3 +88,45 @@
   cursor: pointer;
   padding: 5px;
 }
+
+
+
+
+/* Unauthorized user page*/
+
+.imagePage-grid2 {
+  --gap: 10px;
+  --num-cols: 2;
+  --row-height: 400px;
+  width: 120%;
+
+  box-sizing: border-box;
+  padding: var(--gap);
+
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  grid-auto-rows: var(--row-height);
+  gap: var(--gap);
+
+}
+
+.imagePage-grid2 > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePage-grid2> img:hover {
+ filter: brightness(.7);
+ transition: .25s;
+}
+
+.imagePage-grid-col-2 {
+  grid-column: span 2;
+  border-top-left-radius: 2%;
+  border-bottom-left-radius: 2%;
+}
+
+.imagePage-grid-row-2 {
+  grid-row: span 2;
+}
