@@ -15,6 +15,8 @@ const UserSpots = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
+  console.log(spots)
+
   useEffect(() => {
     if (!sessionUser) {
       history.push("/");
@@ -44,49 +46,55 @@ const UserSpots = () => {
   };
 
   if (isLoaded) {
-    return (
-      <div className="spotsPage">
-        <div className="left"></div>
-        {spots.map((spot, index) => {
-          if (spot) {
-            return (
-              <div key={index}>
-                <NavLink to={`/spots/${spot.id}`}>
-                  <div className="eachSpot" key={spot.id}>
-                    <div className="eachSpotDetail">
-                    <img
-                      className="spotImg"
-                      src={spot.previewImage}
-                      alt={spot.name}
-                    ></img>
-                      <p className="spotName">
-                        <p>{spot.name}</p>
-                      </p>
-                      <p className="spotLocation">
-                        {spot.city}, {spot.state}
-                      </p>
-                      <p className="spotAddress">{spot.address}</p>
-                      {/* <p className="spotDetails">{spot.description}</p> */}
-                      <p className="spotPrice"> <b>${spot.price}</b> night </p>
+    if (spots.length) {
+      return (
+        <div className="spotsPage">
+          <div className="left"></div>
+          {spots.map((spot, index) => {
+            if (spot) {
+              return (
+                <div key={index}>
+                  <NavLink to={`/spots/${spot.id}`}>
+                    <div className="eachSpot" key={spot.id}>
+                      <div className="eachSpotDetail">
+                      <img
+                        className="spotImg"
+                        src={spot.previewImage}
+                        alt={spot.name}
+                      ></img>
+                        <p className="spotName">
+                          <p>{spot.name}</p>
+                        </p>
+                        <p className="spotLocation">
+                          {spot.city}, {spot.state}
+                        </p>
+                        <p className="spotAddress">{spot.address}</p>
+                        {/* <p className="spotDetails">{spot.description}</p> */}
+                        <p className="spotPrice"> <b>${spot.price}</b> night </p>
+                      </div>
                     </div>
+                  </NavLink>
+                  <div className="pageButtons">
+                    <button onClick={(e) => handleEdit(e, spot.id)}>
+                      Edit Spot
+                    </button>
+                    <button onClick={(e) => removeSpot(e, spot.id)}>
+                      Delete Spot
+                    </button>
                   </div>
-                </NavLink>
-                <div className="pageButtons">
-                  <button onClick={(e) => handleEdit(e, spot.id)}>
-                    Edit Spot
-                  </button>
-                  <button onClick={(e) => removeSpot(e, spot.id)}>
-                    Delete Spot
-                  </button>
                 </div>
-              </div>
-            );
-          }
-        })}
-      </div>
-    );
+              );
+            }
+          })}
+        </div>
+      );
+    } else {
+      return (
+        <div>Your have no spots</div>
+      )
+    }
   } else {
-    return <div>Loading... </div>;
+    return <div>Your have no spots</div>;
   }
 };
 
