@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteSpotImage, findASpot } from "../../store/spots";
+import { FaTrashAlt } from "react-icons/fa";
 import "../CSS/SpotImages.css";
+
 
 
 const SpotImages = () => {
@@ -54,20 +56,19 @@ const SpotImages = () => {
     if (findASpotStatus === 200) {
       return (
         <div className="imagePageContainer">
-          <button className="backButton" onClick={spotsPage}>
-            Go Back
-          </button>
-          <button className="backButton" onClick={imageFormPage}>
-            Add Image
-          </button>
-          <div  >
-            <img
-              className="spotPreviewImage"
-              src={spot.previewImage}
-              alt={spot.name}
-            ></img>
+          <div className="imagePageButtons">
+            <button className="backButton" onClick={spotsPage}>
+              Go Back
+            </button>
+            <button className="backButton" onClick={imageFormPage}>
+              Add Image
+            </button>
+          </div>
+          <div>
+            <h1></h1>
             {spot.images.map((image) => {
               return (
+                <div className="imageGridContainer">
                 <div className="imagePage-grid">
                   <img
                     className=""
@@ -75,12 +76,12 @@ const SpotImages = () => {
                     src={image.url}
                     alt={spot.name}
                   ></img>
-                  <button
-                    className="deleteButton"
+                  <FaTrashAlt
+                   className="deleteButton"
                     onClick={(e) => handleDelete(e, image.id)}
-                  >
-                    Delete
-                  </button>
+                    />
+               
+                </div>
                 </div>
               );
             })}
