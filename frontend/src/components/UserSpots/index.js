@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
@@ -15,7 +15,7 @@ const UserSpots = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(spots)
+  console.log(spots);
 
   useEffect(() => {
     if (!sessionUser) {
@@ -24,15 +24,8 @@ const UserSpots = () => {
   });
 
   useEffect(() => {
-    dispatch(getUsersSpots());
+    dispatch(getUsersSpots()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
-  useEffect(() => {
-    // check if spots is not [] anymore (empty state)
-    if (spots.length && spots[0].id) {
-      setIsLoaded(true);
-    }
-  }, [spots]);
 
   const removeSpot = (e, spotId) => {
     e.preventDefault();
@@ -57,11 +50,11 @@ const UserSpots = () => {
                   <NavLink to={`/spots/${spot.id}`}>
                     <div className="eachSpot" key={spot.id}>
                       <div className="eachSpotDetail">
-                      <img
-                        className="spotImg"
-                        src={spot.previewImage}
-                        alt={spot.name}
-                      ></img>
+                        <img
+                          className="spotImg"
+                          src={spot.previewImage}
+                          alt={spot.name}
+                        ></img>
                         <p className="spotName">
                           <p>{spot.name}</p>
                         </p>
@@ -70,7 +63,10 @@ const UserSpots = () => {
                         </p>
                         <p className="spotAddress">{spot.address}</p>
                         {/* <p className="spotDetails">{spot.description}</p> */}
-                        <p className="spotPrice"> <b>${spot.price}</b> night </p>
+                        <p className="spotPrice">
+                          {" "}
+                          <b>${spot.price}</b> night{" "}
+                        </p>
                       </div>
                     </div>
                   </NavLink>
@@ -90,11 +86,14 @@ const UserSpots = () => {
       );
     } else {
       return (
-        <div>Your have no spots</div>
-      )
+        <div>
+          You don't have any spots.{" "}
+          <Link to="spots/create">Click here to add a spot.</Link>
+        </div>
+      );
     }
   } else {
-    return <div>Your have no spots</div>;
+    return <div>Loading...</div>;
   }
 };
 

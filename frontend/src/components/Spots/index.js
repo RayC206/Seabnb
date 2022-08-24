@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllSpots } from "../../store/spots";
-import { FaStar} from 'react-icons/fa';
+import { FaStar } from "react-icons/fa";
 import "../CSS/spots.css";
 
 const SpotsPage = () => {
@@ -22,14 +22,8 @@ const SpotsPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(getAllSpots());
+    dispatch(getAllSpots()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (spotsList.length) {
-      setIsLoaded(true);
-    }
-  }, [spotsList]);
 
   if (isLoaded) {
     return (
@@ -42,32 +36,35 @@ const SpotsPage = () => {
                 <NavLink to={`/spots/${spot.id}`}>
                   <div className="eachSpot" key={spot.id}>
                     <div className="eachSpotDetail">
-                    <img
-                      className="spotImg"
-                      src={spot.previewImage}
-                      alt={spot.name}
-                    ></img>
+                      <img
+                        className="spotImg"
+                        src={spot.previewImage}
+                        alt={spot.name}
+                      ></img>
                       <p className="spotName">
                         <p>{spot.name}</p>
                         <p className="spotAverageRating">
-                        {" "}
-                        {Number(spot.avgStarRating) > 0 ? (
-                          <span>
-                            {" "}
-                            <FaStar className="starRating"/> {Number(spot.avgStarRating).toFixed(1)}
-                          </span>
-                        ) : (
-                          <span> No reviews</span>
-                        )}
-                      </p>
-
+                          {" "}
+                          {Number(spot.avgStarRating) > 0 ? (
+                            <span>
+                              {" "}
+                              <FaStar className="starRating" />{" "}
+                              {Number(spot.avgStarRating).toFixed(1)}
+                            </span>
+                          ) : (
+                            <span> No reviews</span>
+                          )}
+                        </p>
                       </p>
                       <p className="spotLocation">
                         {spot.city}, {spot.state}
                       </p>
                       <p className="spotAddress">{spot.address}</p>
                       {/* <p className="spotDetails">{spot.description}</p> */}
-                      <p className="spotPrice"> <b>${spot.price}</b> night </p>
+                      <p className="spotPrice">
+                        {" "}
+                        <b>${spot.price}</b> night{" "}
+                      </p>
                     </div>
                   </div>
                 </NavLink>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
 import "../CSS/UsersReviews.css";
@@ -18,9 +18,8 @@ const UserReviews = () => {
     return reviewsFromState;
   });
 
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log("here")
-  console.log(reviews)
   useEffect(() => {
     if (!sessionUser) {
       history.push("/");
@@ -28,9 +27,8 @@ const UserReviews = () => {
   });
 
   useEffect(() => {
-    dispatch(getUserReviews(spotId));
+    dispatch(getUserReviews(spotId)).then(() => setIsLoaded(true));
   }, [dispatch]);
-
 
   const handleDeleteReview = (e, reviewId) => {
     e.preventDefault();
@@ -39,54 +37,52 @@ const UserReviews = () => {
     history.push(path);
   };
 
-
-    if (reviews.length) {
-      return (
-        <div className="outerReviewContainer">
-          {reviews.map((review, index) => {
-            if (review) {
-              return (
-                <div className="innerContainer">
-                  <div className="eachReviewContainer" key={index}>
-                    <label>
-                      <div key={index}>
-                        <span>Review: </span>
-                        <div>---</div>
-                        <div className="reviewDescription">
-                          {" "}
-                          "{review.review.review}"{" "}
-                        </div>
-                        <div>---</div>
-                        <div className="reviewStarsRating">
-                          <span>Rating:</span>{" "}
-                          {Number(review.review.stars).toFixed(1)} / 5
-                        </div>
+  if (reviews.length) {
+    return (
+      <div className="outerReviewContainer">
+        {reviews.map((review, index) => {
+          if (review) {
+            return (
+              <div className="innerContainer">
+                <div className="eachReviewContainer" key={index}>
+                  <label>
+                    <div key={index}>
+                      <span>Review: </span>
+                      <div>---</div>
+                      <div className="reviewDescription">
+                        {" "}
+                        "{review.review.review}"{" "}
                       </div>
-                    </label>
-                    <br />
-                    <br />
-                  </div>
-                  <div className="pageButtons">
-                    <button
-                      onClick={(e) => handleDeleteReview(e, review.review.id)}
-                    >
-                      Delete Review
-                    </button>
-
-                    <button>
-                      <Link to={`/spots/${review.review.spotId}`}>View Spot</Link>
-                    </button>
-                  </div>
+                      <div>---</div>
+                      <div className="reviewStarsRating">
+                        <span>Rating:</span>{" "}
+                        {Number(review.review.stars).toFixed(1)} / 5
+                      </div>
+                    </div>
+                  </label>
+                  <br />
+                  <br />
                 </div>
-              );
-            }
-          })}
-        </div>
-      );
-    } else {
-      return <div>You have no reviews</div>
-    }
+                <div className="pageButtons">
+                  <button
+                    onClick={(e) => handleDeleteReview(e, review.review.id)}
+                  >
+                    Delete Review
+                  </button>
 
+                  <button>
+                    <Link to={`/spots/${review.review.spotId}`}>View Spot</Link>
+                  </button>
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
+    );
+  } else {
+    return <div>You have no reviews</div>;
+  }
 };
 
 export default UserReviews;
