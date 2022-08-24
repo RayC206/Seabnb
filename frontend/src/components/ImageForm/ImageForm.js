@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import { addSpotImage } from "../../store/images";
+import '../CSS/ImageForm.css'
 
 
 const ImageForm = () => {
@@ -40,14 +41,15 @@ const ImageForm = () => {
 
 
   return (
-      <form className="imageFormContainer" onSubmit={handleSubmit}>
+    <div className="imageFormContainer">
+      <form className="imageForm" onSubmit={handleSubmit}>
         <h1 className="welcomeContainer">Add an Image</h1>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label className="formLable">
+        <label>
           <span> Image URL:</span>
           <input
             className="imgUrlInput"
@@ -74,6 +76,7 @@ const ImageForm = () => {
           </button>
         )}
       </form>
+    </div>
   );
 };
 

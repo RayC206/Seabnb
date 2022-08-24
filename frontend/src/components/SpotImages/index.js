@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteSpotImage, findASpot } from "../../store/spots";
+import { FaTrashAlt } from "react-icons/fa";
 import "../CSS/SpotImages.css";
-
 
 const SpotImages = () => {
   let { spotId } = useParams();
@@ -15,6 +15,7 @@ const SpotImages = () => {
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageFormModalIsOpen, setImageFormModalIsOpen] = useState(false);
+  const viewingAsOwner = sessionUser.id === spot.ownerId;
 
   // console.log(spot);
 
@@ -39,14 +40,59 @@ const SpotImages = () => {
     });
   };
 
+  const spotsPage = () => {
+    let route = `/spots/${spot.id}`;
+    history.push(route);
+  };
+
+  const imageFormPage = () => {
+    let route = `/spots/${spot.id}/images/add-image`;
+    history.push(route);
+  };
+
   if (isLoaded) {
     if (findASpotStatus === 200) {
-      return (
+      if (viewingAsOwner) {
+        return (
+          <div className="imagePageContainer">
+            <div className="imagePageButtons">
+              <button className="backButton" onClick={spotsPage}>
+                Go Back
+              </button>
+              <button className="backButton" onClick={imageFormPage}>
+                Add Image
+              </button>
+            </div>
+            <div>
+              <h1></h1>
+              {spot.images.map((image) => {
+                return (
+                  <div className="imageGridContainer">
+                    <div className="imagePage-grid">
+                      <img
+                        className=""
+                        key={image.id}
+                        src={image.url}
+                        alt={spot.name}
+                      ></img>
+                      <FaTrashAlt
+                        className="deleteButton"
+                        onClick={(e) => handleDelete(e, image.id)}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      } else {
+        return (
         <div className="imagePageContainer">
-          <button className="backButton" onClick={history.goBack}>
+            <button className="backButton" onClick={history.goBack}>
             Go Back
           </button>
-          <div className="imagePage-grid">
+          <div className="imagePage-grid2">
             <img
               className="imagePage-grid-col-2 imagePage-grid-row-2"
               src={spot.previewImage}
@@ -61,18 +107,13 @@ const SpotImages = () => {
                     src={image.url}
                     alt={spot.name}
                   ></img>
-                  <button
-                    className="deleteButton"
-                    onClick={(e) => handleDelete(e, image.id)}
-                  >
-                    Delete
-                  </button>
                 </>
               );
             })}
           </div>
         </div>
-      );
+        )
+      }
     } else if (findASpotStatus === 404) {
       return (
         <div className="fourOhFour">

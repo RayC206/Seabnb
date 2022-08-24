@@ -5,7 +5,6 @@ import * as spotActions from "../../store/spots";
 import "../CSS/CreateSpot.css";
 
 const CreateSpot = () => {
-  // const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
