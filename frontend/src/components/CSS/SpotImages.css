@@ -11,9 +11,7 @@
  margin-top: 2%;
  margin-left: 5rem;
  margin-right: 5rem;
-
 }
-
 
 .imagePage-grid:not(.deleteButton) {
   width: 100%;
@@ -85,10 +83,7 @@
 }
 
 
-
-
 /* Unauthorized user page*/
-
 .imagePage-grid2 {
   --gap: 10px;
   --num-cols: 2;
