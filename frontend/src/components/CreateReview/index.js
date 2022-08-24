@@ -15,7 +15,7 @@ const CreateReview = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   if (submitSuccess) {
-    return <Redirect to={`/spots/${spotId}/images`} />;
+    return <Redirect to={`/spots/${spotId}`} />;
   }
 
   const handleSubmit = (e) => {

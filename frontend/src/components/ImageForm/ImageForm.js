@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Redirect } from "react-router-dom";
-import * as imageActions from "../../store/images";
+import { addSpotImage } from "../../store/images";
 
 
-const ImageForm = ({ modalToggle }) => {
-  const { spotId } = useParams();
-  // spotId = Number(spotId);
+const ImageForm = () => {
+  let { spotId } = useParams();
+  spotId = Number(spotId);
   const dispatch = useDispatch();
-  // const sessionUser = useSelector((state) => state.session.user);
-  // const images = useSelector((state) => state.session.images);
   const history = useHistory();
-
   const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
   if (submitSuccess) {
     return <Redirect to={`/spots/${spotId}/images`} />;
   }
@@ -26,14 +22,19 @@ const ImageForm = ({ modalToggle }) => {
     let data = {
       url: imageUrl,
     };
-    return dispatch(imageActions.addSpotImage(spotId, data))
+    return dispatch(addSpotImage(spotId, data))
       .then(async (res) => {
-        modalToggle(false)
         setSubmitSuccess(true);
       })
       .catch(async (res) => {
-        const error = await res.json();
-        if (error) setErrors([error.message]);
+        const data = await res.json();
+        if (data) {
+          if (data.errors) {
+            setErrors(data.errors);
+          } else if (data.message) {
+            setErrors([data.message]);
+          }
+        }
       });
   };
 
