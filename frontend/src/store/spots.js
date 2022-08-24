@@ -6,6 +6,7 @@ const CREATE_SPOT = "spots/create-spot";
 const EDIT_SPOT = "spots/update-spot";
 const DELETE_SPOT = "spots/delete";
 const GET_USER_SPOTS = "spots/get-user-spots";
+const DELETE_SPOT_IMAGE = "images/delete";
 
 const getAll = (spots) => {
   return {
@@ -42,6 +43,13 @@ const deleteSpot = (deleteResponse, deletedSpotId) => ({
   type: DELETE_SPOT,
   deleteResponse,
   deletedSpotId,
+});
+
+const deleteImage = (deleteResponse, spot, deletedImageId) => ({
+  type: DELETE_SPOT_IMAGE,
+  deleteResponse,
+  spot,
+  deletedImageId,
 });
 
 //Get all spots
@@ -121,6 +129,17 @@ export const spotDelete = (spotId, userId) => async (dispatch) => {
   }
 };
 
+export const deleteSpotImage = (spot, imageId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/${imageId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const deleteResponse = await response.json();
+    dispatch(deleteImage(deleteResponse, spot, imageId));
+    return deleteResponse;
+  }
+};
+
 // Reducer
 const initialState = {};
 const spotsReducer = (state = initialState, action) => {
@@ -149,29 +168,26 @@ const spotsReducer = (state = initialState, action) => {
       return { ...state };
     }
     case DELETE_SPOT:
-      console.log(state);
-      console.log(Object.keys(state));
-      console.log(action.deletedSpotId);
       let newState = Object.keys(state)
-        .filter((spotId) => { // filter out deleted spot -- only return if spotid is not the deletedspotid
+        .filter((spotId) => {
+          // filter out deleted spot -- only return if spotid is not the deletedspotid
           spotId = Number(spotId);
           return spotId !== action.deletedSpotId;
         })
-        .reduce((obj, key) => { // transform array to object key-value pair bec state has to be an object
+        .reduce((obj, key) => {
+          // transform array to object key-value pair bec state has to be an object
           obj[key] = state[key];
           return obj;
         }, {});
-      console.log(newState);
       return { ...newState };
-    // const deleteResponse = action.deleteResponse;
-    // if (deleteResponse.statusCode === 200) {
-    // return [
-    //   ...state.filter((spot) => {
-    //     return spot.id !== action.deletedSpotId;
-    //   }),
-    // ];
-    // }
-    // return { ...state };
+    case DELETE_SPOT_IMAGE:
+      const spot = action.spot;
+      let newImages = spot.images.filter((image) => {
+        const imageId = Number(image.id);
+        return imageId !== action.deletedImageId;
+      });
+      spot.images = newImages;
+      return { ...spot };
 
     default:
       return state;

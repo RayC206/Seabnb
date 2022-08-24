@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
 import "../CSS/UsersReviews.css";
@@ -8,7 +8,6 @@ import "../CSS/UsersReviews.css";
 const UserReviews = () => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
-  // const spot = useSelector((state) => state.spots);
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const reviews = useSelector((state) => {
@@ -19,6 +18,8 @@ const UserReviews = () => {
     return reviewsFromState;
   });
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     if (!sessionUser) {
       history.push("/");
@@ -26,7 +27,7 @@ const UserReviews = () => {
   });
 
   useEffect(() => {
-    dispatch(getUserReviews(spotId));
+    dispatch(getUserReviews(spotId)).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   const handleDeleteReview = (e, reviewId) => {
@@ -36,48 +37,52 @@ const UserReviews = () => {
     history.push(path);
   };
 
-  return (
-    <div className="outerReviewContainer">
-      {reviews.map((review, index) => {
-        if (review) {
-          return (
-            <div className="innerContainer">
-              <div className="eachReviewContainer" key={index}>
-                <label>
-                  <div key={index}>
-                    <span>Review:</span>
-                    <div>---</div>
-                    <div className="reviewDescription">
-                      {" "}
-                      "{review.review.review}"{" "}
+  if (reviews.length) {
+    return (
+      <div className="outerReviewContainer">
+        {reviews.map((review, index) => {
+          if (review) {
+            return (
+              <div className="innerContainer">
+                <div className="eachReviewContainer" key={index}>
+                  <label>
+                    <div key={index}>
+                      <span>Review: </span>
+                      <div>---</div>
+                      <div className="reviewDescription">
+                        {" "}
+                        "{review.review.review}"{" "}
+                      </div>
+                      <div>---</div>
+                      <div className="reviewStarsRating">
+                        <span>Rating:</span>{" "}
+                        {Number(review.review.stars).toFixed(1)} / 5
+                      </div>
                     </div>
-                    <div>---</div>
-                    <div className="reviewStarsRating">
-                      <span>Rating:</span>{" "}
-                      {Number(review.review.stars).toFixed(1)} / 5
-                    </div>
-                  </div>
-                </label>
-                <br />
-                <br />
-              </div>
-              <div className="pageButtons">
-                <button
-                  onClick={(e) => handleDeleteReview(e, review.review.id)}
-                >
-                  Delete Review
-                </button>
+                  </label>
+                  <br />
+                  <br />
+                </div>
+                <div className="pageButtons">
+                  <button
+                    onClick={(e) => handleDeleteReview(e, review.review.id)}
+                  >
+                    Delete Review
+                  </button>
 
-                <button>
-                  <Link to={`/spots/${review.review.spotId}`}>View Spot</Link>
-                </button>
+                  <button>
+                    <Link to={`/spots/${review.review.spotId}`}>View Spot</Link>
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        }
-      })}
-    </div>
-  );
+            );
+          }
+        })}
+      </div>
+    );
+  } else {
+    return <div>You have no reviews</div>;
+  }
 };
 
 export default UserReviews;
