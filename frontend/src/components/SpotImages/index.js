@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { addSpotImage } from '../../store/images'
 import { findASpot } from "../../store/spots";
 import '../CSS/SpotImages.css'
+import ImageFormModal from "../ImageForm/ImageForm";
 
 const SpotImages = () => {
   let { spotId } = useParams();
@@ -12,11 +13,10 @@ const SpotImages = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("HERE")
-  console.log(spot.images)
+  const [imageFormModalIsOpen, setImageFormModalIsOpen] = useState(false);
+
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -36,7 +36,7 @@ const SpotImages = () => {
     if (findASpotStatus === 200) {
       return (
         <div className="imagePageContainer">
-        <button className="backButton" onClick={history.goBack}>Go Back</button>
+          <button className="backButton" onClick={history.goBack}>Go Back</button>
         <div className="imagePage-grid">
         <img
           className="imagePage-grid-col-2 imagePage-grid-row-2"
@@ -79,10 +79,62 @@ const SpotImages = () => {
                alt={spot.name}
              ></img>
             )
-          } else {
+          }
+          if (index === 4) {
+            return (
+              <img
+               className=""
+               src={image}
+               alt={spot.name}
+             ></img>
+            )
+          }
+          if (index === 5) {
+            return (
+              <img
+               className=""
+               src={image}
+               alt={spot.name}
+             ></img>
+            )
+          }
+          if (index === 6) {
+            return (
+              <img
+               className=""
+               src={image}
+               alt={spot.name}
+             ></img>
+            )
+          }
+          if (index === 7) {
+            return (
+              <img
+               className=""
+               src={image}
+               alt={spot.name}
+             ></img>
+            )
+          }
+          if (index === 8) {
+            return (
+              <img
+               className=""
+               src={image}
+               alt={spot.name}
+             ></img>
+            )
+          }
+          if (index === 9) {
+            return (
+              <img
+               className=""
+               src={image}
+               alt={spot.name}
+             ></img>
+            )
+          }
 
-
-            }
           })}
         </div>
 
