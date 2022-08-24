@@ -13,6 +13,8 @@ import UserSpots from "./components/UserSpots";
 import Homepage from "./components/Homepage";
 import CreateReview from "./components/CreateReview";
 import UserReviews from "./components/UsersReviews";
+import SpotImages from "./components/SpotImages";
+import ImageFormModal from "./components/ImageForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +58,12 @@ function App() {
           </Route>
           <Route exact path="/spots/:spotId/create-review">
             <CreateReview />
+          </Route>
+          <Route exact path="/spots/:spotId/images">
+            <SpotImages />
+          </Route>
+          <Route exact path="/image/new">
+            <ImageFormModal isOpen={true} modalToggle={() => {}}  />
           </Route>
         </Switch>
       )}

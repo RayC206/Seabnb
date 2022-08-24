@@ -9,8 +9,8 @@ const addImage = (image) => ({
 });
 
 
-const addSpotImage = (spotId, image) => async (dispatch) => {
-  const { userId, spotId, url} = image
+export const addSpotImage = (spotId, image) => async (dispatch) => {
+  // const { userId, spotId, url} = image
   const response = await csrfFetch(`/api/spots/${spotId}/images`, {
     method: "POST",
     header: {"Content-Type": "application/json" },

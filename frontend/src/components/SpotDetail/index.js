@@ -21,9 +21,13 @@ const SpotsDetail = () => {
 
   // might use this later
   // const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
-
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const spotsImagePage = () =>{
+    let path = `/spots/${spotId}/images`;
+    history.push(path);
+  }
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -67,11 +71,11 @@ const SpotsDetail = () => {
                       reviews </span>  - {spot.city}, {spot.state}
                     </span>
                   ) : (
-                    <span> No reviews</span>
+                    <span> No reviews - {spot.city}, {spot.state}</span>
                   )}
                 </p>
               </h2>
-              <div className="image-grid">
+              <div onClick={spotsImagePage} className="image-grid">
                 <img
                   className="image-grid-col-2 image-grid-row-2"
                   src={spot.previewImage}
