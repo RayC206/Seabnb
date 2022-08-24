@@ -10,10 +10,10 @@
  position: relative;
  margin-top: 2%;
  margin-left: 5rem;
-
+ margin-right: 5rem;
 }
 
-.imagePage-grid {
+.imagePage-grid:not(.deleteButton) {
   width: 100%;
   height: 15%;
 
@@ -27,12 +27,12 @@
 }
 
 .imagePage-grid > img {
-  width: 50%;
-  height: 55%;
-  object-fit: fill;
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 1%;
   right: 25rem;
+  grid-row: span 2;
 }
 
 .imagePage-grid> img:hover {
@@ -60,9 +60,8 @@
 
  /* Delete button positioning */
 .deleteButton {
-  position: relative;
-  top: 1rem;
-  left: 8rem;
+  margin: 10px;
+  position: absolute;
   grid-row: span 2;
 }
 
@@ -84,10 +83,7 @@
 }
 
 
-
-
 /* Unauthorized user page*/
-
 .imagePage-grid2 {
   --gap: 10px;
   --num-cols: 2;
