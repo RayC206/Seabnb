@@ -1,14 +1,18 @@
 .imagePageContainer {
   display: flex;
-  margin: 2% 10% 10% 10%;
+  margin: 3% 10% 20% 10%;
   flex-direction: row;
+  height: 20%;
+  flex-direction: row;
+  /* align-items:; */
 }
 
 .imagePage-grid {
-  --gap: 10px;
+  --gap: 20px;
   --num-cols: 2;
   --row-height: 400px;
-  width: 120%;
+  width: 100%;
+  height: 15%;
 
   box-sizing: border-box;
   padding: var(--gap);
@@ -21,9 +25,11 @@
 }
 
 .imagePage-grid > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 50%;
+  height: 60%;
+  object-fit: fill;
+  position: absolute;
+  border-radius: 1%;
 }
 
 .imagePage-grid> img:hover {
@@ -31,16 +37,14 @@
  transition: .25s;
 }
 
-.imagePage-grid-col-2 {
-  grid-column: span 2;
-  /* border-top-left-radius: 2%;
-  border-bottom-left-radius: 2%; */
+.spotPreviewImage {
+  border-radius: 2%;
 }
 
-.imagePage-grid-row-2 {
+.deleteButton {
+  position: relative;
   grid-row: span 2;
 }
-
 
 /* Back button */
 .backButton {

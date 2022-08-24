@@ -60,15 +60,15 @@ const SpotImages = () => {
           <button className="backButton" onClick={imageFormPage}>
             Add Image
           </button>
-          <div className="imagePage-grid">
+          <div  >
             <img
-              className="imagePage-grid-col-2 imagePage-grid-row-2"
+              className="spotPreviewImage"
               src={spot.previewImage}
               alt={spot.name}
             ></img>
             {spot.images.map((image) => {
               return (
-                <>
+                <div className="imagePage-grid">
                   <img
                     className=""
                     key={image.id}
@@ -81,7 +81,7 @@ const SpotImages = () => {
                   >
                     Delete
                   </button>
-                </>
+                </div>
               );
             })}
           </div>
