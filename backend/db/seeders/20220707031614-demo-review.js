@@ -46,19 +46,19 @@ module.exports = {
         stars: 5
       },
       {
-        userId: 8,
+        userId: 7,
         spotId: 8,
         review: 'This is a beautiful home and very clean. The hosts provided for every comfort imaginable. We spent our days mesmerized by the amazing views. ',
         stars: 5
       },
       {
-        userId: 7,
+        userId: 6,
         spotId: 9,
         review: 'Beautiful airstream conversion and stunning ocean view!',
         stars: 5
       },
       {
-        userId: 6,
+        userId: 8,
         spotId: 10,
         review: 'Definitely worth it, great view beautiful location.',
         stars: 5

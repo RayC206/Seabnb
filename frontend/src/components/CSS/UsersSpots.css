@@ -81,15 +81,17 @@ a:link {
 }
 
 
-/* .eachUsersSpot {
-  background-color: white;
-  padding: 5px;
-  font-family: 'Montserrat', sans-serif;
-  color: black;
-  border-radius: 20px;
-  margin: 10px;
-} */
-
 .eachUserSpotContainer:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .userSpotImg  {
+    width: 90%;
+  }
+
+  .eachUserSpotContainer {
+    width: 140%;
+  }
 }
