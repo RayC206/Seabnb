@@ -1,8 +1,24 @@
+.myReviewsPageTitle{
+  font-family:'Montserrat', sans-serif;
+  padding: 15px;
+  margin-bottom: 2%;
+  border-bottom: 1px solid rgb(216, 203, 203);
+}
+
+.userReviewPage {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 .eachReviewContainer {
   display: flex;
   width: 50%;;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   padding:40px;
   border: 2px double rgb(216, 203, 203);
   border-radius: 20px;

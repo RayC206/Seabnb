@@ -56,10 +56,10 @@ function ProfileButton({ user }) {
               Host your home
             </Link>
             <Link to="/my-spots" id="dropDown1">
-              My Spots
+              Manage Listings
             </Link>
             <Link to="/my-reviews" id="dropDown1">
-              My Reviews
+              Manage Reviews
             </Link>
             <div onClick={logout} id="dropDown2">
               Log out

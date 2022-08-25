@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
 import { spotDelete } from "../../store/spots";
+import '../CSS/UsersSpots.css';
 
 const UserSpots = () => {
   const history = useHistory();
@@ -41,31 +42,34 @@ const UserSpots = () => {
   if (isLoaded) {
     if (spots.length) {
       return (
-        <div className="spotsPage">
+        <div className="userSpotsPage">
+          <h1 className="manageListingPageTitle">My Listings</h1>
           <div className="left"></div>
           {spots.map((spot, index) => {
             if (spot) {
               return (
                 <div key={index}>
                   <NavLink to={`/spots/${spot.id}`}>
-                    <div className="eachSpot" key={spot.id}>
-                      <div className="eachSpotDetail">
+                    <div className="eachUsersSpot" key={spot.id}>
+                      <div className="eachUserSpotContainer">
                         <img
-                          className="spotImg"
+                          className="userSpotImg"
                           src={spot.previewImage}
                           alt={spot.name}
                         ></img>
-                        <p className="spotName">
-                          <p>{spot.name}</p>
-                        </p>
-                        <p className="spotLocation">
-                          {spot.city}, {spot.state}
-                        </p>
-                        <p className="spotAddress">{spot.address}</p>
-                        <p className="spotPrice">
-                          {" "}
-                          <b>${spot.price}</b> night{" "}
-                        </p>
+                        <div className="userSpotDetails">
+                          <p className="userSpotName">
+                            <p>{spot.name}</p>
+                          </p>
+                          <p className="userSpotLocation">
+                            {spot.city}, {spot.state}
+                          </p>
+                          <p className="userSpotAddress">{spot.address}</p>
+                          <p className="userSpotPrice">
+                            {" "}
+                            <b>${spot.price}</b> night{" "}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </NavLink>
