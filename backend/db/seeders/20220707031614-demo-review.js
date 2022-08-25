@@ -32,6 +32,36 @@ module.exports = {
         spotId: 5,
         review: 'Beautiful view of the Ocean, Looking forward to returning',
         stars: 5
+      },
+      {
+        userId: 10,
+        spotId: 6,
+        review: 'Great get away especially for a couple!! The view is unreal and the space is more than enough for two people!!',
+        stars: 5
+      },
+      {
+        userId: 9,
+        spotId: 7,
+        review: 'Very clean, great view, easy access to everything. Looks just like the pictures',
+        stars: 5
+      },
+      {
+        userId: 8,
+        spotId: 8,
+        review: 'This is a beautiful home and very clean. The hosts provided for every comfort imaginable. We spent our days mesmerized by the amazing views. ',
+        stars: 5
+      },
+      {
+        userId: 7,
+        spotId: 9,
+        review: 'Beautiful airstream conversion and stunning ocean view!',
+        stars: 5
+      },
+      {
+        userId: 6,
+        spotId: 10,
+        review: 'Definitely worth it, great view beautiful location.',
+        stars: 5
       }
     ], {});
   },
