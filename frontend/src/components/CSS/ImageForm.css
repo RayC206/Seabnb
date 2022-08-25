@@ -46,3 +46,11 @@
   padding: 2px;
   font-family: 'Montserrat', sans-serif;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .imageFormContainer  {
+    width: 120%;
+    margin-left: 9px;
+  }
+}

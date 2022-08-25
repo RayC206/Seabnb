@@ -120,3 +120,46 @@
 .imagePage-grid-row-2 {
   grid-row: span 2;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .imagePageButtons {
+    flex-direction: row;
+    position: absolute;
+    top: 6rem;
+    left: 2.5rem;
+  }
+
+  .imagePageContainer{
+    margin: 11%;
+    width: 75%;
+  }
+
+  .imagePage-grid > img {
+    width: 160%;
+    height: 100%;
+    margin-top: 5px;
+    grid-row: span 2;
+  }
+
+  .deleteButton {
+    margin: 10px;
+    position: absolute;
+    grid-row: span 2;
+  }
+
+
+  /* unauthorized user page */
+
+  .imagePage-grid2 {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+  }
+
+  .imagePage-grid2 > img {
+    margin-top: 15%;
+    width: 150%;
+    height: 140%;
+  }
+}

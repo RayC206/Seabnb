@@ -89,9 +89,11 @@ const SpotImages = () => {
       } else {
         return (
           <div className="imagePageContainer">
-            <button className="backButton" onClick={history.goBack}>
-              Go Back
-            </button>
+            <div className="imagePageButtons">
+              <button className="backButton" onClick={history.goBack}>
+                Go Back
+              </button>
+            </div>
             <div className="imagePage-grid2">
               <img
                 className="imagePage-grid-col-2 imagePage-grid-row-2"
