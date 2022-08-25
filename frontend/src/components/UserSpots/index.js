@@ -75,10 +75,10 @@ const UserSpots = () => {
                   </NavLink>
                   <div className="pageButtons">
                     <button onClick={(e) => handleEdit(e, spot.id)}>
-                      Edit Spot
+                      Edit Listing
                     </button>
                     <button onClick={(e) => removeSpot(e, spot.id)}>
-                      Delete Spot
+                      Delete Listing
                     </button>
                   </div>
                 </div>
