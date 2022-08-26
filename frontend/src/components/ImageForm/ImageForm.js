@@ -65,15 +65,20 @@ const ImageForm = () => {
             Add Image
           </button>
         ) : (
+          <div className="pageButtons">
           <button
-            className="backButton"
-            onClick={() => {
-              let path = `/spots/${spotId}/images`;
-              history.push(path);
-            }}
-          >
-            Go Back
+          className="backButton"
+          onClick={() => {
+            let path = `/spots/${spotId}/images`;
+            history.push(path);
+          }}
+        >
+          Go Back
+        </button>
+        <button className="backButton" type="submit">
+            Add Image
           </button>
+          </div>
         )}
       </form>
     </div>

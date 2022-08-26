@@ -41,7 +41,7 @@ const SpotsPage = () => {
                         src={spot.previewImage}
                         alt={spot.name}
                       ></img>
-                      <p className="spotName">
+                      <div className="spotName">
                         <p>{spot.name}</p>
                         <p className="spotAverageRating">
                           {" "}
@@ -55,7 +55,7 @@ const SpotsPage = () => {
                             <span> No reviews</span>
                           )}
                         </p>
-                      </p>
+                      </div>
                       <p className="spotLocation">
                         {spot.city}, {spot.state}
                       </p>

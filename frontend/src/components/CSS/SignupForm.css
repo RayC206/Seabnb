@@ -46,7 +46,7 @@
 
 @media only screen and (max-width: 600px) {
   .welcomeContainer {
-    margin: 0px 0px 20px 20%;
+    margin: 0px 0px 20px 2%;
   }
 
   .signUpFormContainer {
@@ -59,4 +59,21 @@
     margin-left: 7rem;
   }
 
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  .welcomeContainer {
+    margin: 0px 0px 20px 2%;
+  }
+
+  .signUpFormContainer {
+    width: 70%;
+    margin-left: 10%;
+  }
+
+  .signUpButton {
+    width: 50%;
+    margin-left: 7rem;
+  }
 }

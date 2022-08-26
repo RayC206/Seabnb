@@ -128,7 +128,18 @@ module.exports = (sequelize, DataTypes) => {
        }
     }
     },
-    previewImage: DataTypes.STRING,
+    previewImage: {
+     type: DataTypes.STRING,
+     validate: {
+      validUrl(value) {
+        const imageType = ['.jpg', '.jpeg', '.png', '.gif']
+        if (!imageType.some(i => value.includes(i))) {
+          throw new Error("Enter a valid image URL type (.jpg, .jpeg, .png, or .gif)")
+        }
+      }
+     }
+
+    },
     ownerId: DataTypes.INTEGER
   }, {
     sequelize,
