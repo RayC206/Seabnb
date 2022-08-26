@@ -23,23 +23,21 @@ const SpotsDetail = () => {
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const spotsImagePage = () =>{
+  const spotsImagePage = () => {
     let path = `/spots/${spotId}/images`;
     history.push(path);
-  }
+  };
 
   useEffect(() => {
-    dispatch(findASpot(spotId)).catch(async (res) => {
-      setFindASpotStatus(res.status);
-    });
+    dispatch(findASpot(spotId))
+      .then(() => {
+        setIsLoaded(true);
+      })
+      .catch(async (res) => {
+        setFindASpotStatus(res.status);
+      });
     dispatch(getReviews(spotId));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (Object.keys(spot).length && spot.id) {
-      setIsLoaded(true);
-    }
-  }, [spot]);
 
   const handleCreateReview = (e) => {
     e.preventDefault();
@@ -66,11 +64,17 @@ const SpotsDetail = () => {
                     <span>
                       {" "}
                       <FaStar className="starRating" />{" "}
-                      {Number(spot.avgStarRating).toFixed(1)} - <span className="reviewTopDescription">{reviews.length}{" "}
-                      reviews </span>  - {spot.city}, {spot.state}
+                      {Number(spot.avgStarRating).toFixed(1)} -{" "}
+                      <span className="reviewTopDescription">
+                        {reviews.length} reviews{" "}
+                      </span>{" "}
+                      - {spot.city}, {spot.state}
                     </span>
                   ) : (
-                    <span> No reviews - {spot.city}, {spot.state}</span>
+                    <span>
+                      {" "}
+                      No reviews - {spot.city}, {spot.state}
+                    </span>
                   )}
                 </p>
               </h2>
@@ -80,46 +84,46 @@ const SpotsDetail = () => {
                   src={spot.previewImage}
                   alt={spot.name}
                 ></img>
-                {spot.images.map((image,index)=>{
+                {spot.images.map((image, index) => {
                   if (index === 0) {
                     return (
                       <img
-                       className=""
-                       key={image.id}
-                       src={image.url}
-                       alt={spot.name}
-                     ></img>
-                    )
+                        className=""
+                        key={image.id}
+                        src={image.url}
+                        alt={spot.name}
+                      ></img>
+                    );
                   }
                   if (index === 1) {
-                    return(
+                    return (
                       <img
-                       className="top-right-image"
-                       key={image.id}
-                       src={image.url}
-                       alt={spot.name}
-                     ></img>
-                    )
+                        className="top-right-image"
+                        key={image.id}
+                        src={image.url}
+                        alt={spot.name}
+                      ></img>
+                    );
                   }
                   if (index === 2) {
                     return (
                       <img
-                       className=""
-                       key={image.id}
-                       src={image.url}
-                       alt={spot.name}
-                     ></img>
-                    )
+                        className=""
+                        key={image.id}
+                        src={image.url}
+                        alt={spot.name}
+                      ></img>
+                    );
                   }
                   if (index === 3) {
                     return (
                       <img
-                       className="bottom-left-image"
-                       key={image.id}
-                       src={image.url}
-                       alt={spot.name}
-                     ></img>
-                    )
+                        className="bottom-left-image"
+                        key={image.id}
+                        src={image.url}
+                        alt={spot.name}
+                      ></img>
+                    );
                   }
                 })}
               </div>
@@ -195,7 +199,7 @@ const SpotsDetail = () => {
         </div>
       );
     }
-  } else if (findASpotStatus === 404){
+  } else if (findASpotStatus === 404) {
     return (
       <div className="fourOhFour">
         <span className="fourOh">404: Spot not found</span>
