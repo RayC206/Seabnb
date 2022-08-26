@@ -90,7 +90,7 @@ if (isLoaded) {
                       </button>
 
                       <button>
-                        <Link to={`/spots/${review.review.spotId}`}>View Spot</Link>
+                        <Link to={`/spots/${review.review.spotId}`}>View Listing</Link>
                       </button>
                     </div>
                   </div>

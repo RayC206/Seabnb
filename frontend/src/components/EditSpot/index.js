@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import * as spotActions from "../../store/spots";
 import "../CSS/EditSpot.css";
 
 const EditSpot = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   let { spotId } = useParams();
   spotId = Number(spotId);
@@ -193,9 +194,17 @@ const EditSpot = () => {
               onChange={updatePreviewImage}
             />
           </label>
+          <div className="pageButtons">
+          <button
+            className="backButton"
+            onClick={history.goBack}
+          >
+            Go Back
+          </button>
           <button className="editSpotButton" type="submit">
             Edit Listing
           </button>
+          </div>
         </form>
       </div>
     );
