@@ -11,6 +11,7 @@ const Homepage = () => {
   };
 
 return (
+  <div className='homePageContainer'>
     <div className="homeImageCard">
        <div className="ImageCard">
           <img className="image" src='https://i3.lensdump.com/i/16KtJA.jpg' alt='beach splash page background'></img>
@@ -20,6 +21,7 @@ return (
              </div>
            </div>
        </div>
+  </div>
   )
 }
 

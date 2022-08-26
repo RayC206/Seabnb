@@ -36,14 +36,16 @@ function Navigation({ isLoaded }) {
   }
   return (
     <nav>
-      <div id="navBar">
-        <div id="logo_div">
-          <NavLink exact to="/">
-            <img src="https://i.imgur.com/pd6aZpK.png" alt="Seabnb Logo"></img>
-          </NavLink>
+      <div id="navBarContainer">
+        <div id="navBar">
+          <div id="logo_div">
+            <NavLink exact to="/">
+              <img src="https://i.imgur.com/pd6aZpK.png" alt="Seabnb Logo"></img>
+            </NavLink>
+          </div>
+          {isLoaded && sessionLinks}
         </div>
-        {isLoaded && sessionLinks}
-      </div>
+        </div>
     </nav>
   );
 }
