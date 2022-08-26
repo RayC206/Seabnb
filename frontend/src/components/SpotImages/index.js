@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteSpotImage, findASpot } from "../../store/spots";
 import { FaTrashAlt } from "react-icons/fa";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import "../CSS/SpotImages.css";
 
 const SpotImages = () => {
@@ -15,8 +16,9 @@ const SpotImages = () => {
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
   const viewingAsOwner = sessionUser && sessionUser.id === spot.ownerId;
-
-  // console.log(spot);
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+    useState(false);
+  const [deletedImageId, setDeletedImageId] = useState(null);
 
   useEffect(() => {
     dispatch(findASpot(spotId)).catch(async (res) => {
@@ -32,10 +34,15 @@ const SpotImages = () => {
 
   const handleDelete = (e, imageId) => {
     e.preventDefault();
-    dispatch(deleteSpotImage(spot, imageId)).then(() => {
+    setShowDeleteConfirmationModal(true);
+    setDeletedImageId(imageId);
+  };
+
+  const confirmDelete = () => {
+    dispatch(deleteSpotImage(spot, deletedImageId)).then(() => {
       let path = `/spots/${spot.id}/images`;
-      console.log(path);
       history.push(path);
+      setShowDeleteConfirmationModal(false);
     });
   };
 
@@ -53,37 +60,44 @@ const SpotImages = () => {
     if (findASpotStatus === 200) {
       if (viewingAsOwner) {
         return (
-          <div className="imagePageContainer">
-            <div className="imagePageButtons">
-              <button className="backButton" onClick={spotsPage}>
-                Go Back
-              </button>
-              <button className="backButton" onClick={imageFormPage}>
-                Add Image
-              </button>
-            </div>
-            <div>
-              <h1></h1>
-              {spot.images.map((image) => {
-                return (
-                  <div className="imageGridContainer">
-                    <div className="imagePage-grid">
-                      <img
-                        className=""
-                        key={image.id}
-                        src={image.url}
-                        alt={spot.name}
-                      ></img>
-                      <FaTrashAlt
-                        className="deleteButton"
-                        onClick={(e) => handleDelete(e, image.id)}
-                      />
+          <>
+            <DeleteConfirmationModal
+              isOpen={showDeleteConfirmationModal}
+              onClose={() => setShowDeleteConfirmationModal(false)}
+              onConfirm={confirmDelete}
+            />
+            <div className="imagePageContainer">
+              <div className="imagePageButtons">
+                <button className="backButton" onClick={spotsPage}>
+                  Go Back
+                </button>
+                <button className="backButton" onClick={imageFormPage}>
+                  Add Image
+                </button>
+              </div>
+              <div>
+                <h1></h1>
+                {spot.images.map((image) => {
+                  return (
+                    <div className="imageGridContainer">
+                      <div className="imagePage-grid">
+                        <img
+                          className=""
+                          key={image.id}
+                          src={image.url}
+                          alt={spot.name}
+                        ></img>
+                        <FaTrashAlt
+                          className="deleteButton"
+                          onClick={(e) => handleDelete(e, image.id)}
+                        />
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          </>
         );
       } else {
         return (
