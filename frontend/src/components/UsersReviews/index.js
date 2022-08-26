@@ -3,6 +3,7 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviews, removeReview } from "../../store/reviews";
+import ReviewDeleteConfirmationModal from "./ReviewDeleteConfirmationModal";
 import "../CSS/UsersReviews.css";
 
 const UserReviews = () => {
@@ -10,6 +11,9 @@ const UserReviews = () => {
   const { spotId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+  useState(false);
+const [deletedReviewId, setDeletedReviewId] = useState(null);
   const reviews = useSelector((state) => {
     let reviewsFromState = Object.values(state.reviews);
     if (reviewsFromState[0] && Array.isArray(reviewsFromState[0])) {
@@ -32,13 +36,26 @@ const UserReviews = () => {
 
   const handleDeleteReview = (e, reviewId) => {
     e.preventDefault();
-    dispatch(removeReview(reviewId));
-    let path = `/my-reviews`;
-    history.push(path);
+    setShowDeleteConfirmationModal(true)
+    setDeletedReviewId(reviewId)
   };
+
+  const confirmDelete = () => {
+    dispatch(removeReview(deletedReviewId)).then(() => {
+      setShowDeleteConfirmationModal(false);
+    });
+  };
+
+
 if (isLoaded) {
     if (reviews.length) {
       return (
+        <>
+         <ReviewDeleteConfirmationModal
+              isOpen={showDeleteConfirmationModal}
+              onClose={() => setShowDeleteConfirmationModal(false)}
+              onConfirm={confirmDelete}
+            />
         <div className="userReviewPage">
           <h1 className="myReviewsPageTitle">My Reviews</h1>
           <div className="outerReviewContainer">
@@ -82,6 +99,7 @@ if (isLoaded) {
             })}
           </div>
         </div>
+        </>
       );
     } else {
       return <div>You have no reviews</div>;
