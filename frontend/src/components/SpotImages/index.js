@@ -14,7 +14,6 @@ const SpotImages = () => {
   const history = useHistory();
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [imageFormModalIsOpen, setImageFormModalIsOpen] = useState(false);
   const viewingAsOwner = sessionUser && sessionUser.id === spot.ownerId;
 
   // console.log(spot);

@@ -85,6 +85,7 @@ const SpotsDetail = () => {
                     return (
                       <img
                        className=""
+                       key={image.id}
                        src={image.url}
                        alt={spot.name}
                      ></img>
@@ -94,6 +95,7 @@ const SpotsDetail = () => {
                     return(
                       <img
                        className="top-right-image"
+                       key={image.id}
                        src={image.url}
                        alt={spot.name}
                      ></img>
@@ -103,6 +105,7 @@ const SpotsDetail = () => {
                     return (
                       <img
                        className=""
+                       key={image.id}
                        src={image.url}
                        alt={spot.name}
                      ></img>
@@ -112,6 +115,7 @@ const SpotsDetail = () => {
                     return (
                       <img
                        className="bottom-left-image"
+                       key={image.id}
                        src={image.url}
                        alt={spot.name}
                      ></img>
@@ -130,10 +134,10 @@ const SpotsDetail = () => {
             <div className="bookingBox">
               <div className="bookingPriceContainer">
                 {" "}
-                <a className="priceDetail">
+                <span className="priceDetail">
                   {" "}
                   <span>${spot.price}</span> night
-                </a>{" "}
+                </span>{" "}
                 <div className="reviewDiv">
                   {Number(spot.avgStarRating) > 0 && reviews ? (
                     <span>
@@ -194,7 +198,7 @@ const SpotsDetail = () => {
   } else if (findASpotStatus === 404){
     return (
       <div className="fourOhFour">
-        <a className="fourOh">404: Spot not found</a>
+        <span className="fourOh">404: Spot not found</span>
       </div>
     );
   } else {
