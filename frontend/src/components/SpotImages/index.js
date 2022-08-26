@@ -101,7 +101,7 @@ const SpotImages = () => {
         );
       } else {
         return (
-          <div className="imagePageContainer">
+          <div className="imagePageContainer2">
             <div className="imagePageButtons">
               <button className="backButton" onClick={history.goBack}>
                 Go Back
