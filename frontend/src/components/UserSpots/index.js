@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
 import { spotDelete } from "../../store/spots";
+import SpotDeleteConfirmationModal from "./SpotDeleteConfirmationModal";
 import '../CSS/UsersSpots.css';
 
 const UserSpots = () => {
@@ -13,7 +14,9 @@ const UserSpots = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const spots = useSelector((state) => Object.values(state.spots));
-
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+    useState(false);
+  const [deletedSpotId, setDeletedSpotId] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   console.log(spots);
@@ -30,7 +33,15 @@ const UserSpots = () => {
 
   const removeSpot = (e, spotId) => {
     e.preventDefault();
-    dispatch(spotDelete(spotId));
+    setShowDeleteConfirmationModal(true)
+    console.log(spotId)
+    setDeletedSpotId(spotId)
+  };
+
+  const confirmDelete = () => {
+    dispatch(spotDelete(deletedSpotId)).then(() => {
+      setShowDeleteConfirmationModal(false);
+    });
   };
 
   const handleEdit = (e, spotId) => {
@@ -42,6 +53,12 @@ const UserSpots = () => {
   if (isLoaded) {
     if (spots.length) {
       return (
+        <>
+         <SpotDeleteConfirmationModal
+              isOpen={showDeleteConfirmationModal}
+              onClose={() => setShowDeleteConfirmationModal(false)}
+              onConfirm={confirmDelete}
+            />
         <div className="userSpotsPage">
           <h1 className="manageListingPageTitle">My Listings</h1>
           <div className="left"></div>
@@ -86,6 +103,7 @@ const UserSpots = () => {
             }
           })}
         </div>
+        </>
       );
     } else {
       return (
