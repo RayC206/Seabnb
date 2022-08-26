@@ -69,6 +69,7 @@ const CreateReview = () => {
             Create Review
           </button>
         ) : (
+          <div className="pageButtons">
           <button
             className="backButton"
             onClick={() => {
@@ -78,6 +79,10 @@ const CreateReview = () => {
           >
             Go Back
           </button>
+          <button className="createReviewSubmit" type="submit">
+            Create Review
+          </button>
+          </div>
         )}
       </form>
     </div>

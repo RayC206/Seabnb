@@ -47,8 +47,13 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: 'Star rating is required.'
         },
-        min: 1,
-        max: 5
+      },
+      validate: {
+        minMaxStar(value) {
+          if (value <= 0 || value > 5) {
+            throw new Error("Star rating must be between 1 and 5")
+          }
+        }
       }
     }
   }, {
