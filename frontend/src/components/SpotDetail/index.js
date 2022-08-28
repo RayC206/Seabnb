@@ -14,18 +14,16 @@ const SpotsDetail = () => {
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("here");
-  console.log(spot);
-  // console.log(review);
-
-  // might use this later
-  // const isSpotOwner = sessionUser && spot && spot.ownerId === sessionUser.id;
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const spotsImagePage = () => {
     let path = `/spots/${spotId}/images`;
     history.push(path);
+  };
+
+  const hideButton = {
+    display: 'none',
   };
 
   useEffect(() => {
@@ -193,9 +191,16 @@ const SpotsDetail = () => {
                 );
               })}
           </div>
+          {spot.ownerId === sessionUser.id ? (
+            // add style:{hideButton} when i need to hide button for spot owner after presentation
           <button className="createReviewButton" onClick={handleCreateReview}>
             Create Review
           </button>
+           ) : (
+          <button className="createReviewButton" onClick={handleCreateReview}>
+          Create Review
+        </button>
+          )}
         </div>
       );
     }
