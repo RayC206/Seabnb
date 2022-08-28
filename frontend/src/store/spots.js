@@ -58,9 +58,6 @@ export const getAllSpots = () => async (dispatch) => {
   if (response.ok) {
     const spots = await response.json();
     dispatch(getAll(spots));
-    // const all = {};
-    // spots.forEach((spot) => (all[spot.id] = spot));
-    // return { ...all };
     return spots;
   }
 };
