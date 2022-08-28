@@ -19,8 +19,6 @@ const UserSpots = () => {
   const [deletedSpotId, setDeletedSpotId] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(spots);
-
   useEffect(() => {
     if (!sessionUser) {
       history.push("/");
@@ -34,7 +32,6 @@ const UserSpots = () => {
   const removeSpot = (e, spotId) => {
     e.preventDefault();
     setShowDeleteConfirmationModal(true)
-    console.log(spotId)
     setDeletedSpotId(spotId)
   };
 

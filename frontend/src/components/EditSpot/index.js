@@ -44,8 +44,6 @@ const EditSpot = () => {
   useEffect(() => {
     if (Object.keys(spot).length && spot.id) {
       setIsLoaded(true);
-      console.log("SPOT");
-      console.log(spot);
       setAddress(spot.address);
       setCity(spot.city);
       setState(spot.state);

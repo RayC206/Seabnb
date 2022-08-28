@@ -25,7 +25,6 @@ const imageReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case ADD_IMAGES: {
-      console.log(newState);
       newState[action.image.id] = action.image;
       return newState;
     }
