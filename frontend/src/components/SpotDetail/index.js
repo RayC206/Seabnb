@@ -23,7 +23,7 @@ const SpotsDetail = () => {
   };
 
   const hideButton = {
-    display: 'none',
+    display: "none",
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const SpotsDetail = () => {
 
   const handleCreateReview = (e) => {
     e.preventDefault();
-    dispatch(createReview(spotId));
+    // dispatch(createReview(spotId));
     let path = `/spots/${spotId}/create-review`;
     if (sessionUser) {
       history.push(path);
@@ -193,13 +193,13 @@ const SpotsDetail = () => {
           </div>
           {spot.ownerId === sessionUser.id ? (
             // add style:{hideButton} when i need to hide button for spot owner after presentation
-          <button className="createReviewButton" onClick={handleCreateReview}>
-            Create Review
-          </button>
-           ) : (
-          <button className="createReviewButton" onClick={handleCreateReview}>
-          Create Review
-        </button>
+            <button className="createReviewButton" onClick={handleCreateReview}>
+              Create Review
+            </button>
+          ) : (
+            <button className="createReviewButton" onClick={handleCreateReview}>
+              Create Review
+            </button>
           )}
         </div>
       );
