@@ -53,8 +53,11 @@ module.exports = (sequelize, DataTypes) => {
           if (value <= 0 || value > 5) {
             throw new Error("Star rating must be between 1 and 5")
           }
+        },
+        isNumeric: {
+          msg: "Enter a numerical rating between 1 and 5."
         }
-      }
+      },
     }
   }, {
     sequelize,
