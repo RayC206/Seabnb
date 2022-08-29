@@ -179,7 +179,6 @@ const SpotsDetail = () => {
                       <div>
                         <div className="reviewMessage"> "{review.review}"</div>
                         <div>---</div>
-
                         <div className="reviewStars">
                           {" "}
                           <span>Rating :</span>{" "}
@@ -191,7 +190,7 @@ const SpotsDetail = () => {
                 );
               })}
           </div>
-          {spot.ownerId === sessionUser.id ? (
+          {sessionUser && spot.ownerId === sessionUser.id ? (
             // add style:{hideButton} when i need to hide button for spot owner after presentation
             <button className="createReviewButton" onClick={handleCreateReview}>
               Create Review
