@@ -79,7 +79,12 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             msg: 'Lat is required.'
         }
-      }
+      },
+      validate: {
+        isDecimal: {
+          msg: 'Latitude: Enter a valid number.'
+        }
+      },
     },
     lng: {
       type: DataTypes.DECIMAL,
@@ -88,6 +93,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
           notEmpty: {
             msg: 'Lng is required.'
+        }
+      },
+      validate: {
+        isDecimal: {
+          msg: 'Longitude: Enter a valid number.'
         }
       }
     },
