@@ -2,7 +2,8 @@
 
 Seabnb, a Airbnb clone featuring only coastal and beach rental stays. This personal project tests my ability to put together a fullstack website with all the technologies i've learned so far and to test my styling ability with CSS.  The Website features the ability to create/log in a user,  post a listing, create listing reviews, and the ability to add images to your listing. More features will be added over time.  --- ( work in  progress )
 
-Live site :  https://ray-airbnb-clone.herokuapp.com/
+# Live Site
+ https://ray-airbnb-clone.herokuapp.com/
 
 
 ## Technology Used
@@ -17,5 +18,20 @@ Database:
 
 ## Wiki Link
 - [Database Schema, Store Shape, Features](https://github.com/RayC206/airbnb/wiki)
+
+## Landing Page
+
+![Landing](https://user-images.githubusercontent.com/79509501/190925482-bebc1ceb-daae-4e92-91f9-17c074980a38.png)
+
+## All Listings Page
+
+![Listings](https://user-images.githubusercontent.com/79509501/190925503-9061f156-ddaa-48ad-93ce-425149459fbb.png)
+
+## User's Listings
+
+![UserListing](https://user-images.githubusercontent.com/79509501/190925521-9d98a165-14ea-4732-b6aa-899d9b659a32.png)
+
+
+
 
 
