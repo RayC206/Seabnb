@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, useHistory, Redirect } from "react-router-dom";
 import { addSpotImage } from "../../store/images";
-import '../CSS/ImageForm.css'
-
+import "../CSS/ImageForm.css";
 
 const ImageForm = () => {
   let { spotId } = useParams();
@@ -39,7 +38,6 @@ const ImageForm = () => {
       });
   };
 
-
   return (
     <div className="imageFormContainer">
       <form className="imageForm" onSubmit={handleSubmit}>
@@ -58,7 +56,7 @@ const ImageForm = () => {
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             required
-            />
+          />
         </label>
         {!errors.length ? (
           <button className="imageFormSubmit" type="submit">
@@ -66,18 +64,18 @@ const ImageForm = () => {
           </button>
         ) : (
           <div className="pageButtons">
-          <button
-          className="backButton"
-          onClick={() => {
-            let path = `/spots/${spotId}/images`;
-            history.push(path);
-          }}
-        >
-          Go Back
-        </button>
-        <button className="backButton" type="submit">
-            Add Image
-          </button>
+            <button
+              className="backButton"
+              onClick={() => {
+                let path = `/spots/${spotId}/images`;
+                history.push(path);
+              }}
+            >
+              Go Back
+            </button>
+            <button className="backButton" type="submit">
+              Add Image
+            </button>
           </div>
         )}
       </form>

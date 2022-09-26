@@ -30,7 +30,7 @@ const EditSpot = () => {
   const updateLat = (e) => setLat(e.target.value);
   const updateLng = (e) => setLng(e.target.value);
   const updateName = (e) => setName(e.target.value);
-  const updatePreviewImage = (e) => setPreviewImage(e.target.value)
+  const updatePreviewImage = (e) => setPreviewImage(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
   // const updatePreviewImage = (e) => setPreviewImage(e.target.value);
@@ -193,15 +193,12 @@ const EditSpot = () => {
             />
           </label>
           <div className="pageButtons">
-          <button
-            className="backButton"
-            onClick={history.goBack}
-          >
-            Go Back
-          </button>
-          <button className="editSpotButton" type="submit">
-            Edit Listing
-          </button>
+            <button className="backButton" onClick={history.goBack}>
+              Go Back
+            </button>
+            <button className="editSpotButton" type="submit">
+              Edit Listing
+            </button>
           </div>
         </form>
       </div>

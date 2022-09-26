@@ -45,7 +45,7 @@ const CreateReview = () => {
           ))}
         </ul>
         <label>
-         <span> Message: </span>
+          <span> Message: </span>
           <input
             type="text"
             placeholder="Review Message"
@@ -70,18 +70,18 @@ const CreateReview = () => {
           </button>
         ) : (
           <div className="pageButtons">
-          <button
-            className="backButton"
-            onClick={() => {
-              let path = `/spots/${spotId}`;
-              history.push(path);
-            }}
-          >
-            Go Back
-          </button>
-          <button className="createReviewSubmit" type="submit">
-            Create Review
-          </button>
+            <button
+              className="backButton"
+              onClick={() => {
+                let path = `/spots/${spotId}`;
+                history.push(path);
+              }}
+            >
+              Go Back
+            </button>
+            <button className="createReviewSubmit" type="submit">
+              Create Review
+            </button>
           </div>
         )}
       </form>
