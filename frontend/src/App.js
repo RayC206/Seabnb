@@ -63,7 +63,7 @@ function App() {
             <SpotImages />
           </Route>
           <Route exact path="/spots/:spotId/images/add-image">
-            <ImageForm  />
+            <ImageForm />
           </Route>
         </Switch>
       )}

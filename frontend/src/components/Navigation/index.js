@@ -15,7 +15,9 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <div id="rightNav">
-          <NavLink className='hostSpot' to='/spots/create'>Become a Host</NavLink>
+          <NavLink className="hostSpot" to="/spots/create">
+            Become a Host
+          </NavLink>
           <ProfileButton user={sessionUser} />
         </div>
       </>
@@ -40,12 +42,15 @@ function Navigation({ isLoaded }) {
         <div id="navBar">
           <div id="logo_div">
             <NavLink exact to="/">
-              <img src="https://i.imgur.com/pd6aZpK.png" alt="Seabnb Logo"></img>
+              <img
+                src="https://i.imgur.com/pd6aZpK.png"
+                alt="Seabnb Logo"
+              ></img>
             </NavLink>
           </div>
           {isLoaded && sessionLinks}
         </div>
-        </div>
+      </div>
     </nav>
   );
 }

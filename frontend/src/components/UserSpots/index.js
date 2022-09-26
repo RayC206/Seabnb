@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { getUsersSpots } from "../../store/spots";
 import { spotDelete } from "../../store/spots";
 import SpotDeleteConfirmationModal from "./SpotDeleteConfirmationModal";
-import '../CSS/UsersSpots.css';
+import "../CSS/UsersSpots.css";
 
 const UserSpots = () => {
   const history = useHistory();
@@ -31,8 +31,8 @@ const UserSpots = () => {
 
   const removeSpot = (e, spotId) => {
     e.preventDefault();
-    setShowDeleteConfirmationModal(true)
-    setDeletedSpotId(spotId)
+    setShowDeleteConfirmationModal(true);
+    setDeletedSpotId(spotId);
   };
 
   const confirmDelete = () => {
@@ -51,55 +51,55 @@ const UserSpots = () => {
     if (spots.length) {
       return (
         <>
-         <SpotDeleteConfirmationModal
-              isOpen={showDeleteConfirmationModal}
-              onClose={() => setShowDeleteConfirmationModal(false)}
-              onConfirm={confirmDelete}
-            />
-        <div className="userSpotsPage">
-          <h1 className="manageListingPageTitle">My Listings</h1>
-          <div className="left"></div>
-          {spots.map((spot, index) => {
-            if (spot) {
-              return (
-                <div key={index}>
-                  <NavLink to={`/spots/${spot.id}`}>
-                    <div className="eachUsersSpot" key={spot.id}>
-                      <div className="eachUserSpotContainer">
-                        <img
-                          className="userSpotImg"
-                          src={spot.previewImage}
-                          alt={spot.name}
-                        ></img>
-                        <div className="userSpotDetails">
-                          <p className="userSpotName">
-                            <p>{spot.name}</p>
-                          </p>
-                          <p className="userSpotLocation">
-                            {spot.city}, {spot.state}
-                          </p>
-                          <p className="userSpotAddress">{spot.address}</p>
-                          <p className="userSpotPrice">
-                            {" "}
-                            <b>${spot.price}</b> night{" "}
-                          </p>
+          <SpotDeleteConfirmationModal
+            isOpen={showDeleteConfirmationModal}
+            onClose={() => setShowDeleteConfirmationModal(false)}
+            onConfirm={confirmDelete}
+          />
+          <div className="userSpotsPage">
+            <h1 className="manageListingPageTitle">My Listings</h1>
+            <div className="left"></div>
+            {spots.map((spot, index) => {
+              if (spot) {
+                return (
+                  <div key={index}>
+                    <NavLink to={`/spots/${spot.id}`}>
+                      <div className="eachUsersSpot" key={spot.id}>
+                        <div className="eachUserSpotContainer">
+                          <img
+                            className="userSpotImg"
+                            src={spot.previewImage}
+                            alt={spot.name}
+                          ></img>
+                          <div className="userSpotDetails">
+                            <p className="userSpotName">
+                              <p>{spot.name}</p>
+                            </p>
+                            <p className="userSpotLocation">
+                              {spot.city}, {spot.state}
+                            </p>
+                            <p className="userSpotAddress">{spot.address}</p>
+                            <p className="userSpotPrice">
+                              {" "}
+                              <b>${spot.price}</b> night{" "}
+                            </p>
+                          </div>
                         </div>
                       </div>
+                    </NavLink>
+                    <div className="pageButtons">
+                      <button onClick={(e) => handleEdit(e, spot.id)}>
+                        Edit Listing
+                      </button>
+                      <button onClick={(e) => removeSpot(e, spot.id)}>
+                        Delete Listing
+                      </button>
                     </div>
-                  </NavLink>
-                  <div className="pageButtons">
-                    <button onClick={(e) => handleEdit(e, spot.id)}>
-                      Edit Listing
-                    </button>
-                    <button onClick={(e) => removeSpot(e, spot.id)}>
-                      Delete Listing
-                    </button>
                   </div>
-                </div>
-              );
-            }
-          })}
-        </div>
+                );
+              }
+            })}
+          </div>
         </>
       );
     } else {

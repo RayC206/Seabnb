@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "../../../context/Modal";
-import '../../CSS/DeleteConfirmationModal.css'
+import "../../CSS/DeleteConfirmationModal.css";
 
 function SpotDeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
   const dismiss = () => {
