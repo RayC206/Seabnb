@@ -3,6 +3,10 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { findASpot } from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
+import {
+  getSpotBookingsRequest,
+  createBookingRequest,
+} from "../../store/bookings";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
 
@@ -14,6 +18,7 @@ const SpotsDetail = () => {
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
+  const bookings = useSelector((state) => state.bookings);
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -35,6 +40,7 @@ const SpotsDetail = () => {
         setFindASpotStatus(res.status);
       });
     dispatch(getReviews(spotId));
+    dispatch(getSpotBookingsRequest(spotId));
   }, [dispatch]);
 
   const handleCreateReview = (e) => {
@@ -46,6 +52,19 @@ const SpotsDetail = () => {
     } else {
       history.push("/login");
     }
+  };
+
+  const handleCreateBooking = (e) => {
+    e.preventDefault();
+    console.log("booking data");
+    const data = {
+      spotId: spot.id,
+      startDate: "2022-11-26",
+      endDate: "2022-11-28",
+    };
+    console.log(data);
+
+    dispatch(createBookingRequest(data));
   };
 
   if (isLoaded) {
@@ -152,6 +171,7 @@ const SpotsDetail = () => {
                   )}
                 </div>
               </div>
+              <button onClick={handleCreateBooking}>BOOK ME</button>
             </div>
           </div>
           <div className="reviewSection">
