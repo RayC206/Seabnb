@@ -15,6 +15,7 @@ import CreateReview from "./components/CreateReview";
 import UserReviews from "./components/UsersReviews";
 import SpotImages from "./components/SpotImages";
 import ImageForm from "./components/ImageForm/ImageForm";
+import UserBookings from "./components/Bookings/UsersBookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,9 @@ function App() {
           </Route>
           <Route exact path="/my-reviews">
             <UserReviews />
+          </Route>
+          <Route exact path="/my-bookings">
+            <UserBookings />
           </Route>
           <Route exact path="/spots/:spotId/create-review">
             <CreateReview />
