@@ -9,6 +9,7 @@ import {
 } from "../../store/bookings";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
+import  CreateBookingForm from "../Bookings/createBooking";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -54,18 +55,7 @@ const SpotsDetail = () => {
     }
   };
 
-  const handleCreateBooking = (e) => {
-    e.preventDefault();
-    console.log("booking data");
-    const data = {
-      spotId: spot.id,
-      startDate: "2022-11-26",
-      endDate: "2022-11-28",
-    };
-    console.log(data);
 
-    dispatch(createBookingRequest(data));
-  };
 
   if (isLoaded) {
     if (findASpotStatus === 200) {
@@ -171,7 +161,11 @@ const SpotsDetail = () => {
                   )}
                 </div>
               </div>
-              <button onClick={handleCreateBooking}>BOOK ME</button>
+              <div>
+              <CreateBookingForm
+              spot = {spot}
+              reviews = {reviews}/>
+              </div>
             </div>
           </div>
           <div className="reviewSection">

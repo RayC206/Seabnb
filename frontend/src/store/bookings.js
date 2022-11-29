@@ -136,7 +136,7 @@ const bookingsReducer = (state = initialState, action) => {
 
     case DELETE_BOOKING: {
       newState = { ...state };
-      delete newState[action.bookingId];
+      delete newState[action.deletedBookingId];
       return newState;
     }
 

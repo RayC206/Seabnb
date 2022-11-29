@@ -25,6 +25,7 @@
   "homepage": "https://github.com/RayC206/airBnB#readme",
   "dependencies": {
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.39",
     "pg": "^8.7.3",
     "react-icons": "^4.4.0"
   }

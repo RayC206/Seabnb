@@ -14,3 +14,11 @@
   width: 60%;
   margin: auto;
 }
+
+.bookingButtons button {
+  margin: 0px 10px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 450;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+}
