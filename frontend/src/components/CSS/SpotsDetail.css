@@ -135,8 +135,9 @@
   flex-flow: row wrap ;
   justify-content: space-between ;
   align-items: baseline ;
-  margin-bottom: 24px ;
+  padding-bottom: 24px ;
   font-family: 'Montserrat', sans-serif;
+  margin: auto;
 }
 
 .priceDetail > span {

@@ -3,8 +3,13 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { findASpot } from "../../store/spots";
 import { getReviews, createReview } from "../../store/reviews";
+import {
+  getSpotBookingsRequest,
+  createBookingRequest,
+} from "../../store/bookings";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
+import CreateBookingForm from "../Bookings/CreateBooking.js";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -14,6 +19,7 @@ const SpotsDetail = () => {
   const spot = useSelector((state) => state.spots);
   const reviews = useSelector((state) => state.reviews.reviews);
   const sessionUser = useSelector((state) => state.session.user);
+  const bookings = useSelector((state) => state.bookings);
   const [findASpotStatus, setFindASpotStatus] = useState(200);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -35,6 +41,7 @@ const SpotsDetail = () => {
         setFindASpotStatus(res.status);
       });
     dispatch(getReviews(spotId));
+    dispatch(getSpotBookingsRequest(spotId));
   }, [dispatch]);
 
   const handleCreateReview = (e) => {
@@ -151,6 +158,16 @@ const SpotsDetail = () => {
                     <span> No reviews</span>
                   )}
                 </div>
+              </div>
+              <div>
+                {sessionUser &&
+                  (sessionUser.id !== spot.ownerId ? (
+                    <CreateBookingForm spot={spot} />
+                  ) : (
+                    <div>
+                      <button>Manage Listing</button>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>

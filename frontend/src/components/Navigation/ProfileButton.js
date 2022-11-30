@@ -58,6 +58,9 @@ function ProfileButton({ user }) {
             <Link to="/my-spots" id="dropDown1">
               Manage Listings
             </Link>
+            <Link to="/my-bookings" id="dropDown1">
+              Manage Bookings
+            </Link>
             <Link to="/my-reviews" id="dropDown1">
               Manage Reviews
             </Link>
