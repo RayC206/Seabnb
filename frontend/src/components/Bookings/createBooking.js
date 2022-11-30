@@ -52,7 +52,7 @@ const CreateBookingForm = ({ spot }) => {
     console.log(numOfNights);
     setSubTotal(spot.price * numOfNights);
     setCleaningFee(subTotal / 20);
-    setServiceFee(subTotal / 20);
+    setServiceFee(subTotal / 15);
     setTotal(subTotal - cleaningFee + serviceFee);
   }, [startDate, endDate, numOfNights, subTotal, serviceFee]);
 
