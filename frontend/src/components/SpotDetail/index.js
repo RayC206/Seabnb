@@ -9,7 +9,7 @@ import {
 } from "../../store/bookings";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
-import  CreateBookingForm from "../Bookings/createBooking";
+import CreateBookingForm from "../Bookings/createBooking";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -54,8 +54,6 @@ const SpotsDetail = () => {
       history.push("/login");
     }
   };
-
-
 
   if (isLoaded) {
     if (findASpotStatus === 200) {
@@ -162,9 +160,11 @@ const SpotsDetail = () => {
                 </div>
               </div>
               <div>
-              <CreateBookingForm
-              spot = {spot}
-              reviews = {reviews}/>
+                {sessionUser.id !== spot.ownerId ? (
+                  <CreateBookingForm spot={spot} reviews={reviews} />
+                ) : (
+                  <div><button>Manage Listing</button></div>
+                )}
               </div>
             </div>
           </div>

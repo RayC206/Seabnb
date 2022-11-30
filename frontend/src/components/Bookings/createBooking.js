@@ -12,13 +12,14 @@ const CreateBookingForm = ({ spot, review }) => {
   const history = useHistory();
 
   const dateFormat = "YYYY-MM-DD";
-  const today = moment().format(dateFormat);
+  // const today = moment().format(dateFormat);
   const tomorrow = moment().add(1, "day").format(dateFormat);
+  const dayAfterTomorrow = moment().add(2, "day").format(dateFormat);
   const dbDateFormat = "YYYY-MM-DD HH:mm:ss";
 
   const [errors, setErrors] = useState([]);
-  const [startDate, setStartDate] = useState(today);
-  const [endDate, setEndDate] = useState(tomorrow);
+  const [startDate, setStartDate] = useState(tomorrow);
+  const [endDate, setEndDate] = useState(dayAfterTomorrow);
   const [numOfNights, setNumOfNights] = useState(1);
 
   const handleCreateBooking = (e) => {
@@ -41,7 +42,7 @@ const CreateBookingForm = ({ spot, review }) => {
         res = await res.json();
         console.log("ERROR");
         console.log(res.message);
-        setErrors([Object.values(res.message)]);
+        setErrors(Object.values(res.errors));
       });
   };
 
@@ -53,11 +54,11 @@ const CreateBookingForm = ({ spot, review }) => {
   return (
     <div>
       <div>
-        {errors.map((error, idx) => (
-          <div className="errorDiv" key={idx}>
-            {error}
-          </div>
-        ))}
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
       </div>
       <div className="checkin">CHECK-IN</div>
       <input
@@ -66,7 +67,7 @@ const CreateBookingForm = ({ spot, review }) => {
         name="booking-start-date"
         value={startDate}
         className="checkin"
-        min={today}
+        min={tomorrow}
         onChange={(e) => setStartDate(e.target.value)}
       ></input>
       <div className="checkin">CHECK-OUT</div>

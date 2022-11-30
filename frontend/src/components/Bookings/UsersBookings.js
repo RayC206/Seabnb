@@ -50,14 +50,13 @@ function UserBookings() {
                       <div className="bookingsSpotDiv">
                         <div>
                           <div className="eachUsersSpot" key={spot.id}>
-                            <div className="eachUserSpotContainer">
                               <NavLink to={`/spots/${spot.id}`}>
+                            <div className="eachUserSpotContainer">
                                 <img
                                   className="userSpotImg"
                                   src={spot.previewImage}
                                   alt={spot.name}
                                 ></img>
-                              </NavLink>
 
                               <div className="userSpotDetails">
                                 <p className="userSpotName">
@@ -68,6 +67,14 @@ function UserBookings() {
                                   <p className="userSpotAddress">
                                     {spot.address}
                                   </p>
+                                  <p className="userSpotPrice">
+                                    {" "}
+                                    <b>${spot.price}</b> night{" "}
+                                  </p>
+                                </p>
+                              </div>
+                            </div>
+                                    </NavLink>
                                   <div className="bookingDates">
                                     <p>Check-in: {startDate}</p>
                                     <p>Checkout: {endDate}</p>
@@ -81,19 +88,12 @@ function UserBookings() {
                                           onClick={() => {
                                             confirmDelete(booking.id);
                                           }}
-                                        >
+                                          >
                                           Delete
                                         </button>
                                       </div>
                                     )}
                                   </div>
-                                  <p className="userSpotPrice">
-                                    {" "}
-                                    <b>${spot.price}</b> night{" "}
-                                  </p>
-                                </p>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -116,15 +116,14 @@ function UserBookings() {
                     <>
                       <div className="bookingsSpotDiv">
                         <div>
-                          <div className="eachUsersSpot" key={spot.id}>
-                            <div className="eachUserSpotContainer">
+                          <div className="eachUsersSpotPast" key={spot.id}>
                               <NavLink to={`/spots/${spot.id}`}>
+                            <div className="eachUserSpotContainer">
                                 <img
                                   className="userSpotImg"
                                   src={spot.previewImage}
                                   alt={spot.name}
                                 ></img>
-                              </NavLink>
 
                               <div className="userSpotDetails">
                                 <p className="userSpotName">
@@ -148,7 +147,7 @@ function UserBookings() {
                                           onClick={() => {
                                             confirmDelete(booking.id);
                                           }}
-                                        >
+                                          >
                                           Delete
                                         </button>
                                       </div>
@@ -161,6 +160,7 @@ function UserBookings() {
                                 </p>
                               </div>
                             </div>
+                                    </NavLink>
                           </div>
                         </div>
                       </div>
