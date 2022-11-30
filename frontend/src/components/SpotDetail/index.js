@@ -9,7 +9,7 @@ import {
 } from "../../store/bookings";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
-import CreateBookingForm from "../Bookings/CreateBooking.js";
+import CreateBookingForm from "../Bookings/createBooking.js";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
