@@ -5,9 +5,11 @@ import moment from "moment-timezone";
 import {
   createBookingRequest,
   getSpotBookingsRequest,
+  editBookingRequest,
 } from "../../store/bookings";
+import "./CreateBooking.css";
 
-const CreateBookingForm = ({ spot, review }) => {
+const CreateBookingForm = ({ spot }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -24,14 +26,11 @@ const CreateBookingForm = ({ spot, review }) => {
 
   const handleCreateBooking = (e) => {
     e.preventDefault();
-    console.log("BOOKING");
-    console.log(moment(startDate).format(dbDateFormat));
     const data = {
       spotId: spot.id,
       startDate: moment(startDate).format(dbDateFormat),
       endDate: moment(endDate).format(dbDateFormat),
     };
-    console.log(data);
 
     dispatch(createBookingRequest(data))
       .then(() => {
@@ -40,49 +39,83 @@ const CreateBookingForm = ({ spot, review }) => {
       })
       .catch(async (res) => {
         res = await res.json();
-        console.log("ERROR");
-        console.log(res.message);
         setErrors(Object.values(res.errors));
       });
   };
 
+  const [subTotal, setSubTotal] = useState(spot.price * numOfNights);
+  const [cleaningFee, setCleaningFee] = useState(Math.ceil(spot.price / 15));
+  const [serviceFee, setServiceFee] = useState(Math.ceil(subTotal / 20));
+  const [total, setTotal] = useState(subTotal - cleaningFee + serviceFee);
   useEffect(() => {
     setNumOfNights(moment(endDate).diff(moment(startDate), "days"));
     console.log(numOfNights);
-  }, [startDate, endDate]);
+    setSubTotal(spot.price * numOfNights);
+    setCleaningFee(subTotal / 20);
+    setServiceFee(subTotal / 20);
+    setTotal(subTotal - cleaningFee + serviceFee);
+  }, [startDate, endDate, numOfNights, subTotal, serviceFee]);
 
   return (
     <div>
       <div>
         <ul>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className="errorMessage" key={idx}>{error}</li>
           ))}
         </ul>
       </div>
-      <div className="checkin">CHECK-IN</div>
-      <input
-        type="date"
-        id="booking-start-date"
-        name="booking-start-date"
-        value={startDate}
-        className="checkin"
-        min={tomorrow}
-        onChange={(e) => setStartDate(e.target.value)}
-      ></input>
-      <div className="checkin">CHECK-OUT</div>
-      <input
-        type="date"
-        id="booking-end-date"
-        name="booking-end-date"
-        value={endDate}
-        className="checkin"
-        min={startDate}
-        onChange={(e) => setEndDate(e.target.value)}
-      ></input>
-      <button onClick={handleCreateBooking}>BOOK ME</button>
-      <div>
-        ${spot.price} x {numOfNights} = ${spot.price * numOfNights}
+      <div className="checkInContainer">
+        <div className="innerCheckInContainer">
+          <div className="checkin">
+            <span>Check-in</span>
+            <input
+              type="date"
+              id="booking-start-date"
+              name="booking-start-date"
+              value={startDate}
+              className="checkinInput"
+              min={tomorrow}
+              onChange={(e) => setStartDate(e.target.value)}
+            ></input>
+          </div>
+          <div className="checkout">
+            {" "}
+            <span>Check-out</span>
+            <input
+              type="date"
+              id="booking-end-date"
+              name="booking-end-date"
+              value={endDate}
+              className="checkoutInput"
+              min={startDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            ></input>
+          </div>
+        </div>
+      </div>
+      <div className="otherCosts">
+        <div className="costsContainer">
+          <span>
+            <u>${spot.price} x {numOfNights} Nights</u>
+          </span>
+          <span>${spot.price * numOfNights}</span>
+        </div>
+        <div>
+          <span><u>Cleaning Fee</u></span>
+          <span>${cleaningFee}</span>
+        </div>
+        <div>
+          <span><u>Service Fee</u></span>
+          <span>${serviceFee}</span>
+        </div>
+        <div className="costTotal">
+          <span><b>Total before taxes</b></span>
+          <span>${total}</span>
+        </div>
+      </div>
+      <div className="reserveButton">
+        <button onClick={handleCreateBooking}>Reserve</button>
       </div>
     </div>
   );

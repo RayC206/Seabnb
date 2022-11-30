@@ -1,0 +1,79 @@
+.checkInContainer {
+  display: flex;
+  /* border: 1px solid red; */
+  width: 100%;
+  margin: auto;
+}
+
+.innerCheckInContainer {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  padding-bottom: 16px;
+  /* border:1px solid red; */
+}
+
+
+.checkin {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+
+}
+
+.checkinInput {
+  width: 65%;
+  height: 40px;
+}
+
+.checkoutInput {
+  width: 65%;
+  height: 40px;
+}
+
+.otherCosts {
+  display: flex;
+  flex-direction: column;
+}
+
+.otherCosts > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.costTotal {
+  border-top: 2px double rgb(216, 203, 203);
+}
+
+.costsContainer {
+  display: flex;
+  /* border: 1px solid red; */
+}
+
+.reserveButton {
+  display: flex;
+  justify-content: center;
+}
+
+.reserveButton button{
+  color: white;
+  width: 40%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 450;
+  font-size: 14px;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+}
+
+
+.errorMessage {
+  color:#E31C5F;
+}

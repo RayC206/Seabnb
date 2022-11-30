@@ -9,7 +9,7 @@ import {
 } from "../../store/bookings";
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
-import CreateBookingForm from "../Bookings/createBooking";
+import CreateBookingForm from "../Bookings/CreateBooking.js";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -160,11 +160,14 @@ const SpotsDetail = () => {
                 </div>
               </div>
               <div>
-                {sessionUser.id !== spot.ownerId ? (
-                  <CreateBookingForm spot={spot} reviews={reviews} />
-                ) : (
-                  <div><button>Manage Listing</button></div>
-                )}
+                {sessionUser &&
+                  (sessionUser.id !== spot.ownerId ? (
+                    <CreateBookingForm spot={spot} />
+                  ) : (
+                    <div>
+                      <button>Manage Listing</button>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>

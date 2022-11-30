@@ -7,6 +7,8 @@ import {
   deleteBookingRequest,
 } from "../../store/bookings";
 
+import CreateBookingForm from "../Bookings/CreateBooking.js";
+
 import "./UsersBooking.css";
 
 function UserBookings() {
@@ -14,12 +16,8 @@ function UserBookings() {
   let { bookingId } = useParams();
   bookingId = Number(bookingId);
   const usersBookings = useSelector((state) => Object.values(state.bookings));
-  let usersUpcomingBookings = [];
-  let usersPastBookings = [];
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log("here");
-  console.log(usersBookings);
-  console.log(usersBookings.length);
+  const [showEditForm, setShowEditForm] = useState(false);
 
   useEffect(() => {
     dispatch(getCurrentUserBookingsRequest()).then(() => setIsLoaded(true));
@@ -29,6 +27,10 @@ function UserBookings() {
     dispatch(deleteBookingRequest(bookingId));
   };
 
+  const toggleEditForm = () => {
+    setShowEditForm(true);
+  };
+
   return (
     <div className="bookingsPageDiv">
       <h1 className="manageListingPageTitle">My Bookings</h1>
@@ -36,7 +38,9 @@ function UserBookings() {
         usersBookings.length ? (
           <>
             <div>
-              <div>UPCOMING</div>
+              <div>
+                <h2 className="manageListingPageTitle">Upcoming Trips</h2>
+              </div>
               {usersBookings.map((booking) => {
                 let spot = booking.Spot;
                 let startDate = moment(booking.startDate).format("LL");
@@ -50,50 +54,55 @@ function UserBookings() {
                       <div className="bookingsSpotDiv">
                         <div>
                           <div className="eachUsersSpot" key={spot.id}>
-                              <NavLink to={`/spots/${spot.id}`}>
-                            <div className="eachUserSpotContainer">
+                            <NavLink to={`/spots/${spot.id}`}>
+                              <div className="eachUserSpotContainer">
                                 <img
                                   className="userSpotImg"
                                   src={spot.previewImage}
                                   alt={spot.name}
                                 ></img>
 
-                              <div className="userSpotDetails">
-                                <p className="userSpotName">
-                                  <p>{spot.name}</p>
-                                </p>
-                                <p className="userSpotLocation">
-                                  {spot.city}, {spot.state}
-                                  <p className="userSpotAddress">
-                                    {spot.address}
+                                <div className="userSpotDetails">
+                                  <p className="userSpotName">
+                                    <p>{spot.name}</p>
                                   </p>
-                                  <p className="userSpotPrice">
-                                    {" "}
-                                    <b>${spot.price}</b> night{" "}
+                                  <p className="userSpotLocation">
+                                    {spot.city}, {spot.state}
+                                    <p className="userSpotAddress">
+                                      {spot.address}
+                                    </p>
+                                    <p className="userSpotPrice">
+                                      {" "}
+                                      <b>${spot.price}</b> night{" "}
+                                    </p>
                                   </p>
-                                </p>
+                                </div>
                               </div>
-                            </div>
-                                    </NavLink>
-                                  <div className="bookingDates">
-                                    <p>Check-in: {startDate}</p>
-                                    <p>Checkout: {endDate}</p>
-                                    {!isBookingInThePast && (
-                                      <div className="bookingButtons">
-                                        <button className="deleteBooking">
-                                          Edit
-                                        </button>
-                                        <button
-                                          className="editBooking"
-                                          onClick={() => {
-                                            confirmDelete(booking.id);
-                                          }}
-                                          >
-                                          Delete
-                                        </button>
-                                      </div>
-                                    )}
+                            </NavLink>
+                            <div className="bookingDates">
+                              <span>Check-in: {startDate}</span>
+                              <span>Checkout: {endDate}</span>
+                              {!isBookingInThePast && (
+                                <>
+                                  <div className="bookingButtons">
+                                    {/* <button
+                                      className="deleteBooking"
+                                      onClick={toggleEditForm}
+                                    >
+                                      Edit
+                                    </button> */}
+                                    <button
+                                      className="deleteBooking"
+                                      onClick={() => {
+                                        confirmDelete(booking.id);
+                                      }}
+                                    >
+                                      Delete
+                                    </button>
                                   </div>
+                                </>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -103,7 +112,9 @@ function UserBookings() {
               })}
             </div>
             <div>
-              <div>PAST</div>
+              <div>
+                <h2 className="manageListingPageTitle">Past Trips</h2>
+              </div>
               {usersBookings.map((booking) => {
                 let spot = booking.Spot;
                 let startDate = moment(booking.startDate).format("LL");
@@ -117,50 +128,50 @@ function UserBookings() {
                       <div className="bookingsSpotDiv">
                         <div>
                           <div className="eachUsersSpotPast" key={spot.id}>
-                              <NavLink to={`/spots/${spot.id}`}>
-                            <div className="eachUserSpotContainer">
+                            <NavLink to={`/spots/${spot.id}`}>
+                              <div className="eachUserSpotContainer">
                                 <img
                                   className="userSpotImg"
                                   src={spot.previewImage}
                                   alt={spot.name}
                                 ></img>
 
-                              <div className="userSpotDetails">
-                                <p className="userSpotName">
-                                  <p>{spot.name}</p>
-                                </p>
-                                <p className="userSpotLocation">
-                                  {spot.city}, {spot.state}
-                                  <p className="userSpotAddress">
-                                    {spot.address}
+                                <div className="userSpotDetails">
+                                  <p className="userSpotName">
+                                    <p>{spot.name}</p>
                                   </p>
-                                  <div className="bookingDates">
-                                    <p>Check-in: {startDate}</p>
-                                    <p>Checkout: {endDate}</p>
-                                    {!isBookingInThePast && (
-                                      <div className="bookingButtons">
-                                        <button className="deleteBooking">
-                                          Edit
-                                        </button>
-                                        <button
-                                          className="editBooking"
-                                          onClick={() => {
-                                            confirmDelete(booking.id);
-                                          }}
+                                  <p className="userSpotLocation">
+                                    {spot.city}, {spot.state}
+                                    <p className="userSpotAddress">
+                                      {spot.address}
+                                    </p>
+                                    <div className="bookingDates">
+                                      <p>Check-in: {startDate}</p>
+                                      <p>Checkout: {endDate}</p>
+                                      {!isBookingInThePast && (
+                                        <div className="bookingButtons">
+                                          <button className="deleteBooking">
+                                            Edit
+                                          </button>
+                                          <button
+                                            className="editBooking"
+                                            onClick={() => {
+                                              confirmDelete(booking.id);
+                                            }}
                                           >
-                                          Delete
-                                        </button>
-                                      </div>
-                                    )}
-                                  </div>
-                                  <p className="userSpotPrice">
-                                    {" "}
-                                    <b>${spot.price}</b> night{" "}
+                                            Delete
+                                          </button>
+                                        </div>
+                                      )}
+                                    </div>
+                                    <p className="userSpotPrice">
+                                      {" "}
+                                      <b>${spot.price}</b> night{" "}
+                                    </p>
                                   </p>
-                                </p>
+                                </div>
                               </div>
-                            </div>
-                                    </NavLink>
+                            </NavLink>
                           </div>
                         </div>
                       </div>

@@ -1,6 +1,10 @@
 .bookingDates {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 450;
 
 }
 
@@ -15,14 +19,24 @@
   margin: auto;
 }
 
+.bookingButtons {
+  margin-top: 12px;
+}
 .bookingButtons button {
-  margin: 0px 10px;
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-weight: 450;
+  font-size: 16px;
   background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  width: 50%;
+  margin: auto;
+  display: block;
 }
 
+.deleteBooking button{
+  align-items: center;
+  margin: auto;
+}
 
 
 .eachUsersSpot {
