@@ -112,43 +112,34 @@ export const editBookingRequest = (booking) => async (dispatch) => {
 let initialState = {};
 
 const bookingsReducer = (state = initialState, action) => {
-  let newState = {};
   switch (action.type) {
-    case GET_ALL_BOOKINGS: {
-      action.bookings.forEach((booking) => {
-        newState[booking.id] = booking;
-      });
-      return { ...newState };
-    }
+    case GET_ALL_BOOKINGS:
+    case GET_CURRENT_USER_BOOKINGS:
+      return action.bookings.reduce((acc, booking) => {
+        acc[booking.id] = booking;
+        return acc;
+      }, {});
 
-    case GET_CURRENT_USER_BOOKINGS: {
-      action.bookings.forEach((booking) => {
-        newState[booking.id] = booking;
-      });
-      return { ...newState };
-    }
+    case CREATE_BOOKING:
+      return {
+        ...state,
+        [action.booking.id]: action.booking,
+      };
 
-    case CREATE_BOOKING: {
-      newState = { ...state };
-      newState[action.booking.id] = action.booking;
+    case DELETE_BOOKING:
+      const { [action.deletedBookingId]: deleted, ...newState } = state;
       return newState;
-    }
 
-    case DELETE_BOOKING: {
-      newState = { ...state };
-      delete newState[action.deletedBookingId];
-      return newState;
-    }
-
-    case EDIT_BOOKING: {
-      newState = { ...state };
-      newState[action.booking.id] = action.booking;
-      return newState;
-    }
+    case EDIT_BOOKING:
+      return {
+        ...state,
+        [action.booking.id]: action.booking,
+      };
 
     default:
       return state;
   }
 };
+
 
 export default bookingsReducer;

@@ -165,7 +165,7 @@ const SpotsDetail = () => {
                     <CreateBookingForm spot={spot} />
                   ) : (
                     <div>
-                      <button>Manage Listing</button>
+                      <button className="manageListingButton">Manage Listing</button>
                     </div>
                   ))}
               </div>

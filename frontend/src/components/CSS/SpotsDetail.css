@@ -208,6 +208,38 @@
   width: 100px;
 }
 
+.manageListingButton {
+  align-self: center;
+  background-color: white;
+  border: none;
+  font-size: 18px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-image: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 450;
+  height: 42px;
+  margin: 10px;
+  width: 100px;
+  cursor: pointer;  /* Use a pointer cursor on hover */
+  transition: all 0.2s;  /* Add a transition for a smooth effect on hover */
+
+}
+/* Hover state styles */
+button:hover {
+    background-image: linear-gradient(to right, #D70466 0%, #E31C5F 50%, #E61E4D 100%);  /* Change the gradient on hover */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);  /* Add a box-shadow on hover */
+    transform: translateY(-2px);  /* Lift the button up on hover */
+}
+
+img {
+  /* Other styles for the image go here */
+  image-rendering: pixelated;
+}
+
 /* 404 message if spot does not exist */
 .fourOhFour {
  font-size: 45px;

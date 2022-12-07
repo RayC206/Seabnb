@@ -103,15 +103,15 @@ const CreateBookingForm = ({ spot }) => {
         </div>
         <div>
           <span><u>Cleaning Fee</u></span>
-          <span>${cleaningFee}</span>
+          <span>${cleaningFee.toFixed(2)}</span>
         </div>
         <div>
           <span><u>Service Fee</u></span>
-          <span>${serviceFee}</span>
+          <span>${serviceFee.toFixed(2)}</span>
         </div>
         <div className="costTotal">
           <span><b>Total before taxes</b></span>
-          <span>${total}</span>
+          <span>${total.toFixed(2)}</span>
         </div>
       </div>
       <div className="reserveButton">
