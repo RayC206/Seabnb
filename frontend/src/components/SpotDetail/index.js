@@ -28,6 +28,11 @@ const SpotsDetail = () => {
     history.push(path);
   };
 
+  const editSpotPage = () => {
+    let path = `/spots/${spotId}/edit`;
+    history.push(path);
+  };
+
   const hideButton = {
     display: "none",
   };
@@ -165,7 +170,7 @@ const SpotsDetail = () => {
                     <CreateBookingForm spot={spot} />
                   ) : (
                     <div>
-                      <button className="manageListingButton">Manage Listing</button>
+                      <button className="manageListingButton" onClick={editSpotPage}> Manage Listing </button>
                     </div>
                   ))}
               </div>
