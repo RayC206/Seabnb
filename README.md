@@ -1,6 +1,6 @@
 ![Screen Shot 2022-07-27 at 5 21 30 PM](https://user-images.githubusercontent.com/79509501/181838546-e678b5bd-afca-4ee3-9118-0c940aaedcba.png)
 
-Welcome to Seabnb, a Airbnb clone featuring only coastal and beach rental stays. This personal project tests my ability to put together a fullstack website with all the technologies i've learned so far and to test my styling ability with CSS.  The Website features the ability to create/log in a user,  post a listing, create listing reviews, and the ability to add images to your listing. More features will be added over time.  --- (AWS in progress )
+Seabnb, a Airbnb clone featuring only coastal and beach rental stays. This personal project tests my ability to put together a fullstack website with all the technologies i've learned so far and to test my styling ability with CSS.  The Website features the ability to create/log in a user,  post a listing, create listing reviews, and the ability to add images to your listing. More features will be added over time.  --- (AWS in progress )
 
 # Live Site
  https://ray-airbnb-clone.herokuapp.com/
