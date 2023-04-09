@@ -10,6 +10,7 @@ import {
 import "../CSS/SpotsDetail.css";
 import { FaStar } from "react-icons/fa";
 import CreateBookingForm from "../Bookings/createBooking.js";
+import Map from "../Map/Map";
 
 const SpotsDetail = () => {
   let { spotId } = useParams();
@@ -143,6 +144,9 @@ const SpotsDetail = () => {
             {" "}
             Entire home hosted by {spot.owner.firstName}
           </div>
+          <div className="mapContainer">
+            <Map spot={spot} />
+          </div>
           <div id="Description">
             <p className="spotDetailDescription">{spot.description}</p>
             <div className="bookingBox">
@@ -170,7 +174,13 @@ const SpotsDetail = () => {
                     <CreateBookingForm spot={spot} />
                   ) : (
                     <div>
-                      <button className="manageListingButton" onClick={editSpotPage}> Manage Listing </button>
+                      <button
+                        className="manageListingButton"
+                        onClick={editSpotPage}
+                      >
+                        {" "}
+                        Manage Listing{" "}
+                      </button>
                     </div>
                   ))}
               </div>
