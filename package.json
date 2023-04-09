@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/RayC206/airBnB#readme",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.28",
+    "@react-google-maps/api": "^2.18.1",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.39",
     "pg": "^8.7.3",
