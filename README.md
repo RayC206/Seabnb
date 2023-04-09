@@ -10,10 +10,10 @@ Welcome to Seabnb, a Airbnb clone featuring only coastal and beach rental stays.
 
 Backend :   ![image](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-Frontend : 
-![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![image](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) ![image](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+Frontend :
+![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![image](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) ![image](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) <a href='https://developers.google.com/maps' target="_blank"><img alt='' src='https://img.shields.io/badge/Google_Maps API-100000?style=for-the-badge&logo=&logoColor=FFFFFF&labelColor=34A853&color=34A853'/></a>
 
-Database: 
+Database:
 ![image](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 
 ## Wiki Link
@@ -27,7 +27,7 @@ Database:
 
 ![Listings](https://user-images.githubusercontent.com/79509501/190925503-9061f156-ddaa-48ad-93ce-425149459fbb.png)
 
-## Listing's Page 
+## Listing's Page
 
 ![ListingPage](https://user-images.githubusercontent.com/79509501/190925579-501e8a38-54cb-4b76-ac8e-aa9fc363965e.png)
 
@@ -35,8 +35,3 @@ Database:
 ## User's Listings
 
 ![UserListing](https://user-images.githubusercontent.com/79509501/190925521-9d98a165-14ea-4732-b6aa-899d9b659a32.png)
-
-
-
-
-
